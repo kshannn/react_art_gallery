@@ -1,19 +1,30 @@
 import React from "react";
-import json from "./collection_artposts.json";
+import axios from "axios";
+// import json from "./collection_artposts.json";
 
 export default class Artposts extends React.Component {
   state = {
-    artposts: []
+    gallery: []
   };
 
+  // async componentDidMount() {
+  //   this.setState({
+  //     gallery: json
+  //   });
+  // }
+
+  // GET request
   async componentDidMount() {
+    let response = await axios.get(
+      "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/art_gallery"
+    );
     this.setState({
-      artposts: json
+      gallery: response.data
     });
   }
 
   renderList = () => {
-    let jsx = this.state.artposts.map((artpost) => {
+    let jsx = this.state.gallery.map((artpost) => {
       return (
         <React.Fragment>
           <div className="listingContainer">

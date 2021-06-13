@@ -4,7 +4,7 @@
       "post_date": "2021-06-04",
       "poster_name": "shan",
       "image": "https://cdnb.artstation.com/p/assets/images/images/016/660/713/large/nikhil-mishra-water-nature-final.jpg?1552995601",
-      "art_name": "The flowing river",
+      "art_title": "The flowing river",
       "art_type": "digital",
       "art_subject": ["nature"],
       "review_count": 3,
@@ -15,9 +15,9 @@
       "post_date": "2020-07-08",
       "poster_name": "dan",
       "image": "https://i.pinimg.com/736x/1c/63/6e/1c636e20d90b558b036301c393f2db67.jpg",
-      "art_name": "Watercolour leopard",
+      "art_title": "Watercolour leopard",
       "art_type": "traditional",
-      "art_subject": ["anime", "nature"],
+      "art_subject": ["animal", "nature"],
       "review_count": 4,
       "like_count": 5
     }

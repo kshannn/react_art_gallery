@@ -1,37 +1,34 @@
 import React from "react";
-import Radiobuttons from "./Radiobuttons";
-import Checkboxes from "./Checkboxes";
+import ArtForm from "./ArtForm";
 import axios from "axios";
 import "../App.css";
 
 export default class CreateArtForm extends React.Component {
   state = {
+    poster_name: "",
+    image: "",
+    art_title:"",
     art_type: "",
-    art_subject: [],
-    gallery: []
+    art_subject: []
   };
-
-  // GET request
-  async componentDidMount() {
-    let response = await axios.get(
-      "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/art_gallery"
-    );
-    this.setState({
-      gallery: response.data
-    });
-  }
 
   // POST request
   submit = async () => {
     let userData = {
+      post_date: new Date(),
+      poster_name: this.state.poster_name,
+      image: this.state.image,
+      art_title: this.state.art_title,
       art_type: this.state.art_type,
-      art_subject: this.state.art_subject
+      art_subject: this.state.art_subject,
+      review_count: 0,
+      like_count: 0
     };
     let response = await axios.post(
       "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/create_art_post",
       userData
     );
-    console.log(response);
+
   };
 
   updateCheckbox = (e) => {
@@ -64,11 +61,13 @@ export default class CreateArtForm extends React.Component {
     return (
       <React.Fragment>
         <div className="App">
-          <Radiobuttons
+          <ArtForm
             updateForm={this.updateForm}
             art_type={this.state.art_type}
-          />
-          <Checkboxes updateCheckbox={this.updateCheckbox} />
+            updateCheckbox={this.updateCheckbox}
+            poster_name={this.state.poster_name}
+            image={this.state.image}
+            art_title={this.state.art_title} />
           <button onClick={this.submit}>Submit</button>
         </div>
       </React.Fragment>
