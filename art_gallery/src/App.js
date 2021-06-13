@@ -1,25 +1,41 @@
-import logo from './logo.svg';
+import React from "react";
+import Artposts from "./Artposts";
+import Create from "./Create";
+import CreateArtPage from "./CreateArtPage";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+export default class App extends React.Component {
+  state = {
+    displayArtForm: false
+  };
+
+  returnHome = () => {
+    this.setState({
+      displayArtForm: false
+    });
+  };
+  createArt = () => {
+    this.setState({
+      displayArtForm: true
+    });
+  };
+
+  renderCreateArtPage = () => {
+    if (this.state.displayArtForm) {
+      return <CreateArtPage close={this.returnHome} />;
+    } else {
+      return null;
+    }
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <Create create={this.createArt} />
+        <Artposts />
+        {this.renderCreateArtPage()}
+      </React.Fragment>
+    );
+  }
+}
