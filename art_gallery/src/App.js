@@ -36,7 +36,6 @@ export default class App extends React.Component {
 
 
 
-
   renderCreateArtPage = () => {
 
     if (this.state.displayArtForm) {
@@ -72,11 +71,9 @@ export default class App extends React.Component {
     return (
       <React.Fragment>
         <button onClick={this.createArt}>Create</button>
-        {/* <Artposts /> */}
 
 
         {this.renderList()}
-
         {this.renderCreateArtPage()}
       </React.Fragment>
     );
