@@ -29,6 +29,16 @@ export default function ArtForm (props) {
       value={props.art_title}
       onChange={props.updateForm} />
 
+      {/* ====== Text field: Art Description ======*/}
+      <h2>Art Description</h2>
+      <textarea placeholder="Type a description for your art"
+      name="art_description"
+      rows="4" 
+      cols="50"
+      value={props.art_description}
+      onChange={props.updateForm}
+      ></textarea> 
+  
       {/* ====== Radio buttons: Art Type ======*/}
       <h2>Art Type</h2>
       <input

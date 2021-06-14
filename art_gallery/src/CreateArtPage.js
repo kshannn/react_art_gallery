@@ -8,6 +8,7 @@ export default class CreateArtPage extends React.Component {
     poster_name: "",
     image: "",
     art_title: "",
+    art_description:"",
     art_type: "",
     art_subject: []
   };
@@ -19,6 +20,7 @@ export default class CreateArtPage extends React.Component {
       poster_name: this.state.poster_name,
       image: this.state.image,
       art_title: this.state.art_title,
+      art_description: this.state.art_description,
       art_type: this.state.art_type,
       art_subject: this.state.art_subject,
       review_count: 0,
@@ -71,7 +73,8 @@ export default class CreateArtPage extends React.Component {
             updateCheckbox={this.updateCheckbox}
             poster_name={this.state.poster_name}
             image={this.state.image}
-            art_title={this.state.art_title} />
+            art_title={this.state.art_title}
+            art_description={this.state.art_description} />
           <button onClick={this.submit}>Submit</button>
         </div>
       </React.Fragment>

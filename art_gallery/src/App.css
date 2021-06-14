@@ -62,3 +62,7 @@ img {
   background-size:contain;
   background-repeat: no-repeat;
 }
+
+textarea{
+  resize: none;
+}

@@ -7,8 +7,8 @@ export default class ArtInfo extends React.Component {
                 <div className="artInfo">
                     <button onClick={this.props.close}>Back to Gallery</button>
                     <div className="artInfoImageHolder" style={{backgroundImage: `url(${this.props.imageURL})`}}></div>
-                    {/* <img src={this.props.imageURL} alt="user inserted art" /> */}
                     <h2>{this.props.art_title}</h2>
+                    <h3>{this.props.poster_name}</h3>
 
                     
 
