@@ -28,20 +28,20 @@ export default class App extends React.Component {
     });
   }
 
-  
+
 
   returnHome = () => {
     this.setState({
-      displayArtForm: false
+      displayArtForm: false,
+      displayArtInfo: false
     });
   };
+
   createArt = () => {
     this.setState({
       displayArtForm: true
     });
   };
-
-
 
   renderCreateArtPage = () => {
 
@@ -52,17 +52,17 @@ export default class App extends React.Component {
     }
   };
 
-  // test
+ 
   showArtInfo = (artpost) => {
     this.setState({
       displayArtInfo: true,
-      artHolder: artpost._id
+      artHolder: artpost
     })
   }
 
   renderArtInfoPage = () => {
     if (this.state.displayArtInfo) {
-      return <ArtInfo />;
+      return <ArtInfo close={this.returnHome} imageURL={this.state.artHolder.image}/>;
     } else {
       return null;
     }
@@ -72,8 +72,9 @@ export default class App extends React.Component {
     let jsx = this.state.gallery.map((artpost) => {
       return (
         <React.Fragment>
-          <div className="listingContainer" onClick={ () => {
-            this.showArtInfo(artpost)}
+          <div className="listingContainer" onClick={() => {
+            this.showArtInfo(artpost)
+          }
           }>
             <div className="imageHolder">
               <img src={artpost.image} alt="nature" />
@@ -101,10 +102,6 @@ export default class App extends React.Component {
         {this.renderList()}
         {this.renderArtInfoPage()}
         {this.renderCreateArtPage()}
-
-        {/* Testing ArtInfo Component */}
-        {/* <ArtInfo /> */}
-
 
       </React.Fragment>
     );

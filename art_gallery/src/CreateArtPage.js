@@ -30,8 +30,6 @@ export default class CreateArtPage extends React.Component {
     );
 
     this.props.close();
-
-    // Re-call GET API here
     this.props.getGallery();
 
   };
