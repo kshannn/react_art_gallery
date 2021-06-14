@@ -66,7 +66,11 @@ export default class App extends React.Component {
       close={this.returnHome} 
       imageURL={this.state.artHolder.image}
       art_title={this.state.artHolder.art_title}
+      art_description={this.state.artHolder.art_description}
       poster_name={this.state.artHolder.poster_name}
+      like_count={this.state.artHolder.like_count}
+      review_count={this.state.artHolder.review_count}
+      post_date={this.state.artHolder.post_date}
       />;
     } else {
       return null;
