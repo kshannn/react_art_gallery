@@ -29,7 +29,10 @@ export default class CreateArtPage extends React.Component {
       userData
     );
 
-    // this.props.close();
+    this.props.close();
+
+    // Re-call GET API here
+    this.props.getGallery();
 
   };
 
@@ -71,7 +74,6 @@ export default class CreateArtPage extends React.Component {
             poster_name={this.state.poster_name}
             image={this.state.image}
             art_title={this.state.art_title} />
-
           <button onClick={this.submit}>Submit</button>
         </div>
       </React.Fragment>

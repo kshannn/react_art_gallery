@@ -13,9 +13,13 @@ export default class App extends React.Component {
     gallery: []
   };
 
+
   // GET request
   async componentDidMount() {
-    console.log("component mounted")
+    this.getGallery();
+  }
+
+  getGallery = async () => {
     let response = await axios.get(
       "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/art_gallery"
     );
@@ -42,7 +46,7 @@ export default class App extends React.Component {
   renderCreateArtPage = () => {
 
     if (this.state.displayArtForm) {
-      return <CreateArtPage close={this.returnHome} />;
+      return <CreateArtPage close={this.returnHome} getGallery={this.getGallery} />;
     } else {
       return null;
     }
