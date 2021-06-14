@@ -6,7 +6,7 @@ import './App.css';
 
 export default class App extends React.Component {
   state = {
-    displayArtForm: false
+    displayArtForm: false,
   };
 
   returnHome = () => {
@@ -33,6 +33,10 @@ export default class App extends React.Component {
       <React.Fragment>
         <button onClick={this.createArt}>Create</button>
         <Artposts />
+
+
+
+
         {this.renderCreateArtPage()}
       </React.Fragment>
     );
