@@ -1,6 +1,5 @@
 import React from "react";
 import Artposts from "./Artposts";
-import Create from "./Create";
 import CreateArtPage from "./CreateArtPage";
 import './App.css';
 
@@ -32,7 +31,7 @@ export default class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Create create={this.createArt} />
+        <button onClick={this.createArt}>Create</button>
         <Artposts />
         {this.renderCreateArtPage()}
       </React.Fragment>

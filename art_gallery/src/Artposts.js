@@ -1,17 +1,11 @@
 import React from "react";
 import axios from "axios";
-// import json from "./collection_artposts.json";
+
 
 export default class Artposts extends React.Component {
   state = {
     gallery: []
   };
-
-  // async componentDidMount() {
-  //   this.setState({
-  //     gallery: json
-  //   });
-  // }
 
   // GET request
   async componentDidMount() {
