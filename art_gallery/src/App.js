@@ -62,7 +62,10 @@ export default class App extends React.Component {
 
   renderArtInfoPage = () => {
     if (this.state.displayArtInfo) {
-      return <ArtInfo close={this.returnHome} imageURL={this.state.artHolder.image}/>;
+      return <ArtInfo 
+      close={this.returnHome} 
+      imageURL={this.state.artHolder.image}
+      art_title={this.state.artHolder.art_title}/>;
     } else {
       return null;
     }
@@ -76,8 +79,8 @@ export default class App extends React.Component {
             this.showArtInfo(artpost)
           }
           }>
-            <div className="imageHolder">
-              <img src={artpost.image} alt="nature" />
+            <div className="imageHolder" style={{backgroundImage: `url(${artpost.image})`}}>
+              {/* <img src={artpost.image} alt="user inserted art" /> */}
             </div>
             <div className="listingContent">
               <h2>{artpost.art_title}</h2>
