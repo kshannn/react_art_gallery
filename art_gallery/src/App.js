@@ -72,6 +72,7 @@ export default class App extends React.Component {
       review_count={this.state.artHolder.review_count}
       post_date={this.state.artHolder.post_date}
       _id={this.state.artHolder._id}
+      getGallery={this.getGallery}
       />;
     } else {
       return null;
