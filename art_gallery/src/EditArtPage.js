@@ -1,6 +1,6 @@
 import React from "react";
 import ArtForm from "./ArtForm";
-// import axios from "axios";
+import axios from "axios";
 
 export default class EditArtPage extends React.Component {
 
@@ -13,14 +13,32 @@ export default class EditArtPage extends React.Component {
     art_subject: []
   };
 
+  updateChanges = async (artIdToEdit) => {
+    console.log(artIdToEdit)
+
+    let userData = {
+      post_date: this.state.post_date,
+      poster_name: this.state.poster_name,
+      image: this.state.image,
+      art_title: this.state.art_title,
+      art_description: this.state.art_description,
+      art_type: this.state.art_type,
+      art_subject: this.state.art_subject,
+      review_count: this.props.review_count,
+      like_count: this.props.like_count
+    };
+
+    let response = await axios.put("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/edit_artpost/" + artIdToEdit, userData) 
+  }
+
   async componentDidMount () {
     this.setState({
-      poster_name: this.props.poster_name, // insert previous data, try passing in object
+      poster_name: this.props.poster_name, 
       image: this.props.image,
       art_title: this.props.art_title,
       art_description:this.props.art_description,
-      art_type: this.props.art_type,
-      art_subject: this.props.art_subject
+      art_type: this.props.art_type, // error passing in this
+      art_subject: this.props.art_subject // error passing in this
     })
   }
 
@@ -58,12 +76,15 @@ export default class EditArtPage extends React.Component {
           <ArtForm
             updateForm={this.updateForm}
             art_type={this.state.art_type}
+            art_subject={this.state.art_subject}
             updateCheckbox={this.updateCheckbox}
             poster_name={this.state.poster_name}
             image={this.state.image}
             art_title={this.state.art_title}
             art_description={this.state.art_description} />
-          <button>Update</button>
+          <button onClick={()=>{
+            this.updateChanges(this.props._id);
+          }}>Update</button>
         </div>
       </React.Fragment>
     );

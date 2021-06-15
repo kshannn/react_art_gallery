@@ -63,6 +63,7 @@ export default function ArtForm (props) {
         type="checkbox"
         name="art_subject"
         value="nature"
+        checked={props.art_subject.includes("nature")}
         onChange={props.updateCheckbox}
       />{" "}
       Nature
@@ -70,6 +71,7 @@ export default function ArtForm (props) {
         type="checkbox"
         name="art_subject"
         value="animal"
+        checked={props.art_subject.includes("animal")}
         onChange={props.updateCheckbox}
       />{" "}
       Animal
@@ -77,6 +79,7 @@ export default function ArtForm (props) {
         type="checkbox"
         name="art_subject"
         value="people"
+        checked={props.art_subject.includes("people")}
         onChange={props.updateCheckbox}
       />{" "}
       People

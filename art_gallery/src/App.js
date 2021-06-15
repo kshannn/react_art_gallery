@@ -73,6 +73,8 @@ export default class App extends React.Component {
       post_date={this.state.artHolder.post_date}
       _id={this.state.artHolder._id}
       getGallery={this.getGallery}
+      art_type={this.state.artHolder.art_type}
+      art_subject={this.state.artHolder.art_subject}
       />;
     } else {
       return null;

@@ -30,7 +30,12 @@ export default class ArtInfo extends React.Component {
             art_title={this.props.art_title}
             art_description={this.props.art_description}
             art_type={this.props.art_type}
-            art_subject={this.props.art_subject}/>
+            art_subject={this.props.art_subject}
+            like_count={this.props.like_count} 
+            review_count={this.props.review_count} 
+            _id={this.props._id}
+            post_date={this.props.post_date}/>
+    
 
         } else {
             return null
