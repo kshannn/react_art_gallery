@@ -85,6 +85,7 @@ export default class App extends React.Component {
     }
   }
 
+  
   renderList = () => {
     let jsx = this.state.gallery.map((artpost) => {
       return (

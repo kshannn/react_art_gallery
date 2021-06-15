@@ -78,3 +78,8 @@ textarea{
   background-size:contain;
   background-repeat: no-repeat;
 }
+
+/* Review List */
+.reviewContainer {
+  border: 2px solid black;
+}

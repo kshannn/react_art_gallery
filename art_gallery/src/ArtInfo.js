@@ -6,8 +6,19 @@ export default class ArtInfo extends React.Component {
 
     state = {
         displayEditForm: false,
-        displayInfo: true
+        displayInfo: true,
+        reviewsSection:[]
     }
+
+    // GET request: Reviews
+    async componentDidMount() {
+        let response = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/review_list")
+        
+        this.setState({
+            reviewsSection: response.data
+        })
+    }
+
 
 
     closeEdit = () => {
@@ -25,22 +36,22 @@ export default class ArtInfo extends React.Component {
     }
 
     renderEditArtPage = () => {
-        if (this.state.displayEditForm){
-            return <EditArtPage 
-            closePage={this.props.closePage}
-            closeEdit={this.closeEdit}
-            poster_name={this.props.poster_name}
-            image={this.props.image}
-            art_title={this.props.art_title}
-            art_description={this.props.art_description}
-            art_type={this.props.art_type}
-            art_subject={this.props.art_subject}
-            like_count={this.props.like_count} 
-            review_count={this.props.review_count} 
-            _id={this.props._id}
-            post_date={this.props.post_date}
-            getGallery={this.props.getGallery}/>
-    
+        if (this.state.displayEditForm) {
+            return <EditArtPage
+                closePage={this.props.closePage}
+                closeEdit={this.closeEdit}
+                poster_name={this.props.poster_name}
+                image={this.props.image}
+                art_title={this.props.art_title}
+                art_description={this.props.art_description}
+                art_type={this.props.art_type}
+                art_subject={this.props.art_subject}
+                like_count={this.props.like_count}
+                review_count={this.props.review_count}
+                _id={this.props._id}
+                post_date={this.props.post_date}
+                getGallery={this.props.getGallery} />
+
 
         } else {
             return null
@@ -49,15 +60,29 @@ export default class ArtInfo extends React.Component {
 
     deleteArt = async (artIdToDelete) => {
         let response = await axios.delete("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/delete_artpost/" + artIdToDelete)
-        
+
         // close popup
         this.props.closePage();
 
         // refresh gallery
         this.props.getGallery();
-        
+
     }
-    
+
+    renderReviewList = () => {
+        let jsx = this.state.reviewsSection.map((review)=>{
+          return(
+            <React.Fragment>
+              <div className="reviewContainer">
+                <h3>{review.reviewer_name}</h3>
+                <p>{review.review_date}</p>
+                <p>{review.review}</p>
+              </div>
+            </React.Fragment>
+          )
+        })
+        return jsx
+      }
 
     render() {
         return (
@@ -66,10 +91,10 @@ export default class ArtInfo extends React.Component {
                     <div className="artInfo">
                         <button onClick={this.props.closePage}>Back to Gallery</button>
                         <div className="artInfoImageHolder" style={{ backgroundImage: `url(${this.props.image})` }}></div>
-                        <button onClick={()=>{
+                        <button onClick={() => {
                             this.deleteArt(this.props._id);
                         }}>Delete Art</button>
-                        <button onClick={()=>{
+                        <button onClick={() => {
                             this.editArt();
                         }}>Edit Art</button>
                         <p>Like(s): {this.props.like_count}</p>
@@ -80,6 +105,7 @@ export default class ArtInfo extends React.Component {
                         <p>Date published: {this.props.post_date}</p>
                         <div className="reviewSection">
                             <p>Reviews {this.props.review_count}</p>
+                            {this.renderReviewList()}
                         </div>
                     </div>
                 }
