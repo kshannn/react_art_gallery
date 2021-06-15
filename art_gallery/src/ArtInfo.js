@@ -8,6 +8,7 @@ export default class ArtInfo extends React.Component {
         displayEditForm: false
     }
 
+
     closeEdit = () => {
         this.setState({
             displayEditForm: false
@@ -22,7 +23,15 @@ export default class ArtInfo extends React.Component {
 
     renderEditArtPage = () => {
         if (this.state.displayEditForm){
-            return <EditArtPage closeEdit={this.closeEdit}/>
+            return <EditArtPage 
+            closeEdit={this.closeEdit}
+            poster_name={this.props.poster_name}
+            image={this.props.image}
+            art_title={this.props.art_title}
+            art_description={this.props.art_description}
+            art_type={this.props.art_type}
+            art_subject={this.props.art_subject}/>
+
         } else {
             return null
         }
@@ -45,7 +54,7 @@ export default class ArtInfo extends React.Component {
             <React.Fragment>
                 <div className="artInfo">
                     <button onClick={this.props.close}>Back to Gallery</button>
-                    <div className="artInfoImageHolder" style={{ backgroundImage: `url(${this.props.imageURL})` }}></div>
+                    <div className="artInfoImageHolder" style={{ backgroundImage: `url(${this.props.image})` }}></div>
                     <button onClick={()=>{
                         this.deleteArt(this.props._id);
                     }}>Delete Art</button>

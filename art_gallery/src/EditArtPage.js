@@ -2,7 +2,7 @@ import React from "react";
 import ArtForm from "./ArtForm";
 // import axios from "axios";
 
-export default class CreateArtPage extends React.Component {
+export default class EditArtPage extends React.Component {
 
   state = {
     poster_name: "",
@@ -12,6 +12,17 @@ export default class CreateArtPage extends React.Component {
     art_type: "",
     art_subject: []
   };
+
+  async componentDidMount () {
+    this.setState({
+      poster_name: this.props.poster_name, // insert previous data, try passing in object
+      image: this.props.image,
+      art_title: this.props.art_title,
+      art_description:this.props.art_description,
+      art_type: this.props.art_type,
+      art_subject: this.props.art_subject
+    })
+  }
 
   updateCheckbox = (e) => {
     if (!this.state.art_subject.includes(e.target.value)) {

@@ -64,7 +64,7 @@ export default class App extends React.Component {
     if (this.state.displayArtInfo) {
       return <ArtInfo 
       close={this.returnHome} 
-      imageURL={this.state.artHolder.image}
+      image={this.state.artHolder.image}
       art_title={this.state.artHolder.art_title}
       art_description={this.state.artHolder.art_description}
       poster_name={this.state.artHolder.poster_name}
