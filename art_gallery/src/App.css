@@ -66,3 +66,13 @@ img {
 textarea{
   resize: none;
 }
+
+/* Edit Art Page  */
+#editArtPage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgb(255, 225, 186);
+}

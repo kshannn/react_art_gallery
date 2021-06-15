@@ -1,10 +1,34 @@
+import EditArtPage from "./EditArtPage"
 import axios from "axios"
 import React from "react"
 
 export default class ArtInfo extends React.Component {
 
+    state = {
+        displayEditForm: false
+    }
+
+    closeEdit = () => {
+        this.setState({
+            displayEditForm: false
+        })
+    }
+
+    editArt = () => {
+        this.setState({
+            displayEditForm: true
+        })
+    }
+
+    renderEditArtPage = () => {
+        if (this.state.displayEditForm){
+            return <EditArtPage closeEdit={this.closeEdit}/>
+        } else {
+            return null
+        }
+    }
+
     deleteArt = async (artIdToDelete) => {
-        console.log(artIdToDelete)
         let response = await axios.delete("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/delete_artpost/" + artIdToDelete)
         
         // close popup
@@ -12,8 +36,6 @@ export default class ArtInfo extends React.Component {
 
         // refresh gallery
         this.props.getGallery();
-        
-
         
     }
     
@@ -27,6 +49,9 @@ export default class ArtInfo extends React.Component {
                     <button onClick={()=>{
                         this.deleteArt(this.props._id);
                     }}>Delete Art</button>
+                    <button onClick={()=>{
+                        this.editArt();
+                    }}>Edit Art</button>
                     <p>Like(s): {this.props.like_count}</p>
                     <p>Review(s): {this.props.review_count}</p>
                     <h2>{this.props.art_title}</h2>
@@ -37,6 +62,8 @@ export default class ArtInfo extends React.Component {
                         <p>Reviews {this.props.review_count}</p>
                     </div>
                 </div>
+
+                {this.renderEditArtPage()}
             </React.Fragment>
         )
     }
