@@ -16,7 +16,7 @@ export default class EditArtPage extends React.Component {
   updateChanges = async (artIdToEdit) => {
 
     let userData = {
-      post_date: this.state.post_date,
+      post_date: new Date(),
       poster_name: this.state.poster_name,
       image: this.state.image,
       art_title: this.state.art_title,

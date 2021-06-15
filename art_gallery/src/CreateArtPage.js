@@ -27,7 +27,7 @@ export default class CreateArtPage extends React.Component {
       like_count: 0
     };
     let response = await axios.post(
-      "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/create_art_post",
+      "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/create/artpost",
       userData
     );
 
