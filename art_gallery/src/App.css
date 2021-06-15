@@ -32,10 +32,7 @@ img {
 
 /* Create Art Page */
 #createArtPage {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background: lightseagreen;
 }
@@ -43,11 +40,8 @@ img {
 
 /* Art Information */
 .artInfo {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
   background: rgb(210, 213, 255);
 }
 
@@ -69,10 +63,7 @@ textarea{
 
 /* Edit Art Page  */
 #editArtPage {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background: rgb(255, 225, 186);
 }

@@ -9,6 +9,7 @@ export default class App extends React.Component {
   state = {
     displayArtForm: false,
     displayArtInfo: false,
+    displayHome: true,
     artHolder: 0,
     gallery: []
   };
@@ -33,13 +34,15 @@ export default class App extends React.Component {
   closePage = () => {
     this.setState({
       displayArtForm: false,
-      displayArtInfo: false
+      displayArtInfo: false,
+      displayHome: true
     });
   };
 
   createArt = () => {
     this.setState({
-      displayArtForm: true
+      displayArtForm: true,
+      displayHome: false
     });
   };
 
@@ -56,6 +59,7 @@ export default class App extends React.Component {
   showArtInfo = (artpost) => {
     this.setState({
       displayArtInfo: true,
+      displayHome: false,
       artHolder: artpost
     })
   }
@@ -108,10 +112,11 @@ export default class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <button onClick={this.createArt}>Create</button>
-
-
-        {this.renderList()}
+        {this.state.displayHome &&
+          <button onClick={this.createArt}>Create</button>
+        }
+        
+        {this.state.displayHome && this.renderList()}
         {this.renderArtInfoPage()}
         {this.renderCreateArtPage()}
 

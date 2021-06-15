@@ -5,19 +5,22 @@ import React from "react"
 export default class ArtInfo extends React.Component {
 
     state = {
-        displayEditForm: false
+        displayEditForm: false,
+        displayInfo: true
     }
 
 
     closeEdit = () => {
         this.setState({
-            displayEditForm: false
+            displayEditForm: false,
+            displayInfo: true
         })
     }
 
     editArt = () => {
         this.setState({
-            displayEditForm: true
+            displayEditForm: true,
+            displayInfo: false
         })
     }
 
@@ -59,27 +62,29 @@ export default class ArtInfo extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div className="artInfo">
-                    <button onClick={this.props.closePage}>Back to Gallery</button>
-                    <div className="artInfoImageHolder" style={{ backgroundImage: `url(${this.props.image})` }}></div>
-                    <button onClick={()=>{
-                        this.deleteArt(this.props._id);
-                    }}>Delete Art</button>
-                    <button onClick={()=>{
-                        this.editArt();
-                    }}>Edit Art</button>
-                    <p>Like(s): {this.props.like_count}</p>
-                    <p>Review(s): {this.props.review_count}</p>
-                    <h2>{this.props.art_title}</h2>
-                    <h3>{this.props.poster_name}</h3>
-                    <p>{this.props.art_description}</p>
-                    <p>Date published: {this.props.post_date}</p>
-                    <div className="reviewSection">
-                        <p>Reviews {this.props.review_count}</p>
+                {this.state.displayInfo &&
+                    <div className="artInfo">
+                        <button onClick={this.props.closePage}>Back to Gallery</button>
+                        <div className="artInfoImageHolder" style={{ backgroundImage: `url(${this.props.image})` }}></div>
+                        <button onClick={()=>{
+                            this.deleteArt(this.props._id);
+                        }}>Delete Art</button>
+                        <button onClick={()=>{
+                            this.editArt();
+                        }}>Edit Art</button>
+                        <p>Like(s): {this.props.like_count}</p>
+                        <p>Review(s): {this.props.review_count}</p>
+                        <h2>{this.props.art_title}</h2>
+                        <h3>{this.props.poster_name}</h3>
+                        <p>{this.props.art_description}</p>
+                        <p>Date published: {this.props.post_date}</p>
+                        <div className="reviewSection">
+                            <p>Reviews {this.props.review_count}</p>
+                        </div>
                     </div>
-                </div>
+                }
 
-                {this.renderEditArtPage()}
+                {!this.state.displayInfo && this.renderEditArtPage()}
             </React.Fragment>
         )
     }
