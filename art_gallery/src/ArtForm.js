@@ -34,7 +34,7 @@ export default function ArtForm (props) {
       <textarea placeholder="Type a description for your art"
       name="art_description"
       rows="4" 
-      cols="50"
+      cols="40"
       value={props.art_description}
       onChange={props.updateForm}
       ></textarea> 
