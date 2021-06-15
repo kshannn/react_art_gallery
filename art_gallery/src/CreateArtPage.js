@@ -31,7 +31,7 @@ export default class CreateArtPage extends React.Component {
       userData
     );
 
-    this.props.close();
+    this.props.closePage();
     this.props.getGallery();
 
   };
@@ -66,10 +66,11 @@ export default class CreateArtPage extends React.Component {
     return (
       <React.Fragment>
         <div id="createArtPage">
-          <button onClick={this.props.close}>Back</button>
+          <button onClick={this.props.closePage}>Back</button>
           <ArtForm
             updateForm={this.updateForm}
             art_type={this.state.art_type}
+            art_subject={this.state.art_subject}
             updateCheckbox={this.updateCheckbox}
             poster_name={this.state.poster_name}
             image={this.state.image}

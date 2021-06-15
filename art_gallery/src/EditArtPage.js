@@ -14,7 +14,6 @@ export default class EditArtPage extends React.Component {
   };
 
   updateChanges = async (artIdToEdit) => {
-    console.log(artIdToEdit)
 
     let userData = {
       post_date: this.state.post_date,
@@ -29,6 +28,12 @@ export default class EditArtPage extends React.Component {
     };
 
     let response = await axios.put("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/edit_artpost/" + artIdToEdit, userData) 
+
+    // close edit page
+    this.props.closeEdit();
+    this.props.closePage();
+    // refresh page
+    this.props.getGallery();
   }
 
   async componentDidMount () {

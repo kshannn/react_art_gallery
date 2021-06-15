@@ -24,6 +24,7 @@ export default class ArtInfo extends React.Component {
     renderEditArtPage = () => {
         if (this.state.displayEditForm){
             return <EditArtPage 
+            closePage={this.props.closePage}
             closeEdit={this.closeEdit}
             poster_name={this.props.poster_name}
             image={this.props.image}
@@ -34,7 +35,8 @@ export default class ArtInfo extends React.Component {
             like_count={this.props.like_count} 
             review_count={this.props.review_count} 
             _id={this.props._id}
-            post_date={this.props.post_date}/>
+            post_date={this.props.post_date}
+            getGallery={this.props.getGallery}/>
     
 
         } else {
@@ -46,7 +48,7 @@ export default class ArtInfo extends React.Component {
         let response = await axios.delete("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/delete_artpost/" + artIdToDelete)
         
         // close popup
-        this.props.close();
+        this.props.closePage();
 
         // refresh gallery
         this.props.getGallery();
@@ -58,7 +60,7 @@ export default class ArtInfo extends React.Component {
         return (
             <React.Fragment>
                 <div className="artInfo">
-                    <button onClick={this.props.close}>Back to Gallery</button>
+                    <button onClick={this.props.closePage}>Back to Gallery</button>
                     <div className="artInfoImageHolder" style={{ backgroundImage: `url(${this.props.image})` }}></div>
                     <button onClick={()=>{
                         this.deleteArt(this.props._id);

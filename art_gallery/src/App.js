@@ -30,7 +30,7 @@ export default class App extends React.Component {
 
 
 
-  returnHome = () => {
+  closePage = () => {
     this.setState({
       displayArtForm: false,
       displayArtInfo: false
@@ -46,7 +46,7 @@ export default class App extends React.Component {
   renderCreateArtPage = () => {
 
     if (this.state.displayArtForm) {
-      return <CreateArtPage close={this.returnHome} getGallery={this.getGallery} />;
+      return <CreateArtPage closePage={this.closePage} getGallery={this.getGallery} />;
     } else {
       return null;
     }
@@ -63,7 +63,7 @@ export default class App extends React.Component {
   renderArtInfoPage = () => {
     if (this.state.displayArtInfo) {
       return <ArtInfo 
-      close={this.returnHome} 
+      closePage={this.closePage} 
       image={this.state.artHolder.image}
       art_title={this.state.artHolder.art_title}
       art_description={this.state.artHolder.art_description}
