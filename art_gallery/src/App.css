@@ -76,3 +76,14 @@ textarea{
   width: 100%;
   background: rgb(255, 225, 186);
 }
+
+
+/* Preview */
+.preview {
+  border:1px solid black;
+  height: 200px;
+  width:200px;
+  background-position: center;
+  background-size:contain;
+  background-repeat: no-repeat;
+}
