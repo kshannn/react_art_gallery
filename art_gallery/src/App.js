@@ -221,7 +221,7 @@ export default class App extends React.Component {
               <h2>{artpost.art_title.length > 20 ? artpost.art_title.slice(0, 20) + "..." : artpost.art_title}</h2>
               <h3>{artpost.poster_name}</h3>
               <p>
-                Likes: {artpost.like_count} Reviews: {artpost.review_count}
+                Likes: {artpost.statistics.like_count} Reviews: {artpost.statistics.review_count}
               </p>
             </div>
           </div>

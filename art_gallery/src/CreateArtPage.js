@@ -23,8 +23,10 @@ export default class CreateArtPage extends React.Component {
       art_description: this.state.art_description,
       art_type: this.state.art_type,
       art_subject: this.state.art_subject,
-      review_count: 0,
-      like_count: 0
+      statistics:{
+        review_count: 0,
+        like_count: 0
+      }
     };
     let response = await axios.post(
       "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/create/artpost",
