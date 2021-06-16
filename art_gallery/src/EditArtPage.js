@@ -23,8 +23,8 @@ export default class EditArtPage extends React.Component {
       art_description: this.state.art_description,
       art_type: this.state.art_type,
       art_subject: this.state.art_subject,
-      review_count: this.props.statistics.review_count,
-      like_count: this.props.statistics.like_count
+      review_count: this.props.review_count,
+      like_count: this.props.like_count
     };
 
     let response = await axios.put("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/artpost/edit/" + artIdToEdit, userData) 
