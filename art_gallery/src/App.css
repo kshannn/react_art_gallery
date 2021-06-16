@@ -83,3 +83,9 @@ textarea{
 .reviewContainer {
   border: 2px solid black;
 }
+
+#newReview {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}

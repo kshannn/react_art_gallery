@@ -130,26 +130,24 @@ export default class ArtInfo extends React.Component {
         reviewsSection:[]
     }
 
-    // GET request: Reviews
-    // async componentDidMount() {
-    //     let response = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/review_list")
-        
-    //     this.setState({
-    //         reviewsSection: response.data
-    //     })
-    // }
-
     async componentDidMount(){
         let artResponse = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/art_gallery/" + this.props._id)
-        this.setState({
-            currentArt: artResponse.data
-        })
-
         let reviewResponse = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/art_gallery/" + this.props._id + "/review_list")
         this.setState({
+            currentArt: artResponse.data,
             reviewsSection: reviewResponse.data
         })
     }
+
+    // haven't create form for review
+    // createReview = () => {
+    //     let userData = {
+    //         reviewer_name,
+    //         liked_post,
+    //         review
+    //     }
+    //     let response = await axios.post("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/art_gallery/" + this.props._id + "/create/review", userData)
+    // }
 
     closeEdit = () => {
         this.setState({
@@ -236,6 +234,13 @@ export default class ArtInfo extends React.Component {
                         <p>Date published: {this.state.currentArt.post_date}</p>
                         <div className="reviewSection">
                             <p>Reviews {this.state.currentArt.review_count}</p>
+                            <div id="newReview">
+                                <input type="text" placeholder="Your name" />
+                                <textarea rows="8" cols="40" placeholder="Leave a review" />
+                            </div>
+                            <button onClick={()=>{
+                                this.createReview();
+                            }}>Create Review</button>
                             {this.renderReviewList()}
                         </div>
                     </div>
