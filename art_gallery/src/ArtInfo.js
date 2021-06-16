@@ -127,7 +127,9 @@ export default class ArtInfo extends React.Component {
         displayEditForm: false,
         displayInfo: true,
         currentArt: {},
-        reviewsSection:[]
+        reviewsSection:[],
+        reviewer_name:"",
+        review:""
     }
 
     async componentDidMount(){
@@ -139,15 +141,20 @@ export default class ArtInfo extends React.Component {
         })
     }
 
-    // haven't create form for review
-    // createReview = () => {
-    //     let userData = {
-    //         reviewer_name,
-    //         liked_post,
-    //         review
-    //     }
-    //     let response = await axios.post("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/art_gallery/" + this.props._id + "/create/review", userData)
-    // }
+    createReview = async () => {
+        let userData = {
+            reviewer_name: this.state.reviewer_name,
+            liked_post: false,
+            review: this.state.review
+        }
+        let response = await axios.post("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/art_gallery/" + this.props._id + "/create/review", userData)
+    }
+
+    updateForm = (e) => {
+        this.setState({
+          [e.target.name]: e.target.value
+        });
+      };
 
     closeEdit = () => {
         this.setState({
@@ -186,6 +193,8 @@ export default class ArtInfo extends React.Component {
             return null
         }
     }
+
+    
 
     deleteArt = async (artIdToDelete) => {
         let response = await axios.delete("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/delete_artpost/" + artIdToDelete)
@@ -235,8 +244,8 @@ export default class ArtInfo extends React.Component {
                         <div className="reviewSection">
                             <p>Reviews {this.state.currentArt.review_count}</p>
                             <div id="newReview">
-                                <input type="text" placeholder="Your name" />
-                                <textarea rows="8" cols="40" placeholder="Leave a review" />
+                                <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm}/>
+                                <textarea rows="8" cols="40" placeholder="Leave a review" name="review" value={this.state.review} onChange={this.updateForm}/>
                             </div>
                             <button onClick={()=>{
                                 this.createReview();
