@@ -16,18 +16,20 @@ export default class EditArtPage extends React.Component {
   updateChanges = async (artIdToEdit) => {
 
     let userData = {
-      post_date: new Date(),
       poster_name: this.state.poster_name,
       image: this.state.image,
       art_title: this.state.art_title,
       art_description: this.state.art_description,
       art_type: this.state.art_type,
       art_subject: this.state.art_subject,
-      review_count: this.props.review_count,
-      like_count: this.props.like_count
+      statistics:{
+        review_count: this.props.review_count,
+        like_count: this.props.like_count
+      }
     };
 
     let response = await axios.put("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/artpost/edit/" + artIdToEdit, userData) 
+
 
     // close edit page
     this.props.closeEdit();
@@ -42,8 +44,8 @@ export default class EditArtPage extends React.Component {
       image: this.props.image,
       art_title: this.props.art_title,
       art_description:this.props.art_description,
-      art_type: this.props.art_type, // error passing in this
-      art_subject: this.props.art_subject // error passing in this
+      art_type: this.props.art_type, 
+      art_subject: this.props.art_subject 
     })
   }
 
