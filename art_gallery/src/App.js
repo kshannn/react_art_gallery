@@ -22,7 +22,7 @@ export default class App extends React.Component {
 
   getGallery = async () => {
     let response = await axios.get(
-      "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/art_gallery"
+      "https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/art_gallery"
     );
     this.setState({
       gallery: response.data

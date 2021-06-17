@@ -28,7 +28,9 @@ export default class EditArtPage extends React.Component {
       }
     };
 
-    let response = await axios.put("https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io/artpost/edit/" + artIdToEdit, userData) 
+  
+
+    let response = await axios.put("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/artpost/edit/" + artIdToEdit, userData) 
 
 
     // close edit page
