@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import CreateArtPage from "./CreateArtPage";
 import ArtInfo from "./ArtInfo";
+// import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
 

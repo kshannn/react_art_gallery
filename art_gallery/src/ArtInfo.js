@@ -1,6 +1,8 @@
 import EditArtPage from "./EditArtPage"
+import EditReviewPage from "./EditReviewPage"
 import axios from "axios"
 import React from "react"
+
 
 export default class ArtInfo extends React.Component {
 
@@ -10,12 +12,13 @@ export default class ArtInfo extends React.Component {
         displayInfo: true,
         displayEditReview: false,
         currentArt: {},
-        reviewsSection:[],
-        reviewer_name:"",
-        review:""
+        reviewsSection: [],
+        reviewer_name: "",
+        review: "",
+        currentReview: {}
     }
 
-    async componentDidMount(){
+    async componentDidMount() {
         let artResponse = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/art_gallery/" + this.props._id)
         let reviewResponse = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/art_gallery/" + this.props._id + "/review_list")
 
@@ -23,15 +26,26 @@ export default class ArtInfo extends React.Component {
         this.setState({
             contentLoaded: true,
             currentArt: artResponse.data,
-            reviewsSection: reviewResponse.data[0].reviews
+            reviewsSection: reviewResponse.data[0].reviews.reverse()
         })
     }
 
     // haven't create edit form for review
-    editReview = () => {
-        alert("haven't set up edit form")
+    editReview = (review) => {
+        this.setState({
+            displayEditReview: true,
+            currentReview: review
+        })
     }
-   
+
+    renderEditReview = () => {
+        if (this.state.displayEditReview) {
+            return <EditReviewPage updateForm={this.updateForm} reviewer_name={this.state.currentReview.reviewer_name} review={this.state.currentReview.review} />
+            
+        } else {
+            return null
+        }
+    }
 
     deleteReview = async (reviewHolder) => {
         let response = await axios.delete("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/review/delete/" + reviewHolder.id)
@@ -42,8 +56,8 @@ export default class ArtInfo extends React.Component {
 
     clearFields = () => {
         this.setState({
-            reviewer_name:"",
-            review:""
+            reviewer_name: "",
+            review: ""
         })
     }
 
@@ -68,9 +82,9 @@ export default class ArtInfo extends React.Component {
 
     updateForm = (e) => {
         this.setState({
-          [e.target.name]: e.target.value
+            [e.target.name]: e.target.value
         });
-      };
+    };
 
     closeEdit = () => {
         this.setState({
@@ -102,7 +116,7 @@ export default class ArtInfo extends React.Component {
                 review_count={this.state.currentArt.statistics.review_count}
                 _id={this.state.currentArt._id}
                 post_date={this.state.currentArt.post_date}
-                 />
+            />
 
 
         } else {
@@ -110,7 +124,7 @@ export default class ArtInfo extends React.Component {
         }
     }
 
-    
+
 
     deleteArt = async (artIdToDelete) => {
         let response = await axios.delete("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/artpost/delete/" + artIdToDelete)
@@ -124,25 +138,27 @@ export default class ArtInfo extends React.Component {
     }
 
     renderReviewList = () => {
-        let jsx = this.state.reviewsSection?.map((review)=>{
-          return(
-            <React.Fragment>
-              <div className="reviewContainer">
-                <h3>{review.reviewer_name}</h3>
-                <p>{review.review_date}</p>
-                <p>{review.review}</p>
-                <button onClick={()=> {
-                    this.editReview(review);
-                }}>Edit Review</button>
-                <button onClick={()=>{
-                    this.deleteReview(review);
-                }}>Delete Review</button>
-              </div>
-            </React.Fragment>
-          )
-        })
-        return jsx
-      }
+        if (this.state.reviewsSection) {
+            let jsx = this.state.reviewsSection.map((review) => {
+                return (
+                    <React.Fragment>
+                        <div className="reviewContainer">
+                            <h3>{review.reviewer_name}</h3>
+                            <p>{review.review_date}</p>
+                            <p>{review.review}</p>
+                            <button onClick={() => {
+                                this.editReview(review);
+                            }}>Edit Review</button>
+                            <button onClick={() => {
+                                this.deleteReview(review);
+                            }}>Delete Review</button>
+                        </div>
+                    </React.Fragment>
+                )
+            })
+            return jsx
+        }
+    }
 
     render() {
         return (
@@ -166,10 +182,10 @@ export default class ArtInfo extends React.Component {
                         <div className="reviewSection">
                             <p>Reviews {this.state.currentArt.review_count}</p>
                             <div id="newReview">
-                                <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm}/>
-                                <textarea rows="8" cols="40" placeholder="Leave a review" name="review" value={this.state.review} onChange={this.updateForm}/>
+                                <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm} />
+                                <textarea rows="8" cols="40" placeholder="Leave a review" name="review" value={this.state.review} onChange={this.updateForm} />
                             </div>
-                            <button onClick={()=>{
+                            <button onClick={() => {
                                 this.createReview();
                             }}>Create Review</button>
                             {this.renderReviewList()}
@@ -178,6 +194,7 @@ export default class ArtInfo extends React.Component {
                 }
 
                 {!this.state.displayInfo && this.renderEditArtPage()}
+                {this.renderEditReview()}
             </React.Fragment>
         )
     }
