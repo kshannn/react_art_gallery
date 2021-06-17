@@ -8,6 +8,7 @@ export default class ArtInfo extends React.Component {
         contentLoaded: false,
         displayEditForm: false,
         displayInfo: true,
+        displayEditReview: false,
         currentArt: {},
         reviewsSection:[],
         reviewer_name:"",
@@ -17,7 +18,7 @@ export default class ArtInfo extends React.Component {
     async componentDidMount(){
         let artResponse = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/art_gallery/" + this.props._id)
         let reviewResponse = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/art_gallery/" + this.props._id + "/review_list")
-        console.log(reviewResponse.data[0].reviews)
+
 
         this.setState({
             contentLoaded: true,
@@ -31,6 +32,14 @@ export default class ArtInfo extends React.Component {
         alert("haven't set up edit form")
     }
    
+
+    deleteReview = async (reviewHolder) => {
+        let response = await axios.delete("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/review/delete/" + reviewHolder.id)
+
+        // refresh review
+        this.getReview();
+    }
+
     clearFields = () => {
         this.setState({
             reviewer_name:"",
@@ -115,7 +124,7 @@ export default class ArtInfo extends React.Component {
     }
 
     renderReviewList = () => {
-        let jsx = this.state.reviewsSection.map((review)=>{
+        let jsx = this.state.reviewsSection?.map((review)=>{
           return(
             <React.Fragment>
               <div className="reviewContainer">
@@ -125,6 +134,9 @@ export default class ArtInfo extends React.Component {
                 <button onClick={()=> {
                     this.editReview(review);
                 }}>Edit Review</button>
+                <button onClick={()=>{
+                    this.deleteReview(review);
+                }}>Delete Review</button>
               </div>
             </React.Fragment>
           )
