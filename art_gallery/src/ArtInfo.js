@@ -30,7 +30,13 @@ export default class ArtInfo extends React.Component {
         })
     }
 
-    // haven't create edit form for review
+
+    closeEditReview = () => {
+        this.setState({
+            displayEditReview: false
+        })
+    }
+
     editReview = (review) => {
         this.setState({
             displayEditReview: true,
@@ -40,8 +46,13 @@ export default class ArtInfo extends React.Component {
 
     renderEditReview = () => {
         if (this.state.displayEditReview) {
-            return <EditReviewPage updateForm={this.updateForm} reviewer_name={this.state.currentReview.reviewer_name} review={this.state.currentReview.review} />
-            
+            return <EditReviewPage
+                updateForm={this.updateForm}
+                updateReview={this.updateReview}
+                currentReview={this.state.currentReview}
+                closeEditReview={this.closeEditReview}
+                getReview={this.getReview} />
+
         } else {
             return null
         }
@@ -64,7 +75,7 @@ export default class ArtInfo extends React.Component {
     getReview = async () => {
         let reviewResponse = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/art_gallery/" + this.props._id + "/review_list")
         this.setState({
-            reviewsSection: reviewResponse.data[0].reviews
+            reviewsSection: reviewResponse.data[0].reviews.reverse()
         })
     }
 
