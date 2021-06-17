@@ -26,6 +26,10 @@ export default class ArtInfo extends React.Component {
         })
     }
 
+    // haven't create edit form for review
+    editReview = () => {
+        alert("haven't set up edit form")
+    }
    
     clearFields = () => {
         this.setState({
@@ -118,6 +122,9 @@ export default class ArtInfo extends React.Component {
                 <h3>{review.reviewer_name}</h3>
                 <p>{review.review_date}</p>
                 <p>{review.review}</p>
+                <button onClick={()=> {
+                    this.editReview(review);
+                }}>Edit Review</button>
               </div>
             </React.Fragment>
           )
