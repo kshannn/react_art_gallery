@@ -134,3 +134,23 @@ textarea{
   flex: 4;
   background: rgb(255, 225, 186);
 }
+
+.badge-animal{
+  background: rgb(235, 160, 172);
+}
+
+.badge-nature{
+  background: rgb(176, 231, 165);
+}
+
+.badge-people{
+  background: rgb(146, 174, 211);
+}
+
+.badge-digital{
+  background: rgb(7, 185, 255);
+}
+
+.badge-traditional{
+  background: rgb(255, 192, 57);
+}

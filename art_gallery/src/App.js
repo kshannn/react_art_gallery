@@ -78,35 +78,19 @@ export default class App extends React.Component {
     }
   }
 
-  displayArtSubject = (artpost) => {
-    // console.log(artpost.art_subject)
-
-    let storedTags = ""
-    for (let each_art_subject of artpost.art_subject) {
-
-      // console.log(each_art_subject)
-      if (each_art_subject === "animal") {
-        storedTags += '<span className="badge badgeAnimal">animal</span>'
-      }
-
-      if (each_art_subject === "people") {
-        storedTags += '<span className="badge badgePeople">people</span>'
-      }
-
-      if (each_art_subject === "nature") {
-        storedTags += '<span className="badge badgeNature">nature</span>'
-      }
-
+  displayArtType = (artpost) => {
+    if (artpost.art_type=== "digital"){
+      return <span className="badge badge-digital">{artpost.art_type}</span>
+    } else {
+      return <span className="badge badge-traditional">{artpost.art_type}</span>
     }
-    return storedTags
-
   }
 
 
   renderList = () => {
     let jsx = this.state.gallery.map((artpost) => {
       return (
-        <React.Fragment>
+        <div className="col-lg-4 col-md-6 col-xs-12">
           <div className="listingContainer" onClick={() => {
             this.showArtInfo(artpost)
           }
@@ -119,12 +103,17 @@ export default class App extends React.Component {
               <p>
                 Likes: {artpost.statistics.like_count} Reviews: {artpost.statistics.review_count}
               </p>
-              <span className="badge">{artpost.art_type}</span>
-              {/* <span className="badge">{artpost.art_subject}</span> */}
-              <span>{this.displayArtSubject(artpost)}</span>
+              {/* <span className="badge">{artpost.art_type}</span> */}
+              {this.displayArtType(artpost)}
+
+              {artpost.art_subject.map((subject) => {
+                return (
+                  <span className={"badge " + "badge-" + subject}>{subject}</span>
+                )
+              })}
             </div>
           </div>
-        </React.Fragment>
+        </div>
       );
     });
     return jsx;

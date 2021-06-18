@@ -22,11 +22,12 @@ export default class ArtInfo extends React.Component {
         let artResponse = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/art_gallery/" + this.props._id)
         let reviewResponse = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/art_gallery/" + this.props._id + "/review_list")
 
+        let sortedDates = reviewResponse.data[0].reviews.sort((a, b) => new Date(b.review_date) - new Date(a.review_date));
 
         this.setState({
             contentLoaded: true,
             currentArt: artResponse.data,
-            reviewsSection: reviewResponse.data[0].reviews.reverse()
+            reviewsSection: sortedDates
         })
     }
 
