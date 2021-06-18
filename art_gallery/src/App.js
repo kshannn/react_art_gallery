@@ -90,7 +90,7 @@ export default class App extends React.Component {
   renderList = () => {
     let jsx = this.state.gallery.map((artpost) => {
       return (
-        <div className="col-lg-4 col-md-6 col-xs-12">
+        <div className="col-md-4 col-sm-6 col-xs-12">
           <div className="listingContainer" onClick={() => {
             this.showArtInfo(artpost)
           }
@@ -98,7 +98,7 @@ export default class App extends React.Component {
             <div className="imageHolder" style={{ backgroundImage: `url(${artpost.image})` }}>
             </div>
             <div className="listingContent">
-              <h2>{artpost.art_title.length > 20 ? artpost.art_title.slice(0, 20) + "..." : artpost.art_title}</h2>
+              <h2>{artpost.art_title.length > 10 ? artpost.art_title.slice(0, 10) + "..." : artpost.art_title}</h2>
               <h3>{artpost.poster_name}</h3>
               <p>
                 Likes: {artpost.statistics.like_count} Reviews: {artpost.statistics.review_count}
@@ -122,6 +122,21 @@ export default class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="#">Navbar</a>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <form className="d-flex">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button className="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
         {this.state.displayHome &&
           <button onClick={this.createArt}>Create</button>
         }

@@ -1,9 +1,11 @@
 /* Each Art Listing */
 
 .listingContainer {
-  margin: 25px auto;
+  margin: 0 auto 25px auto;
   border: 1px solid black;
   max-width: 300px;
+  min-height: 350px;
+  max-height: 400px;
   background: rgb(75, 222, 233);
 }
 
@@ -157,5 +159,11 @@ textarea{
 
 /* bootstrap css */
 .col-lg-4, .col-md-6, .col-xs-12 {
-  padding: 5px;
+  padding: 10px;
+}
+
+
+/* navbar */
+.navbar {
+  line-height: 3;
 }
