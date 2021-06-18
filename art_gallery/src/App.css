@@ -167,3 +167,7 @@ textarea{
 .navbar {
   line-height: 3;
 }
+
+#sideToggle {
+  background: rgb(255, 162, 162);
+}
