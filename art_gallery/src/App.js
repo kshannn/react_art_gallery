@@ -103,7 +103,7 @@ export default class App extends React.Component {
               <p>
                 Likes: {artpost.statistics.like_count} Reviews: {artpost.statistics.review_count}
               </p>
-              {/* <span className="badge">{artpost.art_type}</span> */}
+          
               {this.displayArtType(artpost)}
 
               {artpost.art_subject.map((subject) => {

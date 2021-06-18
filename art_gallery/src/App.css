@@ -3,8 +3,7 @@
 .listingContainer {
   margin: 25px auto;
   border: 1px solid black;
-  width: 300px;
-  height: 300px;
+  max-width: 300px;
   background: rgb(75, 222, 233);
 }
 
@@ -153,4 +152,10 @@ textarea{
 
 .badge-traditional{
   background: rgb(255, 192, 57);
+}
+
+
+/* bootstrap css */
+.col-lg-4, .col-md-6, .col-xs-12 {
+  padding: 5px;
 }
