@@ -13,7 +13,7 @@ export default class App extends React.Component {
     displayHome: true,
     artHolder: 0,
     gallery: [],
-    storedTags:""
+    storedTags: ""
   };
 
 
@@ -57,7 +57,7 @@ export default class App extends React.Component {
     }
   };
 
- 
+
   showArtInfo = (artpost) => {
     this.setState({
       displayArtInfo: true,
@@ -68,10 +68,10 @@ export default class App extends React.Component {
 
   renderArtInfoPage = () => {
     if (this.state.displayArtInfo) {
-      return <ArtInfo 
-      _id={this.state.artHolder._id}
-      closePage={this.closePage} 
-      getGallery={this.getGallery}
+      return <ArtInfo
+        _id={this.state.artHolder._id}
+        closePage={this.closePage}
+        getGallery={this.getGallery}
       />;
     } else {
       return null;
@@ -80,29 +80,29 @@ export default class App extends React.Component {
 
   displayArtSubject = (artpost) => {
     // console.log(artpost.art_subject)
-    
+
     let storedTags = ""
-    for (let each_art_subject of artpost.art_subject){
-      
+    for (let each_art_subject of artpost.art_subject) {
+
       // console.log(each_art_subject)
-      if (each_art_subject === "animal"){
+      if (each_art_subject === "animal") {
         storedTags += '<span className="badge badgeAnimal">animal</span>'
       }
-      
-      if (each_art_subject === "people"){
+
+      if (each_art_subject === "people") {
         storedTags += '<span className="badge badgePeople">people</span>'
       }
-      
-      if (each_art_subject === "nature"){
+
+      if (each_art_subject === "nature") {
         storedTags += '<span className="badge badgeNature">nature</span>'
       }
-      
+
     }
     return storedTags
-    
+
   }
 
-  
+
   renderList = () => {
     let jsx = this.state.gallery.map((artpost) => {
       return (
@@ -111,7 +111,7 @@ export default class App extends React.Component {
             this.showArtInfo(artpost)
           }
           }>
-            <div className="imageHolder" style={{backgroundImage: `url(${artpost.image})`}}>
+            <div className="imageHolder" style={{ backgroundImage: `url(${artpost.image})` }}>
             </div>
             <div className="listingContent">
               <h2>{artpost.art_title.length > 20 ? artpost.art_title.slice(0, 20) + "..." : artpost.art_title}</h2>
@@ -136,11 +136,18 @@ export default class App extends React.Component {
         {this.state.displayHome &&
           <button onClick={this.createArt}>Create</button>
         }
-        
-        <div className="row">
-        {this.state.displayHome && this.renderList()}
+
+        <div id="mainSection">
+          <div id="filterSection"></div>
+          <div id="gallerySection">
+            <div className="row">
+              {this.state.displayHome && this.renderList()}
+            </div>
+          </div>
         </div>
-        
+
+
+
         {this.renderArtInfoPage()}
         {this.renderCreateArtPage()}
 

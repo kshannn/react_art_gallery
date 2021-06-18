@@ -118,3 +118,19 @@ textarea{
 .row {
   --bs-gutter-x: 0rem;
 }
+
+
+
+#mainSection{
+  display:flex;
+}
+
+#filterSection{
+  flex:1;
+  background:rgb(193, 193, 211);
+}
+
+#gallerySection{
+  flex: 4;
+  background: rgb(255, 225, 186);
+}
