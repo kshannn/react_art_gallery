@@ -80,9 +80,9 @@ export default class App extends React.Component {
 
   displayArtType = (artpost) => {
     if (artpost.art_type === "digital") {
-      return <span className="badge badge-digital">{artpost.art_type}</span>
+      return <span className="badge badge-digital" style={{marginRight:"5px"}}>{artpost.art_type}</span>
     } else {
-      return <span className="badge badge-traditional">{artpost.art_type}</span>
+      return <span className="badge badge-traditional" style={{marginRight:"5px"}}>{artpost.art_type}</span>
     }
   }
 
@@ -108,7 +108,7 @@ export default class App extends React.Component {
 
               {artpost.art_subject.map((subject) => {
                 return (
-                  <span className={"badge " + "badge-" + subject}>{subject}</span>
+                  <span className={"badge " + "badge-" + subject} style={{marginRight:"5px"}}>{subject}</span>
                 )
               })}
             </div>
@@ -125,13 +125,11 @@ export default class App extends React.Component {
         {/* NAVBAR */}
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
-            {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button> */}
-            <button id="sideToggle" className="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
-                <i className="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
+
+            <button id="sideToggle" className="btn float-end d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+              <i className="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
             </button>
-            <a className="navbar-brand" href="#">Logo</a>
+            <a className="navbar-brand" href="/">Logo</a>
             <form className="d-flex">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
               <button className="btn btn-outline-success" type="submit">Search</button>
@@ -139,32 +137,26 @@ export default class App extends React.Component {
             {this.state.displayHome &&
               <button onClick={this.createArt}>Create</button>
             }
-            {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
-              </li>
 
-            </div> */}
           </div>
         </nav>
 
-        {/* TEST */}
+        {/* Side toggle */}
         <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
-    <div className="offcanvas-header">
-        <h6 className="offcanvas-title d-none d-sm-block" id="offcanvas">Search Filter</h6>
-        <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div className="offcanvas-body px-0">
-      
-        content
-    </div>
-</div>
+          <div className="offcanvas-header">
+            <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
+            <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div className="offcanvas-body px-0">
+            Insert content
+           </div>
+        </div>
 
 
 
 
         <div id="mainSection">
-          <div id="filterSection"></div>
+          <div id="filterSection" className="d-none d-md-block"></div>
           <div id="gallerySection">
             <div className="row">
               {this.state.displayHome && this.renderList()}
