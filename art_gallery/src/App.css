@@ -109,3 +109,12 @@ textarea{
   width: 300px;
   background: rgb(250, 255, 202);
 }
+
+.badge {
+  color: black;
+  background:rgb(91, 120, 197)
+}
+
+.row {
+  --bs-gutter-x: 0rem;
+}
