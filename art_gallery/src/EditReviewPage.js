@@ -41,8 +41,9 @@ export default class EditReviewPage extends React.Component {
     
         return (
             <React.Fragment>
-                <div className="popupContainer">
-                        <div className="modal">
+                <div className="popupBackground">
+                        <div className="popup">
+                            <button onClick={this.props.closeEditReview}>X</button>
                              <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm} />
                              <textarea rows="4" cols="40" placeholder="Leave a review" name="review" value={this.state.review} onChange={this.updateForm} />
                              <button onClick={()=>{
