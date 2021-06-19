@@ -2,6 +2,9 @@ import React from "react";
 import ArtForm from "./ArtForm";
 import axios from "axios";
 
+
+const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
+
 export default class CreateArtPage extends React.Component {
 
   state = {
@@ -29,7 +32,7 @@ export default class CreateArtPage extends React.Component {
       }
     };
     let response = await axios.post(
-      "https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/create/artpost",
+      baseUrl + "/create/artpost",
       userData
     );
 

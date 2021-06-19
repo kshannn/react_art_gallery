@@ -3,6 +3,7 @@ import EditReviewPage from "./EditReviewPage"
 import axios from "axios"
 import React from "react"
 
+const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
 
 export default class ArtInfo extends React.Component {
 
@@ -19,8 +20,8 @@ export default class ArtInfo extends React.Component {
     }
 
     async componentDidMount() {
-        let artResponse = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/art_gallery/" + this.props._id)
-        let reviewResponse = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/art_gallery/" + this.props._id + "/review_list")
+        let artResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id)
+        let reviewResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id + "/review_list")
 
         let sortedDates = reviewResponse.data[0].reviews.sort((a, b) => new Date(b.review_date) - new Date(a.review_date));
 
@@ -60,7 +61,7 @@ export default class ArtInfo extends React.Component {
     }
 
     deleteReview = async (reviewHolder) => {
-        let response = await axios.delete("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/review/delete/" + reviewHolder.id)
+        let response = await axios.delete(baseUrl + "/review/delete/" + reviewHolder.id)
 
         // refresh review
         this.getReview();
@@ -74,7 +75,7 @@ export default class ArtInfo extends React.Component {
     }
 
     getReview = async () => {
-        let reviewResponse = await axios.get("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/art_gallery/" + this.props._id + "/review_list")
+        let reviewResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id + "/review_list")
         let sortedDates = reviewResponse.data[0].reviews.sort((a, b) => new Date(b.review_date) - new Date(a.review_date));
         this.setState({
             reviewsSection: sortedDates
@@ -88,7 +89,7 @@ export default class ArtInfo extends React.Component {
             liked_post: false,
             review: this.state.review
         }
-        let response = await axios.post("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/art_gallery/" + this.props._id + "/create/review", userData)
+        let response = await axios.post(baseUrl + "/art_gallery/" + this.props._id + "/create/review", userData)
         this.clearFields();
         this.getReview();
     }
@@ -140,7 +141,7 @@ export default class ArtInfo extends React.Component {
 
 
     deleteArt = async (artIdToDelete) => {
-        let response = await axios.delete("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/artpost/delete/" + artIdToDelete)
+        let response = await axios.delete(baseUrl + "/artpost/delete/" + artIdToDelete)
 
         // close popup
         this.props.closePage();

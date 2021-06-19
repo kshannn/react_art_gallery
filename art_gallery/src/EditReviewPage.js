@@ -1,6 +1,8 @@
 import React from "react"
 import axios from "axios"
 
+const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
+
 export default class EditReviewPage extends React.Component {
     
     state = {
@@ -22,7 +24,7 @@ export default class EditReviewPage extends React.Component {
             review: this.state.review
         }
     
-        let response = await axios.put("https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/review/edit/" + currentReview.id, userData)
+        let response = await axios.put(baseUrl + "/review/edit/" + currentReview.id, userData)
         console.log("updated review")
 
         this.props.closeEditReview();

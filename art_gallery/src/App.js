@@ -5,6 +5,7 @@ import ArtInfo from "./ArtInfo";
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
+const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
 
 export default class App extends React.Component {
   state = {
@@ -24,7 +25,7 @@ export default class App extends React.Component {
 
   getGallery = async () => {
     let response = await axios.get(
-      "https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io/art_gallery"
+      baseUrl + "/art_gallery"
     );
     this.setState({
       gallery: response.data
@@ -101,6 +102,7 @@ export default class App extends React.Component {
               <h2>{artpost.art_title.length > 10 ? artpost.art_title.slice(0, 10) + "..." : artpost.art_title}</h2>
               <h3>{artpost.poster_name}</h3>
               <p>
+              <i class="fas fa-heart"/>
                 Likes: {artpost.statistics.like_count} Reviews: {artpost.statistics.review_count}
               </p>
 
