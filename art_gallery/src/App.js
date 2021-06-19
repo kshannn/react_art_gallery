@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import CreateArtPage from "./CreateArtPage";
 import ArtInfo from "./ArtInfo";
+import FilterOptions from "./FilterOptions"
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
@@ -99,12 +100,12 @@ export default class App extends React.Component {
             <div className="imageHolder" style={{ backgroundImage: `url(${artpost.image})` }}>
             </div>
             <div className="listingContent">
-              <h2>{artpost.art_title.length > 10 ? artpost.art_title.slice(0, 10) + "..." : artpost.art_title}</h2>
+              <h2>{artpost.art_title.length > 15 ? artpost.art_title.slice(0, 15) + "..." : artpost.art_title}</h2>
               <h3>{artpost.poster_name}</h3>
               <p>
                 <i className="fas fa-heart"></i>
-               {artpost.statistics.like_count}
-               <i className="far fa-comment-dots"></i>
+                {artpost.statistics.like_count}
+                <i className="far fa-comment-dots"></i>
                 {artpost.statistics.review_count}
               </p>
 
@@ -134,27 +135,26 @@ export default class App extends React.Component {
               <i className="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
             </button>
             <a className="navbar-brand" href="/">Logo</a>
-            <form className="d-flex">
+            <form className="d-flex" id="search-bar">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success" type="submit">Search</button>
+              <button className="btn btn-outline-success" type="submit">
+                <i className="fas fa-search"></i>
+              </button>
             </form>
+
+
+
+
             {this.state.displayHome &&
-              <button onClick={this.createArt}>Create</button>
+              <button id="createArtBtn" onClick={this.createArt}>Create</button>
             }
 
           </div>
         </nav>
 
         {/* Side toggle */}
-        <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
-          <div className="offcanvas-header">
-            <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
-            <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div className="offcanvas-body px-0">
-            Insert content
-           </div>
-        </div>
+        <FilterOptions />
+        
 
 
 
