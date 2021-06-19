@@ -237,3 +237,13 @@ textarea{
 .offcanvas-body > h2:nth-child(4), .offcanvas-body > button {
   margin-top: 15px;
 }
+
+#mainFilter{
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#mainFilter > h2:nth-child(4), #mainFilter > button {
+  margin-top: 15px;
+}
