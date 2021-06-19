@@ -81,9 +81,9 @@ export default class App extends React.Component {
 
   displayArtType = (artpost) => {
     if (artpost.art_type === "digital") {
-      return <span className="badge badge-digital" style={{marginRight:"5px"}}>{artpost.art_type}</span>
+      return <span className="badge badge-digital" style={{ marginRight: "5px" }}>{artpost.art_type}</span>
     } else {
-      return <span className="badge badge-traditional" style={{marginRight:"5px"}}>{artpost.art_type}</span>
+      return <span className="badge badge-traditional" style={{ marginRight: "5px" }}>{artpost.art_type}</span>
     }
   }
 
@@ -102,15 +102,17 @@ export default class App extends React.Component {
               <h2>{artpost.art_title.length > 10 ? artpost.art_title.slice(0, 10) + "..." : artpost.art_title}</h2>
               <h3>{artpost.poster_name}</h3>
               <p>
-              <i class="fas fa-heart"/>
-                Likes: {artpost.statistics.like_count} Reviews: {artpost.statistics.review_count}
+                <i className="fas fa-heart"></i>
+               {artpost.statistics.like_count}
+               <i className="far fa-comment-dots"></i>
+                {artpost.statistics.review_count}
               </p>
 
               {this.displayArtType(artpost)}
 
               {artpost.art_subject.map((subject) => {
                 return (
-                  <span className={"badge " + "badge-" + subject} style={{marginRight:"5px"}}>{subject}</span>
+                  <span className={"badge " + "badge-" + subject} style={{ marginRight: "5px" }}>{subject}</span>
                 )
               })}
             </div>

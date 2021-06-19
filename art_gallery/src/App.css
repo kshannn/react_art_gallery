@@ -2,7 +2,8 @@
 
 .listingContainer {
   margin: 0 auto 25px auto;
-  border: 1px solid black;
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 10px;
   max-width: 300px;
   min-height: 350px;
   max-height: 400px;
@@ -18,6 +19,7 @@
   width: 100%;
   height: 200px;
   overflow: hidden;
+  border-radius: 10px 10px 0px 0px;
   background-position: center;
   background-size:cover;
   background-repeat: no-repeat;
@@ -41,6 +43,17 @@ img {
   color: rgb(128, 128, 128)
 }
 
+.fas, .far {
+  margin-right: 5px;
+}
+
+.fa-heart {
+  color: rgb(204, 204, 204)
+}
+
+.fa-comment-dots {
+  margin-left: 15px;
+}
 
 /* Create Art Page */
 #createArtPage {
