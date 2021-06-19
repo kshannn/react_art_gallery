@@ -169,11 +169,12 @@ export default class App extends React.Component {
 
 
         <div id="mainSection">
+        {this.state.displayHome &&
           <div id="filterSection" className="d-none d-md-block">
             <div id="mainFilter">
               <FilterOptions />
             </div>
-          </div>
+          </div>}
           <div id="gallerySection">
             <div className="row">
               {this.state.displayHome && this.renderList()}

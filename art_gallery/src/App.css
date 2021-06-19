@@ -84,18 +84,20 @@ img {
 .artInfo {
   min-height: 100vh;
   width: 100%;
-  background: rgb(210, 213, 255);
+  /* background: rgb(210, 213, 255); */
 }
 
 
 .artInfoImageHolder{
   margin: 25px auto;
-  border: 1px solid black;
-  width: 300px;
-  height: 300px;
-  background: rgb(75, 222, 233);
+  border: 1px solid rgb(233, 233, 233);
+  border-radius: 15px;
+  box-shadow: 8px 10px 10px lightgrey;
+  width: 500px;
+  height: 400px;
+  /* background: rgb(75, 222, 233); */
   background-position: center;
-  background-size:contain;
+  background-size:cover;
   background-repeat: no-repeat;
 }
 
@@ -246,4 +248,31 @@ textarea{
 
 #mainFilter > h2:nth-child(4), #mainFilter > button {
   margin-top: 15px;
+}
+
+
+/* art info page */
+#artAndToolOptions{
+  margin: 25px auto;
+  width: 500px;
+  height: 470px;
+  /* background: red; */
+}
+
+.fa-ellipsis-h {
+  font-size: 25px;
+}
+
+.fa-ellipsis-h:hover {
+  color: rgb(145, 145, 145);
+}
+
+#toolOptions{
+  position:relative;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  padding-right: 10px;
 }

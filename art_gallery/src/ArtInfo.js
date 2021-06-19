@@ -30,7 +30,20 @@ export default class ArtInfo extends React.Component {
             currentArt: artResponse.data,
             reviewsSection: sortedDates
         })
+
     }
+
+
+
+    // countReviews = async () => {
+    //     let userData = {
+    //         statistics:{
+    //             review_count: this.state.reviewsSection.length
+    //         }
+    //     }
+    //     let response = await axios.put(baseUrl + "/artpost/updateReviewCount/" + this.props._id, userData);
+    // }
+
 
 
     closeEditReview = () => {
@@ -174,21 +187,43 @@ export default class ArtInfo extends React.Component {
         }
     }
 
+
+
     render() {
         return (
             <React.Fragment>
                 {this.state.contentLoaded && this.state.displayInfo &&
                     <div className="artInfo">
                         <button onClick={this.props.closePage}>Back to Gallery</button>
-                        <div className="artInfoImageHolder" style={{ backgroundImage: `url(${this.state.currentArt.image})` }}></div>
-                        <button onClick={() => {
+
+                        <div id="artAndToolOptions">
+                            <div className="artInfoImageHolder" style={{ backgroundImage: `url(${this.state.currentArt.image})` }}></div>
+
+                            <div id="toolOptions">
+                                <div className="dropdown">
+                                    <button className="btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i className="fas fa-ellipsis-h"></i>
+                                    </button>
+                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <li><button className="dropdown-item" onClick={() => {
+                            this.deleteArt(this.state.currentArt._id);
+                        }}>Delete art</button></li>
+                                        <li><button className="dropdown-item" onClick={() => {
+                            this.editArt();
+                        }}>Edit art</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {/* <button onClick={() => {
                             this.deleteArt(this.state.currentArt._id);
                         }}>Delete Art</button>
                         <button onClick={() => {
                             this.editArt();
-                        }}>Edit Art</button>
-                        <p>Like(s): {this.state.currentArt.statistics.like_count}</p>
-                        <p>Review(s): {this.state.currentArt.statistics.review_count}</p>
+                        }}>Edit Art</button> */}
+
+                        <p><i className="fas fa-heart"></i> {this.state.currentArt.statistics.like_count}</p>
+                        <p><i className="far fa-comment-dots"></i> {this.state.currentArt.statistics.review_count}</p>
                         <h2>{this.state.currentArt.art_title}</h2>
                         <h3>{this.state.currentArt.poster_name}</h3>
                         <p>{this.state.currentArt.art_description}</p>
@@ -203,12 +238,18 @@ export default class ArtInfo extends React.Component {
                                 this.createReview();
                             }}>Create Review</button>
                             {this.renderReviewList()}
+
                         </div>
+
                     </div>
+
+
                 }
+
 
                 {!this.state.displayInfo && this.renderEditArtPage()}
                 {this.renderEditReview()}
+
             </React.Fragment>
         )
     }
