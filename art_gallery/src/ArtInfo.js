@@ -170,15 +170,23 @@ export default class ArtInfo extends React.Component {
                 return (
                     <React.Fragment>
                         <div className="reviewContainer">
-                            <h3>{review.reviewer_name}</h3>
-                            <p>{review.review_date}</p>
+                            <h3>{review.reviewer_name}</h3><span>{review.review_date}</span>
                             <p>{review.review}</p>
-                            <button onClick={() => {
-                                this.editReview(review);
-                            }}>Edit Review</button>
-                            <button onClick={() => {
-                                this.deleteReview(review);
-                            }}>Delete Review</button>
+                            <div className="dropdown">
+                                <button className="btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i className="fas fa-ellipsis-h"></i>
+                                </button>
+                                <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li> <button className="dropdown-item" onClick={() => {
+                                        this.editReview(review);
+                                    }}>Edit review</button></li>
+                                    <li><button className="dropdown-item" onClick={() => {
+                                        this.deleteReview(review);
+                                    }}>Delete review</button></li>
+                                </ul>
+                            </div>
+
+
                         </div>
                     </React.Fragment>
                 )
@@ -211,11 +219,12 @@ export default class ArtInfo extends React.Component {
                                         </button>
                                         <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
                                             <li><button className="dropdown-item" onClick={() => {
-                                                this.deleteArt(this.state.currentArt._id);
-                                            }}>Delete art</button></li>
-                                            <li><button className="dropdown-item" onClick={() => {
                                                 this.editArt();
                                             }}>Edit art</button></li>
+                                            <li><button className="dropdown-item" onClick={() => {
+                                                this.deleteArt(this.state.currentArt._id);
+                                            }}>Delete art</button></li>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -233,10 +242,11 @@ export default class ArtInfo extends React.Component {
                                 <div id="newReview">
                                     <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm} />
                                     <textarea rows="5" placeholder="Leave a review" name="review" value={this.state.review} onChange={this.updateForm} />
+                                    <button id="postReviewBtn" onClick={() => {
+                                        this.createReview();
+                                    }}>Post</button>
                                 </div>
-                                <button onClick={() => {
-                                    this.createReview();
-                                }}>Post review</button>
+
                                 {this.renderReviewList()}
 
                             </div>

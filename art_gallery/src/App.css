@@ -125,13 +125,40 @@ textarea{
 
 /* Review List */
 .reviewContainer {
-  border: 2px solid black;
+  padding: 10px 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: 1px solid grey;
+  position: relative;
+}
+
+.reviewContainer .dropdown {
+  bottom: 0;
+}
+
+.reviewContainer p {
+  margin-bottom: 1.5rem;
+}
+
+
+.reviewContainer h3 {
+  font-size: 1.2rem;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.reviewContainer span {
+  color: grey;
+  font-size: 0.8rem;
 }
 
 #newReview {
   width: 100%;
+  height: 212px;
   display: flex;
   flex-direction: column;
+  position: relative;
+  margin-bottom: 40px;
 }
 
 /* Modal box */
@@ -309,5 +336,28 @@ textarea{
 
 #reviewSection {
   width:500px;
+  height: fit-content;
   margin-bottom: 50px;
+}
+
+#newReview input, #newReview textarea {
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  border: 1px solid grey;
+}
+
+#postReviewBtn {
+  margin-top: 5px;
+  border:none;
+  border-radius: 5px;
+  background: rgb(175, 175, 175);
+  padding: 2px 15px;
+  position:absolute;
+  right: 0;
+  bottom: 0;
+}
+
+#postReviewBtn:hover {
+  background: rgb(207, 207, 207);
 }
