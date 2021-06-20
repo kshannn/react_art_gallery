@@ -129,7 +129,7 @@ textarea{
 }
 
 #newReview {
-  width: 300px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -275,4 +275,39 @@ textarea{
   position: absolute;
   right: 0;
   padding-right: 10px;
+}
+
+#artInfoStatistics {
+  position: absolute;
+  left: 15px;
+}
+
+#artInfoStatistics .fa-heart, #artInfoStatistics .fa-comment-dots {
+  font-size: 25px;
+}
+
+
+#mainContentContainer {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#artDetailsSection {
+  width: 500px;
+}
+
+#artDetailsSection h3 {
+  font-size: 1rem;
+  color:rgb(145, 145, 145)
+}
+
+#artDetailsSection p:nth-child(4){
+  color:rgb(145, 145, 145);
+  font-size: 0.8rem;
+}
+
+#reviewSection {
+  width:500px;
+  margin-bottom: 50px;
 }

@@ -196,51 +196,51 @@ export default class ArtInfo extends React.Component {
                     <div className="artInfo">
                         <button onClick={this.props.closePage}>Back to Gallery</button>
 
-                        <div id="artAndToolOptions">
-                            <div className="artInfoImageHolder" style={{ backgroundImage: `url(${this.state.currentArt.image})` }}></div>
+                        <div id="mainContentContainer">
+                            <div id="artAndToolOptions">
+                                <div className="artInfoImageHolder" style={{ backgroundImage: `url(${this.state.currentArt.image})` }}></div>
+                                <div id="toolOptions">
+                                    <div id="artInfoStatistics">
+                                        <i className="fas fa-heart"></i> {this.state.currentArt.statistics.like_count}
+                                        <i className="far fa-comment-dots"></i> {this.state.currentArt.statistics.review_count}
+                                    </div>
+                                    <div className="dropdown">
 
-                            <div id="toolOptions">
-                                <div className="dropdown">
-                                    <button className="btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i className="fas fa-ellipsis-h"></i>
-                                    </button>
-                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                        <li><button className="dropdown-item" onClick={() => {
-                            this.deleteArt(this.state.currentArt._id);
-                        }}>Delete art</button></li>
-                                        <li><button className="dropdown-item" onClick={() => {
-                            this.editArt();
-                        }}>Edit art</button></li>
-                                    </ul>
+                                        <button className="btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i className="fas fa-ellipsis-h"></i>
+                                        </button>
+                                        <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                            <li><button className="dropdown-item" onClick={() => {
+                                                this.deleteArt(this.state.currentArt._id);
+                                            }}>Delete art</button></li>
+                                            <li><button className="dropdown-item" onClick={() => {
+                                                this.editArt();
+                                            }}>Edit art</button></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {/* <button onClick={() => {
-                            this.deleteArt(this.state.currentArt._id);
-                        }}>Delete Art</button>
-                        <button onClick={() => {
-                            this.editArt();
-                        }}>Edit Art</button> */}
 
-                        <p><i className="fas fa-heart"></i> {this.state.currentArt.statistics.like_count}</p>
-                        <p><i className="far fa-comment-dots"></i> {this.state.currentArt.statistics.review_count}</p>
-                        <h2>{this.state.currentArt.art_title}</h2>
-                        <h3>{this.state.currentArt.poster_name}</h3>
-                        <p>{this.state.currentArt.art_description}</p>
-                        <p>Date published: {this.state.currentArt.post_date}</p>
-                        <div className="reviewSection">
-                            <p>Reviews {this.state.currentArt.review_count}</p>
-                            <div id="newReview">
-                                <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm} />
-                                <textarea rows="8" cols="40" placeholder="Leave a review" name="review" value={this.state.review} onChange={this.updateForm} />
+                            <div id="artDetailsSection">
+                                <h2>{this.state.currentArt.art_title}</h2>
+                                <h3>by {this.state.currentArt.poster_name}</h3>
+                                <p>{this.state.currentArt.art_description}</p>
+                                <p>Published: {this.state.currentArt.post_date}</p>
                             </div>
-                            <button onClick={() => {
-                                this.createReview();
-                            }}>Create Review</button>
-                            {this.renderReviewList()}
 
+                            <div id="reviewSection">
+                                <h2>Reviews {this.state.currentArt.review_count}</h2>
+                                <div id="newReview">
+                                    <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm} />
+                                    <textarea rows="5" placeholder="Leave a review" name="review" value={this.state.review} onChange={this.updateForm} />
+                                </div>
+                                <button onClick={() => {
+                                    this.createReview();
+                                }}>Post review</button>
+                                {this.renderReviewList()}
+
+                            </div>
                         </div>
-
                     </div>
 
 
