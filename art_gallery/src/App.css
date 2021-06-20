@@ -242,6 +242,8 @@ textarea{
   resize: none;
 }
 
+
+
 /* ========= EDIT ART PAGE ========= */
 #editArtPage {
   min-height: 100vh;
@@ -274,15 +276,41 @@ textarea{
   left: 0;
 }
 
-.popup {
+.editReviewPopup {
   position: fixed;
   top: 50%;
   left:50%;
   transform: translate(-50%, -50%);
   height: 300px;
-  width: 300px;
-  background: rgb(250, 255, 202);
+  width:90%;
+  min-width: 300px;
+  max-width: 500px;
+  margin: 25px auto;
+  background: white;
+  padding: 10px 30px;
 }
+
+#editReviewContent {
+  display: flex;
+  flex-direction: column;
+}
+
+#editReviewContent button {
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+  margin-bottom: 15px;
+  border:none;
+  border-radius: 5px;
+  background: rgb(69, 202, 255);
+  padding: 5px 15px;
+}
+
+#editReviewContent > #closeBtn{
+  background: rgb(131, 131, 131);
+  right: 180px;
+}
+
 
 .badge {
   color: black;
@@ -420,3 +448,19 @@ textarea{
 .btnContainer button:hover {
   background: rgb(207, 207, 207);
 }
+
+.fa-chevron-left {
+  margin-right: 10px;
+}
+
+.backBtn {
+  border: none;
+  background: white;
+  margin: 10px 15px;
+}
+
+.backBtn:hover {
+  opacity: 0.6;
+}
+
+

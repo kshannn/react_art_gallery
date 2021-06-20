@@ -36,7 +36,7 @@ export default class ArtForm extends React.Component {
             onChange={this.props.updateForm} />
 
           {/* ====== Text field: Art Description ======*/}
-          <h2>Art Description</h2>
+          <h2>Description</h2>
           <textarea placeholder="Type a description for your art"
             name="art_description"
             rows="4"
@@ -67,7 +67,7 @@ export default class ArtForm extends React.Component {
         </div>
           {/* ====== Checkboxes: Art Subject ======*/}
           <div>
-            <h2>Art Subject</h2>
+            <h2>Subject</h2>
             <input
               type="checkbox"
               name="art_subject"

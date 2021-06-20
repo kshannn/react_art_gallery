@@ -71,7 +71,7 @@ export default class CreateArtPage extends React.Component {
     return (
       <React.Fragment>
         <div id="createArtPage">
-          <button onClick={this.props.closePage}>Back</button>
+          <button className="backBtn" onClick={this.props.closePage}><i class="fas fa-chevron-left"></i>Back</button>
           <ArtForm
             updateForm={this.updateForm}
             art_type={this.state.art_type}

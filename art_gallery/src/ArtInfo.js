@@ -202,7 +202,7 @@ export default class ArtInfo extends React.Component {
             <React.Fragment>
                 {this.state.contentLoaded && this.state.displayInfo &&
                     <div className="artInfo">
-                        <button onClick={this.props.closePage}>Back to Gallery</button>
+                        <button className="backBtn" onClick={this.props.closePage}><i class="fas fa-chevron-left"></i>Back</button>
 
                         <div id="mainContentContainer">
                             <div id="artAndToolOptions">
