@@ -1,4 +1,13 @@
-/* Nav bar */
+/* ========= NAVIGATION BAR ========= */
+
+.navbar {
+  line-height: 1;
+}
+
+.navbar > .container-fluid{
+  justify-content: left;
+}
+
 #search-bar{
   flex: 1;
 }
@@ -16,8 +25,21 @@
   background:rgb(163, 245, 163)
 }
 
-/* Each Art Listing */
+/* ========= SIDE FILTER TOGGLE ========= */
 
+#sideToggle {
+  background: rgb(255, 162, 162);
+  margin-right: 10px;
+}
+
+.w-25 {
+  width: 300px !important;
+}
+
+
+/* ========= MAIN GALLERY ========= */
+
+/* Each Art Listing */
 .listingContainer {
   margin: 0 auto 25px auto;
   border: 1px solid rgb(231, 231, 231);
@@ -61,7 +83,6 @@ img {
   color: rgb(128, 128, 128)
 }
 
-
 .fa-heart {
   color: rgb(204, 204, 204);
   margin-right: 5px;
@@ -72,21 +93,24 @@ img {
   margin-right: 5px;
 }
 
-/* Create Art Page */
-#createArtPage {
-  min-height: 100vh;
-  width: 100%;
-  background: lightseagreen;
+.row {
+  --bs-gutter-x: 0rem;
 }
 
 
-/* Art Information */
+
+/* ========= ART INFO PAGE ========= */
 .artInfo {
   min-height: 100vh;
   width: 100%;
   /* background: rgb(210, 213, 255); */
 }
 
+#mainContentContainer {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .artInfoImageHolder{
   margin: 25px auto;
@@ -101,29 +125,83 @@ img {
   background-repeat: no-repeat;
 }
 
-textarea{
-  resize: none;
+#artAndToolOptions{
+  margin: 25px auto;
+  width: 500px;
+  height: 470px;
+  /* background: red; */
 }
 
-/* Edit Art Page  */
-#editArtPage {
-  min-height: 100vh;
-  width: 100%;
-  background: rgb(255, 225, 186);
+.fa-ellipsis-h {
+  font-size: 25px;
 }
 
-
-/* Preview */
-.preview {
-  border:1px solid black;
-  height: 200px;
-  width:200px;
-  background-position: center;
-  background-size:contain;
-  background-repeat: no-repeat;
+.fa-ellipsis-h:hover {
+  color: rgb(145, 145, 145);
 }
 
-/* Review List */
+#toolOptions{
+  position:relative;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  padding-right: 10px;
+}
+
+#artInfoStatistics {
+  position: absolute;
+  left: 15px;
+}
+
+#artInfoStatistics .fa-heart, #artInfoStatistics .fa-comment-dots {
+  font-size: 25px;
+}
+
+#artDetailsSection {
+  width: 500px;
+}
+
+#artDetailsSection h3 {
+  font-size: 1rem;
+  color:rgb(145, 145, 145)
+}
+
+#artDetailsSection p:nth-child(4){
+  color:rgb(145, 145, 145);
+  font-size: 0.8rem;
+}
+
+#reviewSection {
+  width:500px;
+  height: fit-content;
+  margin-bottom: 50px;
+}
+
+#newReview input, #newReview textarea {
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  border: 1px solid grey;
+}
+
+#postReviewBtn {
+  margin-top: 5px;
+  border:none;
+  border-radius: 5px;
+  background: rgb(175, 175, 175);
+  padding: 2px 15px;
+  position:absolute;
+  right: 0;
+  bottom: 0;
+}
+
+#postReviewBtn:hover {
+  background: rgb(207, 207, 207);
+}
+
+/* Review Section */
 .reviewContainer {
   padding: 10px 10px;
   border-radius: 5px;
@@ -132,14 +210,18 @@ textarea{
   position: relative;
 }
 
-.reviewContainer .dropdown {
-  bottom: 0;
+#newReview {
+  width: 100%;
+  height: 212px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 40px;
 }
 
 .reviewContainer p {
   margin-bottom: 1.5rem;
 }
-
 
 .reviewContainer h3 {
   font-size: 1.2rem;
@@ -152,17 +234,37 @@ textarea{
   font-size: 0.8rem;
 }
 
-#newReview {
+.reviewContainer .dropdown {
+  bottom: 0;
+}
+
+textarea{
+  resize: none;
+}
+
+/* ========= EDIT ART PAGE ========= */
+#editArtPage {
+  min-height: 100vh;
   width: 100%;
-  height: 212px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-bottom: 40px;
+  /* background: rgb(255, 225, 186); */
+}
+
+/* Preview */
+.preview {
+  margin-top: 20px;
+  color: grey;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border:1px solid rgb(119, 119, 119);
+  height: 200px;
+  width:200px;
+  background-position: center;
+  background-size:contain;
+  background-repeat: no-repeat;
 }
 
 /* Modal box */
-
 .popupBackground{
   position: fixed;
   width: 100%;
@@ -171,6 +273,7 @@ textarea{
   top: 0;
   left: 0;
 }
+
 .popup {
   position: fixed;
   top: 50%;
@@ -185,11 +288,6 @@ textarea{
   color: black;
   background:rgb(91, 120, 197)
 }
-
-.row {
-  --bs-gutter-x: 0rem;
-}
-
 
 
 #mainSection{
@@ -233,23 +331,7 @@ textarea{
 }
 
 
-/* navbar */
-.navbar {
-  line-height: 1;
-}
 
-#sideToggle {
-  background: rgb(255, 162, 162);
-  margin-right: 10px;
-}
-
-.navbar > .container-fluid{
-  justify-content: left;
-}
-
-.w-25 {
-  width: 300px !important;
-}
 
 /* filter */
 .offcanvas-header {
@@ -278,86 +360,63 @@ textarea{
 }
 
 
-/* art info page */
-#artAndToolOptions{
-  margin: 25px auto;
-  width: 500px;
-  height: 470px;
-  /* background: red; */
+
+
+
+/* ========= CREATE ART PAGE ========= */
+
+#createArtPage {
+  min-height: 100vh;
+  width: 100%;
+  /* background: lightseagreen; */
 }
 
-.fa-ellipsis-h {
-  font-size: 25px;
-}
-
-.fa-ellipsis-h:hover {
-  color: rgb(145, 145, 145);
-}
-
-#toolOptions{
-  position:relative;
-}
-
-.dropdown {
-  position: absolute;
-  right: 0;
-  padding-right: 10px;
-}
-
-#artInfoStatistics {
-  position: absolute;
-  left: 15px;
-}
-
-#artInfoStatistics .fa-heart, #artInfoStatistics .fa-comment-dots {
-  font-size: 25px;
-}
-
-
-#mainContentContainer {
+#artForm {
   display:flex;
   flex-direction: column;
-  align-items: center;
+  width: 90%;
+  min-width: 300px;
+  max-width: 600px;
+  margin: 0px auto;
+  line-height: 2;
 }
 
-#artDetailsSection {
-  width: 500px;
-}
-
-#artDetailsSection h3 {
+#artForm h2 {
   font-size: 1rem;
-  color:rgb(145, 145, 145)
+  margin-top: 15px;
 }
 
-#artDetailsSection p:nth-child(4){
-  color:rgb(145, 145, 145);
-  font-size: 0.8rem;
-}
-
-#reviewSection {
-  width:500px;
-  height: fit-content;
-  margin-bottom: 50px;
-}
-
-#newReview input, #newReview textarea {
+#artForm input, #artForm textarea {
   padding: 5px 10px;
+  background: rgb(240, 240, 240);
+  border:none;
   border-radius: 5px;
-  margin-top: 5px;
-  border: 1px solid grey;
 }
 
-#postReviewBtn {
-  margin-top: 5px;
+#artForm span {
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.btnContainer {
+  height: 20px;
+  width: 90%;
+  min-width: 300px;
+  max-width: 600px;
+  margin: 25px auto;
+  position: relative;
+}
+
+.btnContainer button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   border:none;
   border-radius: 5px;
   background: rgb(175, 175, 175);
   padding: 2px 15px;
-  position:absolute;
-  right: 0;
-  bottom: 0;
 }
 
-#postReviewBtn:hover {
+.btnContainer button:hover {
   background: rgb(207, 207, 207);
 }

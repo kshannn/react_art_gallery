@@ -81,7 +81,9 @@ export default class CreateArtPage extends React.Component {
             image={this.state.image}
             art_title={this.state.art_title}
             art_description={this.state.art_description} />
+          <div className="btnContainer">
           <button onClick={this.submit}>Submit</button>
+          </div>
         </div>
       </React.Fragment>
     );

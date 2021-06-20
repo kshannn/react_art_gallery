@@ -10,7 +10,7 @@ export default class EditArtPage extends React.Component {
     poster_name: "",
     image: "",
     art_title: "",
-    art_description:"",
+    art_description: "",
     art_type: "",
     art_subject: []
   };
@@ -24,15 +24,15 @@ export default class EditArtPage extends React.Component {
       art_description: this.state.art_description,
       art_type: this.state.art_type,
       art_subject: this.state.art_subject,
-      statistics:{
+      statistics: {
         review_count: this.props.review_count,
         like_count: this.props.like_count
       }
     };
 
-  
 
-    let response = await axios.put(baseUrl + "/artpost/edit/" + artIdToEdit, userData) 
+
+    let response = await axios.put(baseUrl + "/artpost/edit/" + artIdToEdit, userData)
 
 
     // close edit page
@@ -42,14 +42,14 @@ export default class EditArtPage extends React.Component {
     this.props.getGallery();
   }
 
-  async componentDidMount () {
+  async componentDidMount() {
     this.setState({
-      poster_name: this.props.poster_name, 
+      poster_name: this.props.poster_name,
       image: this.props.image,
       art_title: this.props.art_title,
-      art_description:this.props.art_description,
-      art_type: this.props.art_type, 
-      art_subject: this.props.art_subject 
+      art_description: this.props.art_description,
+      art_type: this.props.art_type,
+      art_subject: this.props.art_subject
     })
   }
 
@@ -93,9 +93,11 @@ export default class EditArtPage extends React.Component {
             image={this.state.image}
             art_title={this.state.art_title}
             art_description={this.state.art_description} />
-          <button onClick={()=>{
-            this.updateChanges(this.props._id);
-          }}>Update</button>
+          <div className="btnContainer">
+            <button onClick={() => {
+              this.updateChanges(this.props._id);
+            }}>Update</button>
+          </div>
         </div>
       </React.Fragment>
     );

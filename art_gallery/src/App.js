@@ -146,35 +146,38 @@ export default class App extends React.Component {
 
 
             {this.state.displayHome &&
-              <button id="createArtBtn" onClick={this.createArt}>Create</button>
+              <React.Fragment>
+                <button id="createArtBtn" onClick={this.createArt}>Create</button>
+              </React.Fragment>
             }
+
 
           </div>
         </nav>
 
         {/* Side toggle */}
         <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
-                <div className="offcanvas-header">
-                    <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
-                    <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div className="offcanvas-body">
-                    <FilterOptions />
+          <div className="offcanvas-header">
+            <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
+            <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div className="offcanvas-body">
+            <FilterOptions />
 
-                </div>
-            </div>
-        
+          </div>
+        </div>
+
 
 
 
 
         <div id="mainSection">
-        {this.state.displayHome &&
-          <div id="filterSection" className="d-none d-md-block">
-            <div id="mainFilter">
-              <FilterOptions />
-            </div>
-          </div>}
+          {this.state.displayHome &&
+            <div id="filterSection" className="d-none d-md-block">
+              <div id="mainFilter">
+                <FilterOptions />
+              </div>
+            </div>}
           <div id="gallerySection">
             <div className="row">
               {this.state.displayHome && this.renderList()}
