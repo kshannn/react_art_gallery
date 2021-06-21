@@ -3,7 +3,7 @@ import ArtForm from "./ArtForm";
 import axios from "axios";
 
 
-const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
+const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
 
 export default class CreateArtPage extends React.Component {
 
@@ -72,6 +72,7 @@ export default class CreateArtPage extends React.Component {
       <React.Fragment>
         <div id="createArtPage">
           <button className="backBtn" onClick={this.props.closePage}><i class="fas fa-chevron-left"></i>Back</button>
+          <h1 className="text-center">Create an art post</h1>
           <ArtForm
             updateForm={this.updateForm}
             art_type={this.state.art_type}

@@ -2,7 +2,7 @@ import React from "react";
 import ArtForm from "./ArtForm";
 import axios from "axios";
 
-const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
+const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
 
 export default class EditArtPage extends React.Component {
 
@@ -84,6 +84,7 @@ export default class EditArtPage extends React.Component {
       <React.Fragment>
         <div id="editArtPage">
           <button className="backBtn" onClick={this.props.closeEdit}><i class="fas fa-chevron-left"></i>Back</button>
+          <h1 className="text-center">Edit an art post</h1>
           <ArtForm
             updateForm={this.updateForm}
             art_type={this.state.art_type}

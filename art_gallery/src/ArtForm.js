@@ -6,7 +6,6 @@ export default class ArtForm extends React.Component {
     return (
       <React.Fragment>
         <div id="artForm">
-          <h1>Start an art post</h1>
           {/* ====== Text field: Poster Name ======*/}
           <h2>Your name</h2>
           <input type="text"

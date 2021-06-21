@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios"
 
-const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
+const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
 
 export default class EditReviewPage extends React.Component {
 
@@ -54,7 +54,7 @@ export default class EditReviewPage extends React.Component {
                             <button id="closeBtn" onClick={this.props.closeEditReview}>Cancel</button>
                             <button onClick={() => {
                                 this.updateReview(this.props.currentReview);
-                            }}>Update review</button>
+                            }}>Save changes</button>
                         </div>
                     </div>
                 </div>
