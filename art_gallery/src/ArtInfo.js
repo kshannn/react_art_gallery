@@ -20,6 +20,10 @@ export default class ArtInfo extends React.Component {
     }
 
     async componentDidMount() {
+        this.getArtInfo();
+    }
+
+    getArtInfo = async() => {
         let artResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id)
         let reviewResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id + "/review_list")
 
@@ -30,19 +34,26 @@ export default class ArtInfo extends React.Component {
             currentArt: artResponse.data,
             reviewsSection: sortedDates
         })
-
     }
 
 
 
-    // countReviews = async () => {
-    //     let userData = {
-    //         statistics:{
-    //             review_count: this.state.reviewsSection.length
-    //         }
-    //     }
-    //     let response = await axios.put(baseUrl + "/artpost/updateReviewCount/" + this.props._id, userData);
-    // }
+    countReviews = async () => {
+        let userData = {
+            statistics:{
+                review_count: this.state.reviewsSection.length
+            }
+        }
+
+        let response = await axios.put(baseUrl + "/artpost/updateReviewCount/" + this.props._id, userData);
+        this.getArtInfo();
+        // let artResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id)
+
+        // this.setState({
+        //     currentArt: artResponse.data,
+        // })
+
+    }
 
 
 
@@ -104,6 +115,7 @@ export default class ArtInfo extends React.Component {
         }
         let response = await axios.post(baseUrl + "/art_gallery/" + this.props._id + "/create/review", userData)
         this.clearFields();
+        this.countReviews();
         this.getReview();
     }
 
@@ -202,7 +214,10 @@ export default class ArtInfo extends React.Component {
             <React.Fragment>
                 {this.state.contentLoaded && this.state.displayInfo &&
                     <div className="artInfo">
-                        <button className="backBtn" onClick={this.props.closePage}><i class="fas fa-chevron-left"></i>Back</button>
+                        <button className="backBtn" onClick={()=>{
+                            this.props.closePage();
+                            this.props.getGallery();
+                        }}><i class="fas fa-chevron-left"></i>Back</button>
 
                         <div id="mainContentContainer">
                             <div id="artAndToolOptions">
@@ -210,7 +225,7 @@ export default class ArtInfo extends React.Component {
                                 <div id="toolOptions">
                                     <div id="artInfoStatistics">
                                         <i className="fas fa-heart"></i> {this.state.currentArt.statistics.like_count}
-                                        <i className="far fa-comment-dots"></i> {this.state.currentArt.statistics.review_count}
+                                        <i className="far fa-comment-dots"></i> {this.state.currentArt.reviews.length}
                                     </div>
                                     <div className="dropdown">
 

@@ -15,7 +15,8 @@ export default class App extends React.Component {
     displayHome: true,
     artHolder: 0,
     gallery: [],
-    storedTags: ""
+    storedTags: "",
+    searchTerm: ""
   };
 
 
@@ -33,7 +34,17 @@ export default class App extends React.Component {
     });
   }
 
+  
+  updateForm = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
 
+  searchResults = async () => {
+    let response = await axios.get(baseUrl + "/art_gallery/search");
+    console.log(response)
+  }
 
   closePage = () => {
     this.setState({
@@ -136,8 +147,16 @@ export default class App extends React.Component {
             </button>
             <a className="navbar-brand" href="/">Logo</a>
             <form className="d-flex" id="search-bar">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success" type="submit">
+              <input className="form-control me-2" 
+              value={this.state.searchTerm} 
+              onChange={this.updateForm}
+              name="searchTerm"
+              type="search" 
+              placeholder="Search" 
+              aria-label="Search" />
+              <button className="btn btn-outline-success" type="submit" name="searchTerm" onClick={()=>{
+                this.searchResults();
+              }}>
                 <i className="fas fa-search"></i>
               </button>
             </form>
