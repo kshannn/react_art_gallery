@@ -41,9 +41,12 @@ export default class App extends React.Component {
     });
   };
 
+ 
   searchResults = async () => {
-    let response = await axios.get(baseUrl + "/art_gallery/search");
-    console.log(response)
+    let response = await axios.get(baseUrl + "/art_gallery/search" + "?searchTerm=" + this.state.searchTerm);
+    this.setState({
+      gallery: response.data
+    })
   }
 
   closePage = () => {
@@ -146,7 +149,7 @@ export default class App extends React.Component {
               <i className="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
             </button>
             <a className="navbar-brand" href="/">Logo</a>
-            <form className="d-flex" id="search-bar">
+
               <input className="form-control me-2" 
               value={this.state.searchTerm} 
               onChange={this.updateForm}
@@ -154,12 +157,12 @@ export default class App extends React.Component {
               type="search" 
               placeholder="Search" 
               aria-label="Search" />
-              <button className="btn btn-outline-success" type="submit" name="searchTerm" onClick={()=>{
-                this.searchResults();
-              }}>
+              <button className="btn btn-outline-success" onClick={()=>
+                this.searchResults()
+              }>
                 <i className="fas fa-search"></i>
               </button>
-            </form>
+          
 
 
 
