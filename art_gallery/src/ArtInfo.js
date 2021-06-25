@@ -3,7 +3,7 @@ import EditReviewPage from "./EditReviewPage"
 import axios from "axios"
 import React from "react"
 
-const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
+const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
 
 export default class ArtInfo extends React.Component {
 

@@ -6,7 +6,7 @@ import FilterOptions from "./FilterOptions"
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
-const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
+const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
 
 export default class App extends React.Component {
   state = {
@@ -15,12 +15,12 @@ export default class App extends React.Component {
     displayHome: true,
     artHolder: 0,
     gallery: [],
-    storedTags: "",
+    storedTags: "", //??
     searchTerm: ""
   };
 
 
-  // GET request
+  // Load gallery on page load (GET REQUEST)
   async componentDidMount() {
     this.getGallery();
   }
@@ -34,18 +34,18 @@ export default class App extends React.Component {
     });
   }
 
-  
+
   updateForm = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
- 
+
   searchResults = async () => {
     let response = await axios.get(baseUrl + "/art_gallery/search" + "?searchTerm=" + this.state.searchTerm);
     this.setState({
-      gallery: response.data
+      gallery: response.data.reverse()
     })
   }
 
@@ -145,24 +145,30 @@ export default class App extends React.Component {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
 
+            {/* Nav toggle on small device */}
             <button id="sideToggle" className="btn float-end d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
               <i className="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
             </button>
+
+            {/* Logo */}
             <a className="navbar-brand" href="/">Logo</a>
 
-              <input className="form-control me-2" 
-              value={this.state.searchTerm} 
+            {/* Search Bar */}
+            <input 
+            id="searchBar"
+            className="form-control me-2"
+              value={this.state.searchTerm}
               onChange={this.updateForm}
               name="searchTerm"
-              type="search" 
-              placeholder="Search" 
+              type="search"
+              placeholder="Search for art or artist"
               aria-label="Search" />
-              <button className="btn btn-outline-success" onClick={()=>
-                this.searchResults()
-              }>
-                <i className="fas fa-search"></i>
-              </button>
-          
+            <button className="btn btn-outline-success" onClick={() =>
+              this.searchResults()
+            }>
+              <i className="fas fa-search"></i>
+            </button>
+
 
 
 
