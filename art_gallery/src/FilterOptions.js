@@ -1,4 +1,7 @@
 import React from "react"
+import axios from "axios";
+
+const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
 
 export default class FilterOptions extends React.Component {
 
@@ -7,6 +10,12 @@ export default class FilterOptions extends React.Component {
         art_subject: []
       };
 
+    applyFilter = async () => {
+        let response = await axios.get(baseUrl + "/art_gallery/combinedFilter/" + this.state.art_type)
+        this.props.filterGallery(response);        
+    }
+
+    // Process checkbox, store art subject selected in state
     updateCheckbox = (e) => {
     if (!this.state.art_subject.includes(e.target.value)) {
         let clone = [...this.state.art_subject, e.target.value];
@@ -34,6 +43,7 @@ export default class FilterOptions extends React.Component {
                 <h2>Type</h2>
                 <select
                     value={this.state.art_type}
+                    // Process select dropdown, store art type selected in state
                     onChange={(e) => {
                         this.setState({
                             art_type: e.target.value
@@ -41,8 +51,8 @@ export default class FilterOptions extends React.Component {
                     }}
                 >
                     <option>-- Select an art type ---</option>
-                    <option value="digital">Digital</option>
-                    <option value="traditional">Traditional</option>
+                    <option name="filter_art_type" value="digital">Digital</option>
+                    <option name="filter_art_type" value="traditional">Traditional</option>
                 </select>
                 {/* <div>
                     <input
@@ -73,9 +83,8 @@ export default class FilterOptions extends React.Component {
                         onChange={this.updateCheckbox}
                         checked={this.state.art_subject.includes("nature")}
     
-                    />{" "}
-    Nature
-    </div>
+                    />{" "}Nature
+                </div>
     
                 <div>
                     <input
@@ -85,9 +94,8 @@ export default class FilterOptions extends React.Component {
                         onChange={this.updateCheckbox}
                         checked={this.state.art_subject.includes("animal")}
     
-                    />{" "}
-                    Animal
-                    </div>
+                    />{" "}Animal
+                </div>
     
                 <div>
                     <input
@@ -97,17 +105,14 @@ export default class FilterOptions extends React.Component {
                         onChange={this.updateCheckbox}
                         checked={this.state.art_subject.includes("people")}
     
-                    />{" "}
-                    People
-                    </div>
+                    />{" "}People
+                </div>
     
-    
-                <button>Apply filter</button>
+                <button onClick={()=>{
+                    this.applyFilter();
+                }}>Apply filter</button>
                 <button>Clear filter</button>
-    
-    
             </React.Fragment>
         )
     }
-    
 }

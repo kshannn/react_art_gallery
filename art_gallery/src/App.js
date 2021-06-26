@@ -34,16 +34,24 @@ export default class App extends React.Component {
     });
   }
 
+  filterGallery = (response) => {
+    this.setState({
+      gallery: response.data.reverse()
+    })
+  }
 
+  // Process form fields
   updateForm = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
-
+  // Search for art/artist with search bar
   searchResults = async () => {
-    let response = await axios.get(baseUrl + "/art_gallery/search" + "?searchTerm=" + this.state.searchTerm);
+    // retrieve art or artist
+    let response = await axios.get(baseUrl + "/art_gallery/search" + "?q=" + this.state.searchTerm);
+    // display found art or artist in gallery
     this.setState({
       gallery: response.data.reverse()
     })
@@ -65,7 +73,6 @@ export default class App extends React.Component {
   };
 
   renderCreateArtPage = () => {
-
     if (this.state.displayArtForm) {
       return <CreateArtPage closePage={this.closePage} getGallery={this.getGallery} />;
     } else {
@@ -145,34 +152,47 @@ export default class App extends React.Component {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
 
-            {/* Nav toggle on small device */}
-            <button id="sideToggle" className="btn float-end d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+            {/* Filter toggle on smaller devices - Toggle off */}
+            <button id="sideToggle" className="btn d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
               <i className="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
             </button>
 
+            {/* Filter toggle on smaller devices - Toggle on */}
+            <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
+              <div className="offcanvas-header">
+                <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
+                <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div className="offcanvas-body">
+                <FilterOptions />
+              </div>
+            </div>
+
             {/* Logo */}
-            <a className="navbar-brand" href="/">Logo</a>
+            <a className="navbar-brand" href="/">The Art Galore</a>
 
             {/* Search Bar */}
-            <input 
-            id="searchBar"
-            className="form-control me-2"
-              value={this.state.searchTerm}
-              onChange={this.updateForm}
-              name="searchTerm"
-              type="search"
-              placeholder="Search for art or artist"
-              aria-label="Search" />
-            <button className="btn btn-outline-success" onClick={() =>
-              this.searchResults()
-            }>
-              <i className="fas fa-search"></i>
-            </button>
+            <div id="searchContainer">
+              <input
+                id="searchBar"
+                className="form-control me-2"
+                value={this.state.searchTerm}
+                onChange={this.updateForm}
+                name="searchTerm"
+                type="search"
+                placeholder="Search for art or artist"
+                aria-label="Search" />
+
+              <button className="btn" onClick={() =>
+                this.searchResults()
+              }>
+                <i className="fas fa-search"></i>
+              </button>
+            </div>
 
 
-
-
-
+            {/* Create art button */}
+            {/* Only display create button on home page */}
             {this.state.displayHome &&
               <React.Fragment>
                 <button id="createArtBtn" onClick={this.createArt}>Create</button>
@@ -183,35 +203,26 @@ export default class App extends React.Component {
           </div>
         </nav>
 
-        {/* Side toggle */}
-        <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
-          <div className="offcanvas-header">
-            <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
-            <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div className="offcanvas-body">
-            <FilterOptions />
+        {/* BODY */}
 
-          </div>
-        </div>
+        {/* Only display main body when on home page */}
+        {this.state.displayHome &&
+          <div id="mainSection">
 
-
-
-
-
-        <div id="mainSection">
-          {this.state.displayHome &&
             <div id="filterSection" className="d-none d-md-block">
               <div id="mainFilter">
-                <FilterOptions />
+                <FilterOptions filterGallery={this.filterGallery} />
               </div>
-            </div>}
-          <div id="gallerySection">
-            <div className="row">
-              {this.state.displayHome && this.renderList()}
             </div>
+
+            <div id="gallerySection">
+              <div className="row">
+                {this.renderList()}
+              </div>
+            </div>
+
           </div>
-        </div>
+        }
 
 
 

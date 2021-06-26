@@ -12,6 +12,12 @@
   flex: 1;
 }
 
+#searchBar::-webkit-search-cancel-button{
+  position:relative;
+  right:28px; 
+  font-size: 20px;
+}
+
 #createArtBtn {
   height: 40px;
   border-radius: 24px;
@@ -24,6 +30,26 @@
 #createArtBtn:hover {
   background:rgb(163, 245, 163)
 }
+
+#searchContainer {
+  display: flex;
+  position: relative;
+  flex: 1;
+}
+
+#searchContainer button {
+  position: absolute;
+  right: 10px;
+  line-height: 1.7;
+}
+
+#searchContainer button:hover {
+   cursor: pointer;
+   color:rgb(175, 175, 175);
+}
+
+
+ 
 
 /* ========= SIDE FILTER TOGGLE ========= */
 
