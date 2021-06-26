@@ -11,7 +11,7 @@ export default class FilterOptions extends React.Component {
       };
 
     applyFilter = async () => {
-        let response = await axios.get(baseUrl + "/art_gallery/combinedFilter/" + this.state.art_type)
+        let response = await axios.get(baseUrl + "/art_gallery/combinedFilter/" + this.state.art_type + "/" + this.state.art_subject)
         this.props.filterGallery(response);        
     }
 
@@ -51,8 +51,8 @@ export default class FilterOptions extends React.Component {
                     }}
                 >
                     <option>-- Select an art type ---</option>
-                    <option name="filter_art_type" value="digital">Digital</option>
-                    <option name="filter_art_type" value="traditional">Traditional</option>
+                    <option value="digital">Digital</option>
+                    <option value="traditional">Traditional</option>
                 </select>
                 {/* <div>
                     <input
