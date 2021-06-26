@@ -2,6 +2,7 @@ import EditArtPage from "./EditArtPage"
 import EditReviewPage from "./EditReviewPage"
 import axios from "axios"
 import React from "react"
+import 'bootstrap/dist/css/bootstrap.css';
 
 const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
 
@@ -16,14 +17,15 @@ export default class ArtInfo extends React.Component {
         reviewsSection: [],
         reviewer_name: "",
         review: "",
-        currentReview: {}
+        currentReview: {},
+        displayDeletePage: false
     }
 
     async componentDidMount() {
         this.getArtInfo();
     }
 
-    getArtInfo = async() => {
+    getArtInfo = async () => {
         let artResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id)
         let reviewResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id + "/review_list")
 
@@ -36,11 +38,42 @@ export default class ArtInfo extends React.Component {
         })
     }
 
+    displayDeletePage = () => {
+        this.setState({
+            displayDeletePage: true
+        })
+    }
 
+    renderDeletePage = () => {
+        if (this.state.displayDeletePage){
+            console.log(1)
+            return (
+            <div className="popupBackground">
+                <div id="deleteConfirmation"className="alert alert-warning" role="alert">
+                Are you sure you want to delete this art?
+                    <div>
+                        <button className="btn btn-primary" onClick={()=>{
+                            this.setState({
+                                displayDeletePage:false
+                            })
+                        }}>Cancel</button>
+                        <button className="btn btn-info" onClick={()=>{
+                            this.deleteArt(this.state.currentArt._id)
+                            this.setState({
+                                displayDeletePage:false
+                            })
+                        }}>Delete</button>
+                    </div>
+                </div>
+            </div>)
+        } else {
+            return null
+        }
+    }
 
     countReviews = async () => {
         let userData = {
-            statistics:{
+            statistics: {
                 review_count: this.state.reviewsSection.length
             }
         }
@@ -170,6 +203,7 @@ export default class ArtInfo extends React.Component {
 
         // close popup
         this.props.closePage();
+        
 
         // refresh gallery
         this.props.getGallery();
@@ -214,7 +248,7 @@ export default class ArtInfo extends React.Component {
             <React.Fragment>
                 {this.state.contentLoaded && this.state.displayInfo &&
                     <div className="artInfo">
-                        <button className="backBtn" onClick={()=>{
+                        <button className="backBtn" onClick={() => {
                             this.props.closePage();
                             this.props.getGallery();
                         }}><i class="fas fa-chevron-left"></i>Back</button>
@@ -237,7 +271,8 @@ export default class ArtInfo extends React.Component {
                                                 this.editArt();
                                             }}>Edit art</button></li>
                                             <li><button className="dropdown-item" onClick={() => {
-                                                this.deleteArt(this.state.currentArt._id);
+                                                this.displayDeletePage();
+                                            
                                             }}>Delete art</button></li>
 
                                         </ul>
@@ -274,6 +309,7 @@ export default class ArtInfo extends React.Component {
 
                 {!this.state.displayInfo && this.renderEditArtPage()}
                 {this.renderEditReview()}
+                {this.renderDeletePage()}
 
             </React.Fragment>
         )

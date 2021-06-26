@@ -129,7 +129,7 @@ export default class App extends React.Component {
                 <i className="fas fa-heart"></i>
                 {artpost.statistics.like_count}
                 <i className="far fa-comment-dots"></i>
-                {artpost.statistics.review_count}
+                {artpost.reviews.length}
               </p>
 
               {this.displayArtType(artpost)}

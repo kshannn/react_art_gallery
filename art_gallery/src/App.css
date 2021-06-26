@@ -36,14 +36,14 @@ font-family: 'Lato', sans-serif; */
 #createArtBtn {
   height: 40px;
   border-radius: 24px;
-  background: lightgreen;
+  background: rgb(255, 215, 106);
   border: none;
   padding: 0px 15px;
   margin-left: 5px;
 }
 
 #createArtBtn:hover {
-  background:rgb(163, 245, 163)
+  background:rgb(255, 231, 167)
 }
 
 #searchContainer {
@@ -549,3 +549,17 @@ textarea{
 }
 
 
+#deleteConfirmation {
+  position: fixed;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  /* height: 350px; */
+  width:90%;
+  min-width: 300px;
+  max-width: 500px;
+  margin: 25px auto;
+  padding: 10px 30px;
+  border-radius: 15px;
+  line-height: 2;
+}
