@@ -54,7 +54,7 @@
 /* ========= SIDE FILTER TOGGLE ========= */
 
 #sideToggle {
-  background: rgb(255, 162, 162);
+  /* background: rgb(255, 162, 162); */
   margin-right: 10px;
 }
 
@@ -367,7 +367,7 @@ textarea{
 
 #filterSection{
   flex:1;
-  background:rgb(193, 193, 211);
+  background:rgb(238, 238, 238);
 }
 
 #gallerySection{

@@ -54,25 +54,7 @@ export default class FilterOptions extends React.Component {
                     <option value="digital">Digital</option>
                     <option value="traditional">Traditional</option>
                 </select>
-                {/* <div>
-                    <input
-                        type="radio"
-                        name="art_type"
-                        value="digital"
-                    />{" "}
-    Digital
-    </div>
-    
-                <div>
-                    <input
-                        type="radio"
-                        name="art_type"
-                        value="traditional"
-                    />{" "}
-    Traditional
-    </div> */}
-    
-    
+        
                 {/* Art subject */}
                 <h2>Subject</h2>
                 <div>
@@ -111,7 +93,13 @@ export default class FilterOptions extends React.Component {
                 <button onClick={()=>{
                     this.applyFilter();
                 }}>Apply filter</button>
-                <button>Clear filter</button>
+                <button onClick={()=>
+                // set state back to default (i.e. all options unchecked)
+                this.setState({
+                    art_type: "",
+                    art_subject: []
+                })
+                }>Clear filter</button>
             </React.Fragment>
         )
     }
