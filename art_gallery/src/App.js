@@ -109,9 +109,11 @@ export default class App extends React.Component {
     }
   }
 
-
+  
   renderList = () => {
+    
     let jsx = this.state.gallery.map((artpost) => {
+      
       return (
         <div className="col-md-4 col-sm-6 col-xs-12">
           <div className="listingContainer" onClick={() => {
@@ -142,6 +144,7 @@ export default class App extends React.Component {
         </div>
       );
     });
+    
     return jsx;
   };
 
@@ -158,15 +161,17 @@ export default class App extends React.Component {
             </button>
 
             {/* Filter toggle on smaller devices - Toggle on */}
-            <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
-              <div className="offcanvas-header">
-                <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
-                <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  
+              <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
+                <div className="offcanvas-header">
+                  <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
+                  <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                {/* <div className="offcanvas-body"> */}
+                  <FilterOptions filterGallery={this.filterGallery}/>
+                {/* </div> */}
               </div>
-              <div className="offcanvas-body">
-                <FilterOptions filterGallery={this.filterGallery}/>
-              </div>
-            </div>
+  
 
             {/* Logo */}
             <a className="navbar-brand" href="/">The Art Galore</a>
@@ -208,13 +213,15 @@ export default class App extends React.Component {
         {/* Only display main body when on home page */}
         {this.state.displayHome &&
           <div id="mainSection">
-
+            
+            {/* Filter section */}
             <div id="filterSection" className="d-none d-md-block">
-              <div id="mainFilter">
+              {/* <div id="mainFilter"> */}
                 <FilterOptions filterGallery={this.filterGallery} />
-              </div>
+              {/* </div> */}
             </div>
 
+            {/* Gallery section */}
             <div id="gallerySection">
               <div className="row">
                 {this.renderList()}
@@ -224,7 +231,7 @@ export default class App extends React.Component {
           </div>
         }
 
-
+        
 
         {this.renderArtInfoPage()}
         {this.renderCreateArtPage()}

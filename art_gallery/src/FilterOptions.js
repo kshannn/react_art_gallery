@@ -39,6 +39,7 @@ export default class FilterOptions extends React.Component {
     render(){
         return (
             <React.Fragment>
+                <div id="mainFilter">
                 {/* Art type */}
                 <h2>Type</h2>
                 <select
@@ -100,6 +101,7 @@ export default class FilterOptions extends React.Component {
                     art_subject: []
                 })
                 }>Clear filter</button>
+                </div>
             </React.Fragment>
         )
     }
