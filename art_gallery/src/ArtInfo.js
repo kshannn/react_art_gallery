@@ -63,16 +63,7 @@ export default class ArtInfo extends React.Component {
                 closePage={this.props.closePage}
                 closeEditArt={this.closeEditArt}
                 getGallery={this.props.getGallery}
-                poster_name={this.state.currentArt.poster_name}
-                image={this.state.currentArt.image}
-                art_title={this.state.currentArt.art_title}
-                art_description={this.state.currentArt.art_description}
-                art_type={this.state.currentArt.art_type}
-                art_subject={this.state.currentArt.art_subject}
-                like_count={this.state.currentArt.statistics.like_count}
-                review_count={this.state.currentArt.statistics.review_count}
-                _id={this.state.currentArt._id}
-                post_date={this.state.currentArt.post_date}
+                currentArt = {this.state.currentArt}
             />
         } else {
             return null
@@ -248,6 +239,8 @@ export default class ArtInfo extends React.Component {
         });
     };
 
+
+    // ===== If there are reviews, render reviews =====
     renderReviewList = () => {
         if (this.state.reviewsSection) {
             let jsx = this.state.reviewsSection.map((review) => {
@@ -265,7 +258,6 @@ export default class ArtInfo extends React.Component {
                                         this.editReview(review);
                                     }}>Edit review</button></li>
                                     <li><button className="dropdown-item" onClick={() => {
-                                        // this.deleteReview(review);
                                         this.setState({
                                             currentReview:review
                                         })
@@ -281,19 +273,23 @@ export default class ArtInfo extends React.Component {
         }
     }
 
+    // Render art information page
     render() {
         return (
             <React.Fragment>
                 {this.state.contentLoaded && this.state.displayInfo &&
                     <div className="artInfo">
+                        {/* Back button */}
                         <button className="backBtn" onClick={() => {
                             this.props.closePage();
                             this.props.getGallery();
                         }}><i class="fas fa-chevron-left"></i>Back</button>
 
                         <div id="mainContentContainer">
+
+                            {/* Art section */}
                             <div id="artAndToolOptions">
-                                <div className="artInfoImageHolder" style={{ backgroundImage: `url(${this.state.currentArt.image})` }}></div>
+                                <div id="artInfoImageHolder" style={{ backgroundImage: `url(${this.state.currentArt.image})` }}></div>
                                 <div id="toolOptions">
                                     <div id="artInfoStatistics">
                                         <i className="fas fa-heart"></i> {this.state.currentArt.statistics.like_count}
@@ -324,7 +320,8 @@ export default class ArtInfo extends React.Component {
                                 <p>{this.state.currentArt.art_description}</p>
                                 <p>Published: {this.state.currentArt.post_date}</p>
                             </div>
-
+                            
+                            {/* Review section */}
                             <div id="reviewSection">
                                 <h2>Reviews {this.state.currentArt.review_count}</h2>
                                 <div id="newReview">
@@ -334,14 +331,10 @@ export default class ArtInfo extends React.Component {
                                         this.createReview();
                                     }}>Post</button>
                                 </div>
-
                                 {this.renderReviewList()}
-
                             </div>
                         </div>
                     </div>
-
-
                 }
 
 

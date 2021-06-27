@@ -152,7 +152,7 @@ img {
   align-items: center;
 }
 
-.artInfoImageHolder{
+#artInfoImageHolder{
   margin: 25px auto;
   border: 1px solid rgb(233, 233, 233);
   border-radius: 15px;

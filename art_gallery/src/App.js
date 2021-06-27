@@ -118,6 +118,7 @@ export default class App extends React.Component {
 
   // ===== Render all the art posts =====
   renderList = () => {
+    
 
     let jsx = this.state.gallery.map((artpost) => {
 
@@ -160,91 +161,91 @@ export default class App extends React.Component {
 
   // ===== Render the landing page =====
   render() {
-    return (
-      <React.Fragment>
-        {/* NAVBAR */}
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="container-fluid">
+      return (
+        <React.Fragment>
+          {/* NAVBAR */}
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container-fluid">
 
-            {/* Filter toggle on smaller devices - Toggle off */}
-            <button id="sideToggle" className="btn d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
-              <i className="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
-            </button>
-
-            {/* Filter toggle on smaller devices - Toggle on */}
-            <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
-              <div className="offcanvas-header">
-                <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
-                <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-              </div>
-
-              <FilterOptions filterGallery={this.filterGallery} />
-            </div>
-
-            {/* Logo */}
-            <a className="navbar-brand" href="/">
-              <img id="logo" src="../artlogo.png"></img>
-            </a>
-
-            {/* Search Bar */}
-            <div id="searchContainer">
-              <input
-                id="searchBar"
-                className="form-control me-2"
-                value={this.state.searchTerm}
-                onChange={this.updateForm}
-                name="searchTerm"
-                type="search"
-                placeholder="Search for art or artist"
-                aria-label="Search" />
-
-              <button className="btn" onClick={() =>
-                this.searchResults()
-              }>
-                <i className="fas fa-search"></i>
+              {/* Filter toggle on smaller devices - Toggle off */}
+              <button id="sideToggle" className="btn d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+                <i className="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
               </button>
-            </div>
 
-            {/* Create art button */}
-            {/* Only display create button on home page */}
-            {this.state.displayHome &&
-              <React.Fragment>
-                <button id="createArtBtn" onClick={this.createArt}>Create</button>
-              </React.Fragment>
-            }
+              {/* Filter toggle on smaller devices - Toggle on */}
+              <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
+                <div className="offcanvas-header">
+                  <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
+                  <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
 
-          </div>
-        </nav>
-
-        {/* BODY */}
-
-        {/* Only display main body when on home page */}
-        {this.state.displayHome &&
-          <div id="mainSection">
-
-            {/* Filter section */}
-            <div id="filterSection" className="d-none d-md-block">
-              <FilterOptions filterGallery={this.filterGallery} />
-            </div>
-
-            {/* Gallery section */}
-            <div id="gallerySection">
-              <div className="row">
-                {this.renderList()}
+                <FilterOptions filterGallery={this.filterGallery} />
               </div>
+
+              {/* Logo */}
+              <a className="navbar-brand" href="/">
+                <img id="logo" src="../artlogo.png"></img>
+              </a>
+
+              {/* Search Bar */}
+              <div id="searchContainer">
+                <input
+                  id="searchBar"
+                  className="form-control me-2"
+                  value={this.state.searchTerm}
+                  onChange={this.updateForm}
+                  name="searchTerm"
+                  type="search"
+                  placeholder="Search for art or artist"
+                  aria-label="Search" />
+
+                <button className="btn" onClick={() =>
+                  this.searchResults()
+                }>
+                  <i className="fas fa-search"></i>
+                </button>
+              </div>
+
+              {/* Create art button */}
+              {/* Only display create button on home page */}
+              {this.state.displayHome &&
+                <React.Fragment>
+                  <button id="createArtBtn" onClick={this.createArt}>Create</button>
+                </React.Fragment>
+              }
+
             </div>
+          </nav>
 
-          </div>
-        }
+          {/* BODY */}
+
+          {/* Only display main body when on home page */}
+          {this.state.displayHome &&
+            <div id="mainSection">
+
+              {/* Filter section */}
+              <div id="filterSection" className="d-none d-md-block">
+                <FilterOptions filterGallery={this.filterGallery} />
+              </div>
+
+              {/* Gallery section */}
+              <div id="gallerySection">
+                <div className="row">
+                  {this.renderList()}
+                </div>
+              </div>
+
+            </div>
+          }
 
 
-        {/* Render detailed art page when art is clicked */}
-        {this.renderArtInfoPage()}
+          {/* Render detailed art page when art is clicked */}
+          {this.renderArtInfoPage()}
 
-        {/* Render create art page when create button is clicked */}
-        {this.renderCreateArtPage()}
+          {/* Render create art page when create button is clicked */}
+          {this.renderCreateArtPage()}
 
-      </React.Fragment>
-    );
+        </React.Fragment>
+      );
   }
 }

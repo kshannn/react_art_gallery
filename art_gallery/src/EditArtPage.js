@@ -15,44 +15,19 @@ export default class EditArtPage extends React.Component {
     art_subject: []
   };
 
-  updateChanges = async (artIdToEdit) => {
-
-    let userData = {
-      poster_name: this.state.poster_name,
-      image: this.state.image,
-      art_title: this.state.art_title,
-      art_description: this.state.art_description,
-      art_type: this.state.art_type,
-      art_subject: this.state.art_subject,
-      statistics: {
-        review_count: this.props.review_count,
-        like_count: this.props.like_count
-      }
-    };
-
-
-
-    let response = await axios.put(baseUrl + "/artpost/edit/" + artIdToEdit, userData)
-
-
-    // close edit page
-    this.props.closeEditArt();
-    this.props.closePage();
-    // refresh page
-    this.props.getGallery();
-  }
-
+  // ===== Load existing information of art to be edited =====
   async componentDidMount() {
     this.setState({
-      poster_name: this.props.poster_name,
-      image: this.props.image,
-      art_title: this.props.art_title,
-      art_description: this.props.art_description,
-      art_type: this.props.art_type,
-      art_subject: this.props.art_subject
+      poster_name: this.props.currentArt.poster_name,
+      image: this.props.currentArt.image,
+      art_title: this.props.currentArt.art_title,
+      art_description: this.props.currentArt.art_description,
+      art_type: this.props.currentArt.art_type,
+      art_subject: this.props.currentArt.art_subject
     })
   }
 
+  // ===== Process checkboxes =====
   updateCheckbox = (e) => {
     if (!this.state.art_subject.includes(e.target.value)) {
       let clone = [...this.state.art_subject, e.target.value];
@@ -73,18 +48,47 @@ export default class EditArtPage extends React.Component {
     }
   };
 
+  // ===== Process form fields =====
   updateForm = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
+  // ===== Clicking on update button updates the database with new changes =====
+  updateChanges = async (artIdToEdit) => {
+
+    let userData = {
+      poster_name: this.state.poster_name,
+      image: this.state.image,
+      art_title: this.state.art_title,
+      art_description: this.state.art_description,
+      art_type: this.state.art_type,
+      art_subject: this.state.art_subject,
+      statistics: {
+        review_count: this.props.currentArt.statistics.review_count,
+        like_count: this.props.currentArt.statistics.like_count
+      }
+    };
+
+    let response = await axios.put(baseUrl + "/artpost/edit/" + artIdToEdit, userData)
+
+    // returns user to gallery page and refreshes gallery with updated changes
+    this.props.closeEditArt();
+    this.props.closePage();
+    this.props.getGallery();
+  }
+
+  // ===== Render edit art page =====
   render() {
     return (
       <React.Fragment>
         <div id="editArtPage">
+          {/* Back button */}
           <button className="backBtn" onClick={this.props.closeEditArt}><i class="fas fa-chevron-left"></i>Back</button>
           <h1 className="text-center">Edit an art post</h1>
+
+          {/* Edit art form */}
           <ArtForm
             updateForm={this.updateForm}
             art_type={this.state.art_type}
@@ -94,9 +98,11 @@ export default class EditArtPage extends React.Component {
             image={this.state.image}
             art_title={this.state.art_title}
             art_description={this.state.art_description} />
+          
+          {/* Update button */}
           <div className="btnContainer">
             <button onClick={() => {
-              this.updateChanges(this.props._id);
+              this.updateChanges(this.props.currentArt._id);
             }}>Update</button>
           </div>
         </div>

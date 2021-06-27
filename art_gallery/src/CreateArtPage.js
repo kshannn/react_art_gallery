@@ -16,7 +16,7 @@ export default class CreateArtPage extends React.Component {
     art_subject: []
   };
 
-  // POST request
+  // ===== Clicking on submit updates database with users' input (POST request) =====
   submit = async () => {
     let userData = {
       post_date: new Date(),
@@ -36,11 +36,13 @@ export default class CreateArtPage extends React.Component {
       userData
     );
 
+    // Returns user to gallery page and refreshes updated gallery
     this.props.closePage();
     this.props.getGallery();
 
   };
 
+  // Process checkbox
   updateCheckbox = (e) => {
     if (!this.state.art_subject.includes(e.target.value)) {
       let clone = [...this.state.art_subject, e.target.value];
@@ -61,6 +63,7 @@ export default class CreateArtPage extends React.Component {
     }
   };
 
+  // Process form fields
   updateForm = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -71,8 +74,11 @@ export default class CreateArtPage extends React.Component {
     return (
       <React.Fragment>
         <div id="createArtPage">
+          {/* Back button */}
           <button className="backBtn" onClick={this.props.closePage}><i class="fas fa-chevron-left"></i>Back</button>
           <h1 className="text-center">Create an art post</h1>
+
+          {/* Art form */}
           <ArtForm
             updateForm={this.updateForm}
             art_type={this.state.art_type}
@@ -82,6 +88,8 @@ export default class CreateArtPage extends React.Component {
             image={this.state.image}
             art_title={this.state.art_title}
             art_description={this.state.art_description} />
+
+           {/* Submit form button  */}
           <div className="btnContainer">
           <button onClick={this.submit}>Submit</button>
           </div>
