@@ -10,6 +10,7 @@ export default class EditReviewPage extends React.Component {
         review: ""
     }
 
+    // ===== Load existing review =====
     async componentDidMount() {
         this.setState({
             reviewer_name: this.props.currentReview.reviewer_name,
@@ -17,6 +18,14 @@ export default class EditReviewPage extends React.Component {
         })
     }
 
+    // ===== Process form fields =====
+    updateForm = (e) => {
+            this.setState({
+                [e.target.name]: e.target.value
+            });
+    };
+
+    // ===== When update button is clicked, updated review is updated in database =====
     updateReview = async (currentReview) => {
         let userData = {
             reviewer_name: this.state.reviewer_name,
@@ -25,33 +34,27 @@ export default class EditReviewPage extends React.Component {
         }
 
         let response = await axios.put(baseUrl + "/review/edit/" + currentReview.id, userData)
-        console.log("updated review")
 
+        // Returns to art information page and refreshes to display updated review
         this.props.closeEditReview();
         this.props.getReview();
-
     }
 
-
-    updateForm = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    };
-
     render() {
-
         return (
             <React.Fragment>
                 <div className="popupBackground">
                     <div className="editReviewPopup">
-                        
                         <div id="editReviewContent">
                             <label>Your name</label>
                             <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm} />
                             <label>Review</label>
                             <textarea rows="4" cols="40" placeholder="Leave a review" name="review" value={this.state.review} onChange={this.updateForm} />
+                            
+                            {/* Cancel button */}
                             <button id="closeBtn" onClick={this.props.closeEditReview}>Cancel</button>
+                            
+                            {/* Submit button */}
                             <button onClick={() => {
                                 this.updateReview(this.props.currentReview);
                             }}>Save changes</button>
@@ -59,7 +62,6 @@ export default class EditReviewPage extends React.Component {
                     </div>
                 </div>
             </React.Fragment>
-
         )
     }
 }

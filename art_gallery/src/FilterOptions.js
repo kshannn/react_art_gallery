@@ -10,11 +10,6 @@ export default class FilterOptions extends React.Component {
         art_subject: []
       };
 
-    applyFilter = async () => {
-        let response = await axios.get(baseUrl + "/art_gallery/combinedFilter/" + this.state.art_type + "/" + this.state.art_subject)
-        this.props.filterGallery(response);        
-    }
-
     // Process checkbox, store art subject selected in state
     updateCheckbox = (e) => {
     if (!this.state.art_subject.includes(e.target.value)) {
@@ -36,10 +31,17 @@ export default class FilterOptions extends React.Component {
     }
     };
 
+    // When apply filter button is clicked, gallery returns art posts that meets filter criteria
+    applyFilter = async () => {
+        let response = await axios.get(baseUrl + "/art_gallery/combinedFilter/" + this.state.art_type + "/" + this.state.art_subject)
+        this.props.filterGallery(response);        
+    }
+
     render(){
         return (
             <React.Fragment>
                 <div id="mainFilter">
+                    
                 {/* Art type */}
                 <h2>Type</h2>
                 <select
@@ -91,11 +93,14 @@ export default class FilterOptions extends React.Component {
                     />{" "}People
                 </div>
     
+                {/* Apply filter button */}
                 <button onClick={()=>{
                     this.applyFilter();
                 }}>Apply filter</button>
+
+                {/* Clear filter button */}
+                {/* Set state back to default (i.e. all options unchecked) */}
                 <button onClick={()=>
-                // set state back to default (i.e. all options unchecked)
                 this.setState({
                     art_type: "",
                     art_subject: []
