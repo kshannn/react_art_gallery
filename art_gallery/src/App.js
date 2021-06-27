@@ -118,10 +118,13 @@ export default class App extends React.Component {
 
   // ===== Render all the art posts =====
   renderList = () => {
+
+    // Display no results if no results found
+    if (this.state.gallery.length === 0){
+      return <h2 id="noResults">No results found...</h2>
+    } 
     
-
     let jsx = this.state.gallery.map((artpost) => {
-
       return (
         <div className="col-md-4 col-sm-6 col-xs-12">
           <div className="listingContainer" onClick={() => {
@@ -225,11 +228,12 @@ export default class App extends React.Component {
 
               {/* Filter section */}
               <div id="filterSection" className="d-none d-md-block">
-                <FilterOptions filterGallery={this.filterGallery} />
+                <FilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} />
               </div>
 
               {/* Gallery section */}
               <div id="gallerySection">
+                {this.state.gallery? <p id="resultsNum">Displaying {this.state.gallery.length} result(s)</p>:null}
                 <div className="row">
                   {this.renderList()}
                 </div>

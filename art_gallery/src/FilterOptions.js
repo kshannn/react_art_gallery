@@ -100,11 +100,13 @@ export default class FilterOptions extends React.Component {
 
                 {/* Clear filter button */}
                 {/* Set state back to default (i.e. all options unchecked) */}
-                <button onClick={()=>
-                this.setState({
-                    art_type: "",
-                    art_subject: []
-                })
+                <button onClick={()=>{
+                    this.setState({
+                        art_type: "",
+                        art_subject: []
+                    })
+                    this.props.getGallery();
+                }
                 }>Clear filter</button>
                 </div>
             </React.Fragment>

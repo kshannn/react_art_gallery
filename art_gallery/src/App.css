@@ -435,7 +435,7 @@ textarea{
 } */
 
 #mainFilter{
-  padding: 1rem 2rem;
+  padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -567,4 +567,16 @@ textarea{
 
 #logo {
   width: 130px;
+}
+
+#noResults{
+  margin-top:100px;
+  text-align: center;
+}
+
+#resultsNum {
+  color: grey;
+  text-align: center;
+  margin-block-end: 0em;
+  margin-block-start: 1em;
 }
