@@ -15,7 +15,6 @@ export default class App extends React.Component {
     displayHome: true,
     artHolder: 0,
     gallery: [],
-    storedTags: "", //??
     searchTerm: ""
   };
 
@@ -34,6 +33,7 @@ export default class App extends React.Component {
     });
   }
 
+  // Displays only filtered results in gallery
   filterGallery = (response) => {
     this.setState({
       gallery: response.data.reverse()
@@ -57,6 +57,7 @@ export default class App extends React.Component {
     })
   }
 
+  // Return user to home page
   closePage = () => {
     this.setState({
       displayArtForm: false,
@@ -65,6 +66,7 @@ export default class App extends React.Component {
     });
   };
 
+  // Clicking on create art button set displayArtForm to true
   createArt = () => {
     this.setState({
       displayArtForm: true,
@@ -72,15 +74,18 @@ export default class App extends React.Component {
     });
   };
 
+  // When displayArtForm is set to true, art post creation page is rendered
   renderCreateArtPage = () => {
     if (this.state.displayArtForm) {
-      return <CreateArtPage closePage={this.closePage} getGallery={this.getGallery} />;
+      return <CreateArtPage
+        closePage={this.closePage}
+        getGallery={this.getGallery} />;
     } else {
       return null;
     }
   };
 
-
+  // Clicking on artpost set displayArtInfo to true
   showArtInfo = (artpost) => {
     this.setState({
       displayArtInfo: true,
@@ -89,6 +94,7 @@ export default class App extends React.Component {
     })
   }
 
+  // When displayArtInfo is set to true, detailed art post page is rendered
   renderArtInfoPage = () => {
     if (this.state.displayArtInfo) {
       return <ArtInfo
@@ -101,6 +107,7 @@ export default class App extends React.Component {
     }
   }
 
+  // Display art type (e.g. digital/traditional) tags in each art post
   displayArtType = (artpost) => {
     if (artpost.art_type === "digital") {
       return <span className="badge badge-digital" style={{ marginRight: "5px" }}>{artpost.art_type}</span>
@@ -109,17 +116,18 @@ export default class App extends React.Component {
     }
   }
 
-  
+  // Render all the art posts
   renderList = () => {
-    
+
     let jsx = this.state.gallery.map((artpost) => {
-      
+
       return (
         <div className="col-md-4 col-sm-6 col-xs-12">
           <div className="listingContainer" onClick={() => {
             this.showArtInfo(artpost)
           }
           }>
+            {/* Basic layout of each artpost */}
             <div className="imageHolder" style={{ backgroundImage: `url(${artpost.image})` }}>
             </div>
             <div className="listingContent">
@@ -132,8 +140,10 @@ export default class App extends React.Component {
                 {artpost.reviews.length}
               </p>
 
+              {/* Display art type tag for each artpost */}
               {this.displayArtType(artpost)}
 
+              {/* Display art subject tags for each artpost */}
               {artpost.art_subject.map((subject) => {
                 return (
                   <span className={"badge " + "badge-" + subject} style={{ marginRight: "5px" }}>{subject}</span>
@@ -144,7 +154,7 @@ export default class App extends React.Component {
         </div>
       );
     });
-    
+
     return jsx;
   };
 
@@ -161,17 +171,14 @@ export default class App extends React.Component {
             </button>
 
             {/* Filter toggle on smaller devices - Toggle on */}
-  
-              <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
-                <div className="offcanvas-header">
-                  <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
-                  <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                {/* <div className="offcanvas-body"> */}
-                  <FilterOptions filterGallery={this.filterGallery}/>
-                {/* </div> */}
+            <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
+              <div className="offcanvas-header">
+                <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
+                <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
-  
+
+              <FilterOptions filterGallery={this.filterGallery} />
+            </div>
 
             {/* Logo */}
             <a className="navbar-brand" href="/">The Art Galore</a>
@@ -195,7 +202,6 @@ export default class App extends React.Component {
               </button>
             </div>
 
-
             {/* Create art button */}
             {/* Only display create button on home page */}
             {this.state.displayHome &&
@@ -203,7 +209,6 @@ export default class App extends React.Component {
                 <button id="createArtBtn" onClick={this.createArt}>Create</button>
               </React.Fragment>
             }
-
 
           </div>
         </nav>
@@ -213,12 +218,10 @@ export default class App extends React.Component {
         {/* Only display main body when on home page */}
         {this.state.displayHome &&
           <div id="mainSection">
-            
+
             {/* Filter section */}
             <div id="filterSection" className="d-none d-md-block">
-              {/* <div id="mainFilter"> */}
-                <FilterOptions filterGallery={this.filterGallery} />
-              {/* </div> */}
+              <FilterOptions filterGallery={this.filterGallery} />
             </div>
 
             {/* Gallery section */}
@@ -231,9 +234,11 @@ export default class App extends React.Component {
           </div>
         }
 
-        
 
+        // Render detailed art page when art is clicked
         {this.renderArtInfoPage()}
+
+        // Render create art page when create button is clicked
         {this.renderCreateArtPage()}
 
       </React.Fragment>
