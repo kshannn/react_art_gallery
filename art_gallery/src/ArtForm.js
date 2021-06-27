@@ -1,8 +1,7 @@
 import React from "react";
 
-export default class ArtForm extends React.Component {
+export default function ArtForm (props) {
 
-  render() {
     return (
       <React.Fragment>
         <div id="artForm">
@@ -11,8 +10,8 @@ export default class ArtForm extends React.Component {
           <input type="text"
             placeholder="Your name"
             name="poster_name"
-            value={this.props.poster_name}
-            onChange={this.props.updateForm}
+            value={props.poster_name}
+            onChange={props.updateForm}
           />
 
           {/* ====== Text field: Art URL ======*/}
@@ -20,19 +19,19 @@ export default class ArtForm extends React.Component {
           <input type="text"
             placeholder="Input your art URL"
             name="image"
-            value={this.props.image}
-            onChange={this.props.updateForm} />
+            value={props.image}
+            onChange={props.updateForm} />
 
           {/* ====== Art URL Preview ======*/}
-          <div className="preview" style={{ backgroundImage: `url(${this.props.image})` }}>{this.props.image === "" ? <p>Preview art</p> : null}</div>
+          <div className="preview" style={{ backgroundImage: `url(${props.image})` }}>{props.image === "" ? <p>Preview art</p> : null}</div>
 
           {/* ====== Text field: Art Title ======*/}
           <h2>Title of Art</h2>
           <input type="text"
             placeholder="Input title of your art"
             name="art_title"
-            value={this.props.art_title}
-            onChange={this.props.updateForm} />
+            value={props.art_title}
+            onChange={props.updateForm} />
 
           {/* ====== Text field: Art Description ======*/}
           <h2>Description</h2>
@@ -40,8 +39,8 @@ export default class ArtForm extends React.Component {
             name="art_description"
             rows="4"
             cols="40"
-            value={this.props.art_description}
-            onChange={this.props.updateForm}
+            value={props.art_description}
+            onChange={props.updateForm}
           ></textarea>
 
           {/* ====== Radio buttons: Art Type ======*/}
@@ -51,16 +50,16 @@ export default class ArtForm extends React.Component {
               type="radio"
               name="art_type"
               value="digital"
-              onChange={this.props.updateForm}
-              checked={this.props.art_type === "digital"}
+              onChange={props.updateForm}
+              checked={props.art_type === "digital"}
             />{" "}
         <span>Digital</span>
         <input
               type="radio"
               name="art_type"
               value="traditional"
-              onChange={this.props.updateForm}
-              checked={this.props.art_type === "traditional"}
+              onChange={props.updateForm}
+              checked={props.art_type === "traditional"}
             />{" "}
         <span>Traditional</span>
         </div>
@@ -71,30 +70,30 @@ export default class ArtForm extends React.Component {
               type="checkbox"
               name="art_subject"
               value="nature"
-              checked={this.props.art_subject.includes("nature")}
-              onChange={this.props.updateCheckbox}
+              checked={props.art_subject.includes("nature")}
+              onChange={props.updateCheckbox}
             />{" "}
         <span>Nature</span>
         <input
               type="checkbox"
               name="art_subject"
               value="animal"
-              checked={this.props.art_subject.includes("animal")}
-              onChange={this.props.updateCheckbox}
+              checked={props.art_subject.includes("animal")}
+              onChange={props.updateCheckbox}
             />{" "}
         <span>Animal</span>
         <input
               type="checkbox"
               name="art_subject"
               value="people"
-              checked={this.props.art_subject.includes("people")}
-              onChange={this.props.updateCheckbox}
+              checked={props.art_subject.includes("people")}
+              onChange={props.updateCheckbox}
             />{" "}
         <span>People</span>
          </div>
         </div>
       </React.Fragment>
     );
-  }
+  
 
 }
