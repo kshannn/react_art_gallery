@@ -1,3 +1,26 @@
+# The Art Galore
+
+## Project Summary
+### Project Context
+The Art Galore(TAG) is a mobile-responsive open platform for artists to browse through art, leave reviews for art, and also share their art with the public.
+
+### Organisational Goals
+The web app aims to promote the freedom and idea of sharing art to the public and exchanging constructive feedback in the art community. Through providing and receiving reviews, artist can make use of the feedback to improve on their art. 
+
+### User Goals
+The aim of users is to gather reviews for their art. These reviews can be helpful in helping them pinpoint the areas they can work on.
+
+### Justification for the App
+Many art platforms provides a platform for people to post and share their art however this art platform encourages leaving reviews to help artist grow. Creation of art post and reviews are made easy through the features implemented (e.g. art post and reviews can be made within a single click)
+
+## Project Complexity
+
+## UX/UI
+### Stategy
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
