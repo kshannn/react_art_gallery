@@ -14,15 +14,16 @@ export default class ArtInfo extends React.Component {
         displayEditForm: false,
         displayInfo: true,
         displayEditReview: false,
+        displayDeleteArtPage: false,
+        displayDeleteReviewPage: false,
         currentArt: {},
+        currentReview: {},
         reviewsSection: [],
         reviewer_name: "",
-        review: "",
-        currentReview: {},
-        displayDeletePage: false,
-        displayDeleteReviewPage: false
+        review: ""
     }
 
+    // ===== Get all information on the art selected and their reviews on load (GET Request) =====
     async componentDidMount() {
         this.getArtInfo();
     }
@@ -30,17 +31,158 @@ export default class ArtInfo extends React.Component {
     getArtInfo = async () => {
         let artResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id)
         let reviewResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id + "/review_list")
-
-        let sortedDates = reviewResponse.data[0].reviews.sort((a, b) => new Date(b.review_date) - new Date(a.review_date));
+        let reviewsSortedByLatest = reviewResponse.data[0].reviews.sort((a, b) => new Date(b.review_date) - new Date(a.review_date));
 
         this.setState({
             contentLoaded: true,
             currentArt: artResponse.data,
-            reviewsSection: sortedDates
+            reviewsSection: reviewsSortedByLatest
+        })
+    }
+
+    // refreshes reviews and sorts them from most recent
+    getReview = async () => {
+        let reviewResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id + "/review_list")
+        let reviewsSortedByLatest = reviewResponse.data[0].reviews.sort((a, b) => new Date(b.review_date) - new Date(a.review_date));
+        this.setState({
+            reviewsSection: reviewsSortedByLatest
+        })
+    }
+
+    // ===== Clicking on edit art renders edit art page =====
+    editArt = () => {
+        this.setState({
+            displayEditForm: true,
+            displayInfo: false
+        })
+    }
+
+    renderEditArtPage = () => {
+        if (this.state.displayEditForm) {
+            return <EditArtPage
+                closePage={this.props.closePage}
+                closeEditArt={this.closeEditArt}
+                getGallery={this.props.getGallery}
+                poster_name={this.state.currentArt.poster_name}
+                image={this.state.currentArt.image}
+                art_title={this.state.currentArt.art_title}
+                art_description={this.state.currentArt.art_description}
+                art_type={this.state.currentArt.art_type}
+                art_subject={this.state.currentArt.art_subject}
+                like_count={this.state.currentArt.statistics.like_count}
+                review_count={this.state.currentArt.statistics.review_count}
+                _id={this.state.currentArt._id}
+                post_date={this.state.currentArt.post_date}
+            />
+        } else {
+            return null
+        }
+    }
+
+     // Close edit art page
+     closeEditArt = () => {
+        this.setState({
+            displayEditForm: false,
+            displayInfo: true
         })
     }
 
 
+    // ===== Clicking on delete art button prompts delete confirmation page =====
+    displayDeleteArtPage = () => {
+        this.setState({
+            displayDeleteArtPage: true
+        })
+    }
+
+    renderDeleteArtPage = () => {
+        if (this.state.displayDeleteArtPage){
+            return (
+            <div className="popupBackground">
+                <div id="deleteConfirmation"className="alert alert-warning" role="alert">
+                Are you sure you want to delete this art?
+                    <div>
+                        <button className="btn btn-primary" onClick={()=>{
+                            this.setState({
+                                displayDeleteArtPage:false
+                            })
+                        }}>Cancel</button>
+                        <button className="btn btn-info" onClick={()=>{
+                            this.deleteArt(this.state.currentArt._id)
+                            this.setState({
+                                displayDeleteArtPage:false
+                            })
+                        }}>Delete</button>
+                    </div>
+                </div>
+            </div>)
+        } else {
+            return null
+        }
+    }
+
+    // Clicking on delete in the confirmation screen deletes art
+    deleteArt = async (artIdToDelete) => {
+        let response = await axios.delete(baseUrl + "/artpost/delete/" + artIdToDelete)
+
+        // close popup
+        this.props.closePage();
+        
+
+        // refresh gallery
+        this.props.getGallery();
+
+    }
+
+    // delete liked_post!!
+    // Clicking on post button creates a new review in database and displays the new review
+    createReview = async () => {
+        let userData = {
+            reviewer_name: this.state.reviewer_name,
+            liked_post: false, 
+            review: this.state.review
+        }
+        let response = await axios.post(baseUrl + "/art_gallery/" + this.props._id + "/create/review", userData)
+        
+        // resets review fields to empty
+        this.setState({
+            reviewer_name: "",
+            review: ""
+        })
+
+        // refreshes reviews
+        this.getReview();
+    }
+
+    // ===== Clicking on edit review prompts edit review page =====
+    editReview = (review) => {
+        this.setState({
+            displayEditReview: true,
+            currentReview: review
+        })
+    }
+
+    renderEditReview = () => {
+        if (this.state.displayEditReview) {
+            return <EditReviewPage
+                updateForm={this.updateForm}
+                updateReview={this.updateReview}
+                currentReview={this.state.currentReview}
+                closeEditReview={this.closeEditReview}
+                getReview={this.getReview} />
+        } else {
+            return null
+        }
+    }
+
+    // Clicking on cancel closes edit review popup
+    closeEditReview = () => {
+        this.setState({
+            displayEditReview: false
+        })
+    }
+
+    // ===== Clicking on delete review button prompts delete confirmation page =====
     displayDeleteReviewPage = () => {
         this.setState({
             displayDeleteReviewPage: true
@@ -73,176 +215,38 @@ export default class ArtInfo extends React.Component {
         }
     }
 
-    displayDeletePage = () => {
-        this.setState({
-            displayDeletePage: true
-        })
-    }
-
-    renderDeletePage = () => {
-        if (this.state.displayDeletePage){
-            return (
-            <div className="popupBackground">
-                <div id="deleteConfirmation"className="alert alert-warning" role="alert">
-                Are you sure you want to delete this art?
-                    <div>
-                        <button className="btn btn-primary" onClick={()=>{
-                            this.setState({
-                                displayDeletePage:false
-                            })
-                        }}>Cancel</button>
-                        <button className="btn btn-info" onClick={()=>{
-                            this.deleteArt(this.state.currentArt._id)
-                            this.setState({
-                                displayDeletePage:false
-                            })
-                        }}>Delete</button>
-                    </div>
-                </div>
-            </div>)
-        } else {
-            return null
-        }
-    }
-
-    countReviews = async () => {
-        let userData = {
-            statistics: {
-                review_count: this.state.reviewsSection.length
-            }
-        }
-
-        let response = await axios.put(baseUrl + "/artpost/updateReviewCount/" + this.props._id, userData);
-        this.getArtInfo();
-        // let artResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id)
-
-        // this.setState({
-        //     currentArt: artResponse.data,
-        // })
-
-    }
-
-
-
-    closeEditReview = () => {
-        this.setState({
-            displayEditReview: false
-        })
-    }
-
-    editReview = (review) => {
-        this.setState({
-            displayEditReview: true,
-            currentReview: review
-        })
-    }
-
-    renderEditReview = () => {
-        if (this.state.displayEditReview) {
-            return <EditReviewPage
-                updateForm={this.updateForm}
-                updateReview={this.updateReview}
-                currentReview={this.state.currentReview}
-                closeEditReview={this.closeEditReview}
-                getReview={this.getReview} />
-
-        } else {
-            return null
-        }
-    }
-
+    // Clicking on delete in the confirmation screen deletes review
     deleteReview = async (reviewHolder) => {
         let response = await axios.delete(baseUrl + "/review/delete/" + reviewHolder.id)
 
-        // refresh review
+        // refresh leftover reviews
         this.getReview();
     }
 
-    clearFields = () => {
-        this.setState({
-            reviewer_name: "",
-            review: ""
-        })
-    }
+    // not working
+    // countReviews = async () => {
+    //     let userData = {
+    //         statistics: {
+    //             review_count: this.state.reviewsSection.length
+    //         }
+    //     }
 
-    getReview = async () => {
-        let reviewResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id + "/review_list")
-        let sortedDates = reviewResponse.data[0].reviews.sort((a, b) => new Date(b.review_date) - new Date(a.review_date));
-        this.setState({
-            reviewsSection: sortedDates
-        })
-    }
+    //     let response = await axios.put(baseUrl + "/artpost/updateReviewCount/" + this.props._id, userData);
+    //     this.getArtInfo();
+    //     // let artResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id)
 
+    //     // this.setState({
+    //     //     currentArt: artResponse.data,
+    //     // })
 
-    createReview = async () => {
-        let userData = {
-            reviewer_name: this.state.reviewer_name,
-            liked_post: false,
-            review: this.state.review
-        }
-        let response = await axios.post(baseUrl + "/art_gallery/" + this.props._id + "/create/review", userData)
-        this.clearFields();
-        this.countReviews();
-        this.getReview();
-    }
+    // }
 
+    // ===== Process form fields =====
     updateForm = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         });
     };
-
-    closeEdit = () => {
-        this.setState({
-            displayEditForm: false,
-            displayInfo: true
-        })
-    }
-
-    editArt = () => {
-        this.setState({
-            displayEditForm: true,
-            displayInfo: false
-        })
-    }
-
-    renderEditArtPage = () => {
-        if (this.state.displayEditForm) {
-            return <EditArtPage
-                closePage={this.props.closePage}
-                closeEdit={this.closeEdit}
-                getGallery={this.props.getGallery}
-                poster_name={this.state.currentArt.poster_name}
-                image={this.state.currentArt.image}
-                art_title={this.state.currentArt.art_title}
-                art_description={this.state.currentArt.art_description}
-                art_type={this.state.currentArt.art_type}
-                art_subject={this.state.currentArt.art_subject}
-                like_count={this.state.currentArt.statistics.like_count}
-                review_count={this.state.currentArt.statistics.review_count}
-                _id={this.state.currentArt._id}
-                post_date={this.state.currentArt.post_date}
-            />
-
-
-        } else {
-            return null
-        }
-    }
-
-
-
-    deleteArt = async (artIdToDelete) => {
-        let response = await axios.delete(baseUrl + "/artpost/delete/" + artIdToDelete)
-
-        // close popup
-        this.props.closePage();
-        
-
-        // refresh gallery
-        this.props.getGallery();
-
-    }
 
     renderReviewList = () => {
         if (this.state.reviewsSection) {
@@ -269,8 +273,6 @@ export default class ArtInfo extends React.Component {
                                     }}>Delete review</button></li>
                                 </ul>
                             </div>
-
-
                         </div>
                     </React.Fragment>
                 )
@@ -278,8 +280,6 @@ export default class ArtInfo extends React.Component {
             return jsx
         }
     }
-
-
 
     render() {
         return (
@@ -309,7 +309,7 @@ export default class ArtInfo extends React.Component {
                                                 this.editArt();
                                             }}>Edit art</button></li>
                                             <li><button className="dropdown-item" onClick={() => {
-                                                this.displayDeletePage();
+                                                this.displayDeleteArtPage();
                                             
                                             }}>Delete art</button></li>
 
@@ -347,7 +347,7 @@ export default class ArtInfo extends React.Component {
 
                 {!this.state.displayInfo && this.renderEditArtPage()}
                 {this.renderEditReview()}
-                {this.renderDeletePage()}
+                {this.renderDeleteArtPage()}
                 {this.renderDeleteReviewPage()}
 
             </React.Fragment>

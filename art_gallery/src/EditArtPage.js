@@ -36,7 +36,7 @@ export default class EditArtPage extends React.Component {
 
 
     // close edit page
-    this.props.closeEdit();
+    this.props.closeEditArt();
     this.props.closePage();
     // refresh page
     this.props.getGallery();
@@ -83,7 +83,7 @@ export default class EditArtPage extends React.Component {
     return (
       <React.Fragment>
         <div id="editArtPage">
-          <button className="backBtn" onClick={this.props.closeEdit}><i class="fas fa-chevron-left"></i>Back</button>
+          <button className="backBtn" onClick={this.props.closeEditArt}><i class="fas fa-chevron-left"></i>Back</button>
           <h1 className="text-center">Edit an art post</h1>
           <ArtForm
             updateForm={this.updateForm}
