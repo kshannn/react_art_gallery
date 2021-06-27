@@ -19,7 +19,7 @@ export default class App extends React.Component {
   };
 
 
-  // Load gallery on page load (GET REQUEST)
+  // ===== Load gallery on page load (GET REQUEST) =====
   async componentDidMount() {
     this.getGallery();
   }
@@ -33,21 +33,21 @@ export default class App extends React.Component {
     });
   }
 
-  // Displays only filtered results in gallery
+  // ===== Displays only filtered results in gallery =====
   filterGallery = (response) => {
     this.setState({
       gallery: response.data.reverse()
     })
   }
 
-  // Process form fields
+  // ===== Process form fields =====
   updateForm = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
-  // Search for art/artist with search bar
+  // ===== Search for art/artist with search bar =====
   searchResults = async () => {
     // retrieve art or artist
     let response = await axios.get(baseUrl + "/art_gallery/search" + "?q=" + this.state.searchTerm);
@@ -57,7 +57,7 @@ export default class App extends React.Component {
     })
   }
 
-  // Return user to home page
+  // ===== Return user to home page =====
   closePage = () => {
     this.setState({
       displayArtForm: false,
@@ -66,7 +66,7 @@ export default class App extends React.Component {
     });
   };
 
-  // Clicking on create art button set displayArtForm to true
+  // ===== Clicking on create art button set displayArtForm to true =====
   createArt = () => {
     this.setState({
       displayArtForm: true,
@@ -74,7 +74,7 @@ export default class App extends React.Component {
     });
   };
 
-  // When displayArtForm is set to true, art post creation page is rendered
+  // ===== When displayArtForm is set to true, art post creation page is rendered =====
   renderCreateArtPage = () => {
     if (this.state.displayArtForm) {
       return <CreateArtPage
@@ -85,7 +85,7 @@ export default class App extends React.Component {
     }
   };
 
-  // Clicking on artpost set displayArtInfo to true
+  // ===== Clicking on artpost set displayArtInfo to true =====
   showArtInfo = (artpost) => {
     this.setState({
       displayArtInfo: true,
@@ -94,7 +94,7 @@ export default class App extends React.Component {
     })
   }
 
-  // When displayArtInfo is set to true, detailed art post page is rendered
+  // ===== When displayArtInfo is set to true, detailed art post page is rendered =====
   renderArtInfoPage = () => {
     if (this.state.displayArtInfo) {
       return <ArtInfo
@@ -107,7 +107,7 @@ export default class App extends React.Component {
     }
   }
 
-  // Display art type (e.g. digital/traditional) tags in each art post
+  // ===== Display art type (e.g. digital/traditional) tags in each art post =====
   displayArtType = (artpost) => {
     if (artpost.art_type === "digital") {
       return <span className="badge badge-digital" style={{ marginRight: "5px" }}>{artpost.art_type}</span>
@@ -116,7 +116,7 @@ export default class App extends React.Component {
     }
   }
 
-  // Render all the art posts
+  // ===== Render all the art posts =====
   renderList = () => {
 
     let jsx = this.state.gallery.map((artpost) => {
@@ -127,7 +127,7 @@ export default class App extends React.Component {
             this.showArtInfo(artpost)
           }
           }>
-            {/* Basic layout of each artpost */}
+            {/* Render basic layout of each artpost */}
             <div className="imageHolder" style={{ backgroundImage: `url(${artpost.image})` }}>
             </div>
             <div className="listingContent">
@@ -158,6 +158,7 @@ export default class App extends React.Component {
     return jsx;
   };
 
+  // ===== Render the landing page =====
   render() {
     return (
       <React.Fragment>
@@ -237,10 +238,10 @@ export default class App extends React.Component {
         }
 
 
-        // Render detailed art page when art is clicked
+        {/* Render detailed art page when art is clicked */}
         {this.renderArtInfoPage()}
 
-        // Render create art page when create button is clicked
+        {/* Render create art page when create button is clicked */}
         {this.renderCreateArtPage()}
 
       </React.Fragment>

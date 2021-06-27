@@ -1,8 +1,9 @@
-import EditArtPage from "./EditArtPage"
-import EditReviewPage from "./EditReviewPage"
 import axios from "axios"
 import React from "react"
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css'
+import EditArtPage from "./EditArtPage"
+import EditReviewPage from "./EditReviewPage"
+
 
 const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
 
@@ -18,7 +19,8 @@ export default class ArtInfo extends React.Component {
         reviewer_name: "",
         review: "",
         currentReview: {},
-        displayDeletePage: false
+        displayDeletePage: false,
+        displayDeleteReviewPage: false
     }
 
     async componentDidMount() {
@@ -38,6 +40,39 @@ export default class ArtInfo extends React.Component {
         })
     }
 
+
+    displayDeleteReviewPage = () => {
+        this.setState({
+            displayDeleteReviewPage: true
+        })
+    }
+
+    renderDeleteReviewPage = () => {
+        if (this.state.displayDeleteReviewPage){
+            return (
+            <div className="popupBackground">
+                <div id="deleteConfirmation"className="alert alert-warning" role="alert">
+                Are you sure you want to delete this review?
+                    <div>
+                        <button className="btn btn-primary" onClick={()=>{
+                            this.setState({
+                                displayDeleteReviewPage:false
+                            })
+                        }}>Cancel</button>
+                        <button className="btn btn-info" onClick={()=>{
+                            this.deleteReview(this.state.currentReview)
+                            this.setState({
+                                displayDeleteReviewPage:false
+                            })
+                        }}>Delete</button>
+                    </div>
+                </div>
+            </div>)
+        } else {
+            return null
+        }
+    }
+
     displayDeletePage = () => {
         this.setState({
             displayDeletePage: true
@@ -46,7 +81,6 @@ export default class ArtInfo extends React.Component {
 
     renderDeletePage = () => {
         if (this.state.displayDeletePage){
-            console.log(1)
             return (
             <div className="popupBackground">
                 <div id="deleteConfirmation"className="alert alert-warning" role="alert">
@@ -227,7 +261,11 @@ export default class ArtInfo extends React.Component {
                                         this.editReview(review);
                                     }}>Edit review</button></li>
                                     <li><button className="dropdown-item" onClick={() => {
-                                        this.deleteReview(review);
+                                        // this.deleteReview(review);
+                                        this.setState({
+                                            currentReview:review
+                                        })
+                                        this.displayDeleteReviewPage();
                                     }}>Delete review</button></li>
                                 </ul>
                             </div>
@@ -310,6 +348,7 @@ export default class ArtInfo extends React.Component {
                 {!this.state.displayInfo && this.renderEditArtPage()}
                 {this.renderEditReview()}
                 {this.renderDeletePage()}
+                {this.renderDeleteReviewPage()}
 
             </React.Fragment>
         )
