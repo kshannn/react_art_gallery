@@ -1,23 +1,81 @@
 # The Art Galore
 
 ## Project Summary
-### Project Context
+**Project Context**
 The Art Galore(TAG) is a mobile-responsive open platform for artists to browse through art, leave reviews for art, and also share their art with the public.
 
-### Organisational Goals
+**Organisational Goals**
 The web app aims to promote the freedom and idea of sharing art to the public and exchanging constructive feedback in the art community. Through providing and receiving reviews, artist can make use of the feedback to improve on their art. 
 
-### User Goals
+**User Goals**
 The aim of users is to gather reviews for their art. These reviews can be helpful in helping them pinpoint the areas they can work on.
 
-### Justification for the App
+**Justification for the App**
 Many art platforms provides a platform for people to post and share their art however this art platform encourages leaving reviews to help artist grow. Creation of art post and reviews are made easy through the features implemented (e.g. art post and reviews can be made within a single click)
 
 ## Project Complexity
 
 ## UX/UI
-### Stategy
+### **Stategy**
+_Organisation_
+* Objective: Provide a platform to encourage sharing of constructive feedback within the art community
 
+_User_
+* Objective: To get reviews for the art that they shared
+
+* Needs: An art platform that encourages reviews
+
+* Demographics:
+    * Artists who do digital/traditional art and seeking for improvement from public feedback
+    * Sufficient literacy in using technological devices
+
+* Pain point: Can be difficult to get constructive feedback from other platforms 
+
+User Stories | Acceptance Criteria(s)
+------------ | -------------
+As an artist who is looking for feedback on my art, I want to be able to easily post my art onto a platform where I can gain feedback so that I can improve on my art based on them  | Feature that allows ease of posting art
+
+
+### **Scope**
+_Functional Specifications_
+* Create, read, update, delete art posts
+
+* Create, read, update, delete reviews
+
+* Search for art post 
+
+* Filter art post
+
+_Content requirements_
+
+* Details about the art post (e.g. name of poster, title of art, description of art, date posted etc.)
+
+* Details about the reviews (e.g. name of reviewer, date posted, content of review)
+
+_Non-functional requirements_
+* Mobile responsiveness
+    * Achieved via the use of bootstrap grid columns and flex box
+* Performance
+
+### **Structure**
+
+
+### **Skeleton**
+
+
+### **Surface**
+
+## Features
+
+1. Users can create, update, and delete art posts
+2. Users can create, update, and delete reviews
+3. Users can quickly search for an art post by the name of the artist or the art title
+4. Users can filter art appearing on their gallery based on the art type and art subject
+
+_Limitations and future implementations_
+
+
+## Testing
 
 
 
