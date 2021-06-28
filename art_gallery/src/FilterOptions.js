@@ -105,7 +105,7 @@ export default class FilterOptions extends React.Component {
                         art_type: "",
                         art_subject: []
                     })
-                    this.props.getGallery();
+                    this.props.getGallery()
                 }
                 }>Clear filter</button>
                 </div>

@@ -101,6 +101,7 @@ export default class App extends React.Component {
         _id={this.state.artHolder._id}
         closePage={this.closePage}
         getGallery={this.getGallery}
+        displayArtType={this.displayArtType}
       />;
     } else {
       return null;
@@ -213,7 +214,7 @@ export default class App extends React.Component {
               {/* Only display create button on home page */}
               {this.state.displayHome &&
                 <React.Fragment>
-                  <button id="createArtBtn" onClick={this.createArt}>Create</button>
+                  <button id="createArtBtn" onClick={this.createArt}><i class="fas fa-plus-circle"></i> Create</button>
                 </React.Fragment>
               }
 

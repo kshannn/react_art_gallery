@@ -317,8 +317,14 @@ export default class ArtInfo extends React.Component {
                             <div id="artDetailsSection">
                                 <h2>{this.state.currentArt.art_title}</h2>
                                 <h3>by {this.state.currentArt.poster_name}</h3>
-                                <p>{this.state.currentArt.art_description}</p>
-                                <p>Published: {this.state.currentArt.post_date}</p>
+                                <span>{this.props.displayArtType(this.state.currentArt)}</span>
+                                {this.state.currentArt.art_subject.map((subject) => {
+                                    return (
+                                    <span className={"badge " + "badge-" + subject} style={{ marginRight: "5px" }}>{subject}</span>
+                                    )
+                                })}
+                                <p id="artDescription">{this.state.currentArt.art_description}</p>
+                                <p id="artPostDate">Published: {this.state.currentArt.post_date}</p>
                             </div>
                             
                             {/* Review section */}

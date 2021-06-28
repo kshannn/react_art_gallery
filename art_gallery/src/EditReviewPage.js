@@ -46,6 +46,7 @@ export default class EditReviewPage extends React.Component {
                 <div className="popupBackground">
                     <div className="editReviewPopup">
                         <div id="editReviewContent">
+                            <h2>Edit Review</h2>
                             <label>Your name</label>
                             <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm} />
                             <label>Review</label>
