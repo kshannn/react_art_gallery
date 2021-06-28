@@ -175,12 +175,12 @@ export default class App extends React.Component {
             <div className="container-fluid">
 
               {/* Filter toggle on smaller devices - Toggle off */}
-              <button id="sideToggle" className="btn d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button" onClick={() => {this.setState({sideBarDisplayed: true})}}>
+              {/* <button id="sideToggle" className="btn d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button" onClick={() => {this.setState({sideBarDisplayed: true})}}>
                 <i className="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
-              </button>
+              </button> */}
 
               {/* Filter toggle on smaller devices - Toggle on */}
-              <div className="overlay" style={{'display': this.state.sideBarDisplayed ? 'block': 'none'}}>
+              {/* <div className="overlay" style={{'display': this.state.sideBarDisplayed ? 'block': 'none'}}>
               <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
                 
                 <div className="offcanvas-header">
@@ -191,7 +191,24 @@ export default class App extends React.Component {
                 <FilterOptions filterGallery={this.filterGallery} />
                 
               </div>
-              </div>
+              </div> */}
+
+              {/* Testing bootstrap offcanvas */}
+              <button id="sideToggle" className="btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+              <i className="navbar-toggler-icon"></i>
+</button>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+    </div>
+  </div>
+</div>
 
               {/* Logo */}
               <a className="navbar-brand" href="/">
