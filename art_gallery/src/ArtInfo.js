@@ -18,16 +18,19 @@ export default class ArtInfo extends React.Component {
         displayDeleteReviewPage: false,
         currentArt: {},
         currentReview: {},
+        otherArt:[],
         reviewsSection: [],
         reviewer_name: "",
         review: ""
     }
 
-    // ===== Get all information on the art selected and their reviews on load (GET Request) =====
+    // ===== Get all information on the art selected and other arts and their reviews on load (GET Request) =====
     async componentDidMount() {
         this.getArtInfo();
+        this.getOtherArt();
     }
 
+    // Get selected art info
     getArtInfo = async () => {
         let artResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id)
         let reviewResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id + "/review_list")
@@ -37,6 +40,14 @@ export default class ArtInfo extends React.Component {
             contentLoaded: true,
             currentArt: artResponse.data,
             reviewsSection: reviewsSortedByLatest
+        })
+    }
+
+    // Get other art
+    getOtherArt = async () => {
+        let response = await axios.get(baseUrl + "/art_gallery/except/" + this.props._id)
+        this.setState({
+            otherArt: response.data
         })
     }
 
@@ -240,6 +251,23 @@ export default class ArtInfo extends React.Component {
     };
 
 
+    // ===== Render other arts =====
+    renderOtherArt = () => {
+        if (this.state.otherArt){
+            let jsx = this.state.otherArt.map((otherArt)=>{
+                return (
+                    <React.Fragment>
+                        <div style={{width:"100px", height:"100px",backgroundColor:"blue"}}>
+                            <img src={otherArt.image}></img>
+                        </div>
+                    </React.Fragment>
+                )
+            })
+            return jsx
+        }
+    }
+
+
     // ===== If there are reviews, render reviews =====
     renderReviewList = () => {
         if (this.state.reviewsSection) {
@@ -286,6 +314,10 @@ export default class ArtInfo extends React.Component {
                         }}><i class="fas fa-chevron-left"></i>Back</button>
 
                         <div id="mainContentContainer">
+
+                            {/* Other arts section */}
+                            {this.renderOtherArt()}
+
 
                             {/* Art section */}
                             <div id="artAndToolOptions">
