@@ -44,8 +44,8 @@ export default class ArtInfo extends React.Component {
     }
 
     // Get other art
-    getOtherArt = async () => {
-        let response = await axios.get(baseUrl + "/art_gallery/except/" + this.props._id)
+    getOtherArt = async (id = this.props._id) => {
+        let response = await axios.get(baseUrl + "/art_gallery/other/" + id)
         this.setState({
             otherArt: response.data
         })
@@ -238,12 +238,16 @@ export default class ArtInfo extends React.Component {
     // Test
 
     switchArt = (otherArt) => {
+        this.getOtherArt(otherArt._id)
+        this.getArtInfo(otherArt._id);
+        this.getReview(otherArt._id);
+        
         this.setState({
             currentArt: otherArt,
             reviewsSection: otherArt.reviews
         })
-        this.getArtInfo(otherArt._id);
-        this.getReview(this.state.currentArt._id);
+        
+
     }
 
     // ===== Render other arts =====

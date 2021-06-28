@@ -15,7 +15,8 @@ export default class App extends React.Component {
     displayHome: true,
     artHolder: 0,
     gallery: [],
-    searchTerm: ""
+    searchTerm: "",
+    sideBarDisplayed: false
   };
 
 
@@ -174,18 +175,22 @@ export default class App extends React.Component {
             <div className="container-fluid">
 
               {/* Filter toggle on smaller devices - Toggle off */}
-              <button id="sideToggle" className="btn d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+              <button id="sideToggle" className="btn d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button" onClick={() => {this.setState({sideBarDisplayed: true})}}>
                 <i className="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
               </button>
 
               {/* Filter toggle on smaller devices - Toggle on */}
+              <div className="overlay" style={{'display': this.state.sideBarDisplayed ? 'block': 'none'}}>
               <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
+                
                 <div className="offcanvas-header">
                   <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
-                  <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" onClick={() => {this.setState({sideBarDisplayed: false})}}></button>
                 </div>
 
                 <FilterOptions filterGallery={this.filterGallery} />
+                
+              </div>
               </div>
 
               {/* Logo */}

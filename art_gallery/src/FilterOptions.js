@@ -33,7 +33,17 @@ export default class FilterOptions extends React.Component {
 
     // When apply filter button is clicked, gallery returns art posts that meets filter criteria
     applyFilter = async () => {
-        let response = await axios.get(baseUrl + "/art_gallery/combinedFilter/" + this.state.art_type + "/" + this.state.art_subject)
+        let q = ""
+
+        if(this.state.art_type && this.state.art_subject){
+            q += "art_type=" + this.state.art_type + "&" + "art_subject=" + this.state.art_subject
+        } else if(this.state.art_type){
+            q += "art_type=" + this.state.art_type
+        } else if(this.state.art_subject){
+            q += "art_subject=" + this.state.art_subject
+        }
+
+        let response = await axios.get(baseUrl + "/art_gallery/combinedFilter?" + q)
         this.props.filterGallery(response);        
     }
 
@@ -53,7 +63,7 @@ export default class FilterOptions extends React.Component {
                         });
                     }}
                 >
-                    <option>-- Select an art type ---</option>
+                    <option value="">-- Select an art type ---</option>
                     <option value="digital">Digital</option>
                     <option value="traditional">Traditional</option>
                 </select>
