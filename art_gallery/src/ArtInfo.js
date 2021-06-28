@@ -31,9 +31,9 @@ export default class ArtInfo extends React.Component {
     }
 
     // Get selected art info
-    getArtInfo = async () => {
-        let artResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id)
-        let reviewResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id + "/review_list")
+    getArtInfo = async (id = this.props._id) => {
+        let artResponse = await axios.get(baseUrl + "/art_gallery/" + id)
+        let reviewResponse = await axios.get(baseUrl + "/art_gallery/" + id + "/review_list")
         let reviewsSortedByLatest = reviewResponse.data[0].reviews.sort((a, b) => new Date(b.review_date) - new Date(a.review_date));
 
         this.setState({
@@ -52,8 +52,8 @@ export default class ArtInfo extends React.Component {
     }
 
     // refreshes reviews and sorts them from most recent
-    getReview = async () => {
-        let reviewResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id + "/review_list")
+    getReview = async (id = this.props._id) => {
+        let reviewResponse = await axios.get(baseUrl + "/art_gallery/" + id + "/review_list")
         let reviewsSortedByLatest = reviewResponse.data[0].reviews.sort((a, b) => new Date(b.review_date) - new Date(a.review_date));
         this.setState({
             reviewsSection: reviewsSortedByLatest
@@ -134,6 +134,7 @@ export default class ArtInfo extends React.Component {
         // refresh gallery
         this.props.getGallery();
 
+
     }
 
     // delete liked_post!!
@@ -141,10 +142,10 @@ export default class ArtInfo extends React.Component {
     createReview = async () => {
         let userData = {
             reviewer_name: this.state.reviewer_name,
-            liked_post: false, 
-            review: this.state.review
+            review: this.state.review,
         }
-        let response = await axios.post(baseUrl + "/art_gallery/" + this.props._id + "/create/review", userData)
+
+        let response = await axios.post(baseUrl + "/art_gallery/" + this.state.currentArt._id + "/create/review", userData)
         
         // resets review fields to empty
         this.setState({
@@ -153,7 +154,8 @@ export default class ArtInfo extends React.Component {
         })
 
         // refreshes reviews
-        this.getReview();
+        // this.getReview(this.state.currentArt._id);
+        this.getArtInfo(this.state.currentArt._id);
     }
 
     // ===== Clicking on edit review prompts edit review page =====
@@ -222,26 +224,9 @@ export default class ArtInfo extends React.Component {
         let response = await axios.delete(baseUrl + "/review/delete/" + reviewHolder.id)
 
         // refresh leftover reviews
-        this.getReview();
+        // this.getReview();
+        this.getArtInfo(this.state.currentArt._id);
     }
-
-    // not working
-    // countReviews = async () => {
-    //     let userData = {
-    //         statistics: {
-    //             review_count: this.state.reviewsSection.length
-    //         }
-    //     }
-
-    //     let response = await axios.put(baseUrl + "/artpost/updateReviewCount/" + this.props._id, userData);
-    //     this.getArtInfo();
-    //     // let artResponse = await axios.get(baseUrl + "/art_gallery/" + this.props._id)
-
-    //     // this.setState({
-    //     //     currentArt: artResponse.data,
-    //     // })
-
-    // }
 
     // ===== Process form fields =====
     updateForm = (e) => {
@@ -250,6 +235,16 @@ export default class ArtInfo extends React.Component {
         });
     };
 
+    // Test
+
+    switchArt = (otherArt) => {
+        this.setState({
+            currentArt: otherArt,
+            reviewsSection: otherArt.reviews
+        })
+        this.getArtInfo(otherArt._id);
+        this.getReview(this.state.currentArt._id);
+    }
 
     // ===== Render other arts =====
     renderOtherArt = () => {
@@ -257,8 +252,13 @@ export default class ArtInfo extends React.Component {
             let jsx = this.state.otherArt.map((otherArt)=>{
                 return (
                     <React.Fragment>
-                        <div style={{width:"100px", height:"100px",backgroundColor:"blue"}}>
-                            <img src={otherArt.image}></img>
+                        <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <div 
+                            className="otherArtContainer" 
+                            style={{ backgroundImage: `url(${otherArt.image})` }}
+                            onClick={()=>{
+                                this.switchArt(otherArt);
+                            }}></div>
                         </div>
                     </React.Fragment>
                 )
@@ -314,62 +314,67 @@ export default class ArtInfo extends React.Component {
                         }}><i class="fas fa-chevron-left"></i>Back</button>
 
                         <div id="mainContentContainer">
+                            {/* Art section */}
+                            <div id="currentArtSection">
+                                <div id="artAndToolOptions">
+                                    <div id="artInfoImageHolder" style={{ backgroundImage: `url(${this.state.currentArt.image})` }}></div>
+                                    <div id="toolOptions">
+                                        <div id="artInfoStatistics">
+                                            <i className="fas fa-heart"></i> {this.state.currentArt.statistics.like_count}
+                                            <i className="far fa-comment-dots"></i> {this.state.currentArt.statistics.review_count}
+                                        </div>
+                                        <div className="dropdown">
+
+                                            <button className="btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i className="fas fa-ellipsis-h"></i>
+                                            </button>
+                                            <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                <li><button className="dropdown-item" onClick={() => {
+                                                    this.editArt();
+                                                }}>Edit art</button></li>
+                                                <li><button className="dropdown-item" onClick={() => {
+                                                    this.displayDeleteArtPage();
+                                                
+                                                }}>Delete art</button></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="artDetailsSection">
+                                    <h2>{this.state.currentArt.art_title}</h2>
+                                    <h3>by {this.state.currentArt.poster_name}</h3>
+                                    <span>{this.props.displayArtType(this.state.currentArt)}</span>
+                                    {this.state.currentArt.art_subject.map((subject) => {
+                                        return (
+                                        <span className={"badge " + "badge-" + subject} style={{ marginRight: "5px" }}>{subject}</span>
+                                        )
+                                    })}
+                                    <p id="artDescription">{this.state.currentArt.art_description}</p>
+                                    <p id="artPostDate">Published: {this.state.currentArt.post_date}</p>
+                                </div>
+                                
+                                {/* Review section */}
+                                <div id="reviewSection">
+                                    <h2>Reviews {this.state.currentArt.review_count}</h2>
+                                    <div id="newReview">
+                                        <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm} />
+                                        <textarea rows="5" placeholder="Leave a review" name="review" value={this.state.review} onChange={this.updateForm} />
+                                        <button id="postReviewBtn" onClick={() => {
+                                            this.createReview();
+                                        }}>Post</button>
+                                    </div>
+                                    {this.renderReviewList()}
+                                </div>
+                            </div>
 
                             {/* Other arts section */}
-                            {this.renderOtherArt()}
-
-
-                            {/* Art section */}
-                            <div id="artAndToolOptions">
-                                <div id="artInfoImageHolder" style={{ backgroundImage: `url(${this.state.currentArt.image})` }}></div>
-                                <div id="toolOptions">
-                                    <div id="artInfoStatistics">
-                                        <i className="fas fa-heart"></i> {this.state.currentArt.statistics.like_count}
-                                        <i className="far fa-comment-dots"></i> {this.state.currentArt.reviews.length}
-                                    </div>
-                                    <div className="dropdown">
-
-                                        <button className="btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i className="fas fa-ellipsis-h"></i>
-                                        </button>
-                                        <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                            <li><button className="dropdown-item" onClick={() => {
-                                                this.editArt();
-                                            }}>Edit art</button></li>
-                                            <li><button className="dropdown-item" onClick={() => {
-                                                this.displayDeleteArtPage();
-                                            
-                                            }}>Delete art</button></li>
-
-                                        </ul>
-                                    </div>
+                            <div id="otherArtSection">
+                                <h2>Check out other art work</h2>
+                                <div className="row">
+                                    {this.renderOtherArt()}
                                 </div>
-                            </div>
-
-                            <div id="artDetailsSection">
-                                <h2>{this.state.currentArt.art_title}</h2>
-                                <h3>by {this.state.currentArt.poster_name}</h3>
-                                <span>{this.props.displayArtType(this.state.currentArt)}</span>
-                                {this.state.currentArt.art_subject.map((subject) => {
-                                    return (
-                                    <span className={"badge " + "badge-" + subject} style={{ marginRight: "5px" }}>{subject}</span>
-                                    )
-                                })}
-                                <p id="artDescription">{this.state.currentArt.art_description}</p>
-                                <p id="artPostDate">Published: {this.state.currentArt.post_date}</p>
-                            </div>
-                            
-                            {/* Review section */}
-                            <div id="reviewSection">
-                                <h2>Reviews {this.state.currentArt.review_count}</h2>
-                                <div id="newReview">
-                                    <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm} />
-                                    <textarea rows="5" placeholder="Leave a review" name="review" value={this.state.review} onChange={this.updateForm} />
-                                    <button id="postReviewBtn" onClick={() => {
-                                        this.createReview();
-                                    }}>Post</button>
-                                </div>
-                                {this.renderReviewList()}
                             </div>
                         </div>
                     </div>

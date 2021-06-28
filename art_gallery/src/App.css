@@ -148,8 +148,19 @@ img {
 
 #mainContentContainer {
   display:flex;
+}
+
+#otherArtSection{
+  flex: 1;
+  padding-right: 50px;
+  padding-left: 20px;
+}
+
+#currentArtSection {
+  display:flex;
   flex-direction: column;
   align-items: center;
+  flex: 2;
 }
 
 #artInfoImageHolder{
@@ -596,4 +607,18 @@ textarea{
   text-align: center;
   margin-block-end: 0em;
   margin-block-start: 1em;
+}
+
+.otherArtContainer {
+  /* min-width: 130px; */
+  height: 130px;
+  background-position: center;
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+
+
+.otherArtContainer:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }

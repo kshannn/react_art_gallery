@@ -94,6 +94,8 @@ export default class App extends React.Component {
     })
   }
 
+
+
   // ===== When displayArtInfo is set to true, detailed art post page is rendered =====
   renderArtInfoPage = () => {
     if (this.state.displayArtInfo) {
@@ -142,7 +144,7 @@ export default class App extends React.Component {
                 <i className="fas fa-heart"></i>
                 {artpost.statistics.like_count}
                 <i className="far fa-comment-dots"></i>
-                {artpost.reviews.length}
+                {artpost.statistics.review_count}
               </p>
 
               {/* Display art type tag for each artpost */}
