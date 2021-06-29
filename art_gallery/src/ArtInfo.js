@@ -18,7 +18,7 @@ export default class ArtInfo extends React.Component {
         displayDeleteReviewPage: false,
         currentArt: {},
         currentReview: {},
-        otherArt:[],
+        otherArt: [],
         reviewsSection: [],
         reviewer_name: "",
         review: ""
@@ -74,15 +74,15 @@ export default class ArtInfo extends React.Component {
                 closePage={this.props.closePage}
                 closeEditArt={this.closeEditArt}
                 getGallery={this.props.getGallery}
-                currentArt = {this.state.currentArt}
+                currentArt={this.state.currentArt}
             />
         } else {
             return null
         }
     }
 
-     // Close edit art page
-     closeEditArt = () => {
+    // Close edit art page
+    closeEditArt = () => {
         this.setState({
             displayEditForm: false,
             displayInfo: true
@@ -98,26 +98,26 @@ export default class ArtInfo extends React.Component {
     }
 
     renderDeleteArtPage = () => {
-        if (this.state.displayDeleteArtPage){
+        if (this.state.displayDeleteArtPage) {
             return (
-            <div className="popupBackground">
-                <div id="deleteConfirmation"className="alert alert-warning" role="alert">
-                Are you sure you want to delete this art?
+                <div className="popupBackground">
+                    <div id="deleteConfirmation" className="alert alert-warning" role="alert">
+                        Are you sure you want to delete this art?
                     <div className="deleteBtnContainer mt-3">
-                        <button className="btn cancelBtn" onClick={()=>{
-                            this.setState({
-                                displayDeleteArtPage:false
-                            })
-                        }}>Cancel</button>
-                        <button className="btn deleteBtn ms-3" onClick={()=>{
-                            this.deleteArt(this.state.currentArt._id)
-                            this.setState({
-                                displayDeleteArtPage:false
-                            })
-                        }}>Delete</button>
+                            <button className="btn cancelBtn" onClick={() => {
+                                this.setState({
+                                    displayDeleteArtPage: false
+                                })
+                            }}>Cancel</button>
+                            <button className="btn deleteBtn ms-3" onClick={() => {
+                                this.deleteArt(this.state.currentArt._id)
+                                this.setState({
+                                    displayDeleteArtPage: false
+                                })
+                            }}>Delete</button>
+                        </div>
                     </div>
-                </div>
-            </div>)
+                </div>)
         } else {
             return null
         }
@@ -129,7 +129,7 @@ export default class ArtInfo extends React.Component {
 
         // close popup
         this.props.closePage();
-        
+
 
         // refresh gallery
         this.props.getGallery();
@@ -146,7 +146,7 @@ export default class ArtInfo extends React.Component {
         }
 
         let response = await axios.post(baseUrl + "/art_gallery/" + this.state.currentArt._id + "/create/review", userData)
-        
+
         // resets review fields to empty
         this.setState({
             reviewer_name: "",
@@ -194,26 +194,26 @@ export default class ArtInfo extends React.Component {
     }
 
     renderDeleteReviewPage = () => {
-        if (this.state.displayDeleteReviewPage){
+        if (this.state.displayDeleteReviewPage) {
             return (
-            <div className="popupBackground">
-                <div id="deleteConfirmation"className="alert alert-warning" role="alert">
-                Are you sure you want to delete this review?
+                <div className="popupBackground">
+                    <div id="deleteConfirmation" className="alert alert-warning" role="alert">
+                        Are you sure you want to delete this review?
                     <div className="deleteBtnContainer mt-3">
-                        <button className="btn cancelBtn" onClick={()=>{
-                            this.setState({
-                                displayDeleteReviewPage:false
-                            })
-                        }}>Cancel</button>
-                        <button className="btn deleteBtn ms-3" onClick={()=>{
-                            this.deleteReview(this.state.currentReview)
-                            this.setState({
-                                displayDeleteReviewPage:false
-                            })
-                        }}>Delete</button>
+                            <button className="btn cancelBtn" onClick={() => {
+                                this.setState({
+                                    displayDeleteReviewPage: false
+                                })
+                            }}>Cancel</button>
+                            <button className="btn deleteBtn ms-3" onClick={() => {
+                                this.deleteReview(this.state.currentReview)
+                                this.setState({
+                                    displayDeleteReviewPage: false
+                                })
+                            }}>Delete</button>
+                        </div>
                     </div>
-                </div>
-            </div>)
+                </div>)
         } else {
             return null
         }
@@ -241,28 +241,28 @@ export default class ArtInfo extends React.Component {
         this.getOtherArt(otherArt._id)
         this.getArtInfo(otherArt._id);
         this.getReview(otherArt._id);
-        
+
         this.setState({
             currentArt: otherArt,
             reviewsSection: otherArt.reviews
         })
-        
+
 
     }
 
     // ===== Render other arts =====
     renderOtherArt = () => {
-        if (this.state.otherArt){
-            let jsx = this.state.otherArt.map((otherArt)=>{
+        if (this.state.otherArt) {
+            let jsx = this.state.otherArt.map((otherArt) => {
                 return (
                     <React.Fragment>
                         <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <div 
-                            className="otherArtContainer" 
-                            style={{ backgroundImage: `url(${otherArt.image})` }}
-                            onClick={()=>{
-                                this.switchArt(otherArt);
-                            }}></div>
+                            <div
+                                className="otherArtContainer"
+                                style={{ backgroundImage: `url(${otherArt.image})` }}
+                                onClick={() => {
+                                    this.switchArt(otherArt);
+                                }}></div>
                         </div>
                     </React.Fragment>
                 )
@@ -279,7 +279,7 @@ export default class ArtInfo extends React.Component {
                 return (
                     <React.Fragment>
                         <div className="reviewContainer">
-                            <h3>{review.reviewer_name}</h3><span>{review.review_date.slice(0,10)}</span>
+                            <h3>{review.reviewer_name}</h3><span>{review.review_date.slice(0, 10)}</span>
                             <p>{review.review}</p>
                             <div className="dropdown">
                                 <button className="btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -291,7 +291,7 @@ export default class ArtInfo extends React.Component {
                                     }}>Edit review</button></li>
                                     <li><button className="dropdown-item" onClick={() => {
                                         this.setState({
-                                            currentReview:review
+                                            currentReview: review
                                         })
                                         this.displayDeleteReviewPage();
                                     }}>Delete review</button></li>
@@ -305,12 +305,26 @@ export default class ArtInfo extends React.Component {
         }
     }
 
+    // test
+    addLike = async () => {
+        await axios.post(baseUrl + "/" + this.state.currentArt._id + "/like")
+        let artResponse = await axios.get(baseUrl + "/art_gallery/" + this.state.currentArt._id)
+        console.log(artResponse.data);
+        this.setState({
+            currentArt: artResponse.data
+        })
+        // this.getArtInfo(this.state.currentArt._id);
+    }
+
     // Render art information page
     render() {
         return (
             <React.Fragment>
                 {this.state.contentLoaded && this.state.displayInfo &&
                     <div className="artInfo">
+                        <button onClick={() => {
+                            this.addLike();
+                        }}>Add like</button>
                         {/* Back button */}
                         <button className="backBtn" onClick={() => {
                             this.props.closePage();
@@ -324,7 +338,10 @@ export default class ArtInfo extends React.Component {
                                     <div id="artInfoImageHolder" style={{ backgroundImage: `url(${this.state.currentArt.image})` }}></div>
                                     <div id="toolOptions">
                                         <div id="artInfoStatistics">
-                                            <i className="fas fa-heart"></i> {this.state.currentArt.statistics.like_count}
+                                            <button id="heartBtn" onClick={() => {
+                                                this.addLike();
+                                            }}><i className="fas fa-heart"></i></button>{this.state.currentArt.statistics.like_count}
+                                            {/* <i className="fas fa-heart"></i> {this.state.currentArt.statistics.like_count} */}
                                             <i className="far fa-comment-dots"></i> {this.state.currentArt.statistics.review_count}
                                         </div>
                                         <div className="dropdown">
@@ -338,7 +355,7 @@ export default class ArtInfo extends React.Component {
                                                 }}>Edit art</button></li>
                                                 <li><button className="dropdown-item" onClick={() => {
                                                     this.displayDeleteArtPage();
-                                                
+
                                                 }}>Delete art</button></li>
 
                                             </ul>
@@ -352,13 +369,13 @@ export default class ArtInfo extends React.Component {
                                     <span>{this.props.displayArtType(this.state.currentArt)}</span>
                                     {this.state.currentArt.art_subject.map((subject) => {
                                         return (
-                                        <span className={"badge " + "badge-" + subject} style={{ marginRight: "5px" }}>{subject}</span>
+                                            <span className={"badge " + "badge-" + subject} style={{ marginRight: "5px" }}>{subject}</span>
                                         )
                                     })}
                                     <p id="artDescription">{this.state.currentArt.art_description}</p>
-                                    <p id="artPostDate">Published: {this.state.currentArt.post_date.slice(0,10)}</p>
+                                    <p id="artPostDate">Published: {this.state.currentArt.post_date.slice(0, 10)}</p>
                                 </div>
-                                
+
                                 {/* Review section */}
                                 <div id="reviewSection">
                                     <h2>Reviews {this.state.currentArt.review_count}</h2>
@@ -375,7 +392,7 @@ export default class ArtInfo extends React.Component {
 
                             {/* Other arts section */}
                             <div id="otherArtSection">
-                                <h2>Check out other art work</h2>
+                                <h2>See other art work</h2>
                                 <div className="row">
                                     {this.renderOtherArt()}
                                 </div>

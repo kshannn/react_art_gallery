@@ -154,6 +154,13 @@ img {
   flex: 1;
   padding-right: 50px;
   padding-left: 20px;
+  padding-top: 3rem;
+}
+
+#otherArtSection h2{
+  font-family: 'Karla', sans-serif;
+  padding-left: 8px;
+  font-size: 20px;
 }
 
 #currentArtSection {
@@ -245,7 +252,7 @@ img {
   margin-top: 10px;
   border: none;
   border-radius: 5px;
-  background: rgb(175, 175, 175);
+  background: #788D98;
   padding: 5px 30px;
   position: absolute;
   right: 0;
@@ -253,7 +260,7 @@ img {
 }
 
 #postReviewBtn:hover {
-  background: rgb(207, 207, 207);
+  background: #a2abb1;
 }
 
 /* Review Section */
@@ -438,6 +445,11 @@ textarea{
 
 
 /* filter */
+
+.offcanvas {
+  max-width: 80%;
+}
+
 .offcanvas-header {
   padding: 1rem 1rem 1rem 3rem;
 }
@@ -554,16 +566,20 @@ textarea{
   right: 0;
   border: none;
   border-radius: 5px;
-  background: rgb(175, 175, 175);
+  background: #788D98;
   padding: 7px 45px;
 }
 
 .btnContainer button:hover {
-  background: rgb(207, 207, 207);
+  background: #a2abb1;
 }
 
 .fa-chevron-left {
   margin-right: 10px;
+}
+
+.fa-ellipsis-h {
+  color: #788D98;
 }
 
 .backBtn {
@@ -652,4 +668,17 @@ textarea{
   position: absolute;
   background: rgba(0,0,0, 0.3);
   z-index: 500;
+}
+
+#heartBtn{
+  border:none;
+  background: white;
+}
+
+#heartBtn:hover{
+  background: red;
+}
+
+.failedValidation {
+  border: 1px solid red !important;
 }

@@ -5,18 +5,28 @@ export default function ArtForm (props) {
     return (
       <React.Fragment>
         <div id="artForm">
+          {props.errorMessage?
+            <div class="alert alert-danger" role="alert" >
+                {props.errorMessage}
+            </div>: null}
+          {/* <div class="alert alert-danger alert-dismissible fade show" role="alert" style={{"display" : (props.errorMessage ? "block" : "none") }}>
+              {props.errorMessage}
+          </div> */}
           {/* ====== Text field: Poster Name ======*/}
           <h2>Your name</h2>
           <input type="text"
+            // {props.errorMessagePosterName? className="failedValidation": null}
+            className={props.errorMessagePosterName? "failedValidation" :null}
             placeholder="Your name"
             name="poster_name"
             value={props.poster_name}
             onChange={props.updateForm}
           />
-
+          
           {/* ====== Text field: Art URL ======*/}
           <h2>Upload your art link</h2>
           <input type="text"
+            className={props.errorMessageImage? "failedValidation":null}
             placeholder="Input your art URL"
             name="image"
             value={props.image}
@@ -28,6 +38,7 @@ export default function ArtForm (props) {
           {/* ====== Text field: Art Title ======*/}
           <h2>Title of Art</h2>
           <input type="text"
+            className={props.errorMessageArtTitle? "failedValidation":null}
             placeholder="Input title of your art"
             name="art_title"
             value={props.art_title}
@@ -36,6 +47,7 @@ export default function ArtForm (props) {
           {/* ====== Text field: Art Description ======*/}
           <h2>Description</h2>
           <textarea placeholder="Type a description for your art"
+            className={props.errorMessageArtDescription? "failedValidation":null}
             name="art_description"
             rows="4"
             cols="40"
