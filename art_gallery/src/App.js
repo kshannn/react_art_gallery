@@ -3,10 +3,11 @@ import axios from "axios";
 import CreateArtPage from "./CreateArtPage";
 import ArtInfo from "./ArtInfo";
 import FilterOptions from "./FilterOptions"
+import SideFilterOptions from "./SideFilterOptions"
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
-const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
+const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
 
 export default class App extends React.Component {
   state = {
@@ -124,10 +125,10 @@ export default class App extends React.Component {
   renderList = () => {
 
     // Display no results if no results found
-    if (this.state.gallery.length === 0){
+    if (this.state.gallery.length === 0) {
       return <h2 id="noResults">No results found...</h2>
-    } 
-    
+    }
+
     let jsx = this.state.gallery.map((artpost) => {
       return (
         <div className="col-md-4 col-sm-6 col-xs-12">
@@ -168,19 +169,19 @@ export default class App extends React.Component {
 
   // ===== Render the landing page =====
   render() {
-      return (
-        <React.Fragment>
-          {/* NAVBAR */}
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
+    return (
+      <React.Fragment>
+        {/* NAVBAR */}
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <div className="container-fluid">
 
-              {/* Filter toggle on smaller devices - Toggle off */}
-              {/* <button id="sideToggle" className="btn d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button" onClick={() => {this.setState({sideBarDisplayed: true})}}>
+            {/* Filter toggle on smaller devices - Toggle off */}
+            {/* <button id="sideToggle" className="btn d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button" onClick={() => {this.setState({sideBarDisplayed: true})}}>
                 <i className="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
               </button> */}
 
-              {/* Filter toggle on smaller devices - Toggle on */}
-              {/* <div className="overlay" style={{'display': this.state.sideBarDisplayed ? 'block': 'none'}}>
+            {/* Filter toggle on smaller devices - Toggle on */}
+            {/* <div className="overlay" style={{'display': this.state.sideBarDisplayed ? 'block': 'none'}}>
               <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
                 
                 <div className="offcanvas-header">
@@ -193,88 +194,86 @@ export default class App extends React.Component {
               </div>
               </div> */}
 
-              {/* Testing bootstrap offcanvas */}
-              <button id="sideToggle" className="btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            {/* Bootstrap offcanvas filter options */}
+            <button id="sideToggle" className="btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
               <i className="navbar-toggler-icon"></i>
-</button>
+            </button>
 
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div>
-      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-    </div>
-  </div>
-</div>
-
-              {/* Logo */}
-              <a className="navbar-brand" href="/">
-                <img id="logo" src="../artlogo.png"></img>
-              </a>
-
-              {/* Search Bar */}
-              <div id="searchContainer">
-                <input
-                  id="searchBar"
-                  className="form-control me-2"
-                  value={this.state.searchTerm}
-                  onChange={this.updateForm}
-                  name="searchTerm"
-                  type="search"
-                  placeholder="Search for art or artist"
-                  aria-label="Search" />
-
-                <button className="btn" onClick={() =>
-                  this.searchResults()
-                }>
-                  <i className="fas fa-search"></i>
-                </button>
+            <div className="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+              <div className="offcanvas-header">
+                <h5 className="offcanvas-title" id="offcanvasExampleLabel">Search Filter</h5>
+                <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
-
-              {/* Create art button */}
-              {/* Only display create button on home page */}
-              {this.state.displayHome &&
-                <React.Fragment>
-                  <button id="createArtBtn" onClick={this.createArt}><i class="fas fa-plus-circle"></i> Create</button>
-                </React.Fragment>
-              }
-
+              <div className="offcanvas-body">
+                <SideFilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} />
+              </div>
             </div>
-          </nav>
 
-          {/* BODY */}
+            {/* Logo */}
+            <a className="navbar-brand" href="/">
+              <img id="logo" src="../artlogo.png"></img>
+            </a>
 
-          {/* Only display main body when on home page */}
-          {this.state.displayHome &&
-            <div id="mainSection">
+            {/* Search Bar */}
+            <div id="searchContainer">
+              <input
+                id="searchBar"
+                className="form-control me-2"
+                value={this.state.searchTerm}
+                onChange={this.updateForm}
+                name="searchTerm"
+                type="search"
+                placeholder="Search for art or artist"
+                aria-label="Search" />
 
-              {/* Filter section */}
-              <div id="filterSection" className="d-none d-md-block">
-                <FilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} />
-              </div>
-
-              {/* Gallery section */}
-              <div id="gallerySection">
-                {this.state.gallery? <p id="resultsNum">Displaying {this.state.gallery.length} result(s)</p>:null}
-                <div className="row">
-                  {this.renderList()}
-                </div>
-              </div>
-
+              <button className="btn" onClick={() =>
+                this.searchResults()
+              }>
+                <i className="fas fa-search"></i>
+              </button>
             </div>
-          }
+
+            {/* Create art button */}
+            {/* Only display create button on home page */}
+            {this.state.displayHome &&
+              <React.Fragment>
+                <button id="createArtBtn" onClick={this.createArt}><i class="fas fa-plus-circle"></i> Create</button>
+              </React.Fragment>
+            }
+
+          </div>
+        </nav>
+
+        {/* BODY */}
+
+        {/* Only display main body when on home page */}
+        {this.state.displayHome &&
+          <div id="mainSection">
+
+            {/* Filter section */}
+            <div id="filterSection" className="d-none d-md-block">
+              <FilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} />
+            </div>
+
+            {/* Gallery section */}
+            <div id="gallerySection">
+              {this.state.gallery ? <p id="resultsNum">Displaying {this.state.gallery.length} result(s)</p> : null}
+              <div className="row">
+                {this.renderList()}
+              </div>
+            </div>
+
+          </div>
+        }
 
 
-          {/* Render detailed art page when art is clicked */}
-          {this.renderArtInfoPage()}
+        {/* Render detailed art page when art is clicked */}
+        {this.renderArtInfoPage()}
 
-          {/* Render create art page when create button is clicked */}
-          {this.renderCreateArtPage()}
+        {/* Render create art page when create button is clicked */}
+        {this.renderCreateArtPage()}
 
-        </React.Fragment>
-      );
+      </React.Fragment>
+    );
   }
 }

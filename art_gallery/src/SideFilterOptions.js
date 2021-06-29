@@ -3,7 +3,7 @@ import axios from "axios";
 
 const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
 
-export default class FilterOptions extends React.Component {
+export default class SideFilterOptions extends React.Component {
 
     state = {
         art_type: "",
@@ -104,13 +104,13 @@ export default class FilterOptions extends React.Component {
                 </div>
     
                 {/* Apply filter button */}
-                <button onClick={()=>{
+                <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" onClick={()=>{
                     this.applyFilter();
                 }}>Apply filter</button>
 
                 {/* Clear filter button */}
                 {/* Set state back to default (i.e. all options unchecked) */}
-                <button onClick={()=>{
+                <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" onClick={()=>{
                     this.setState({
                         art_type: "",
                         art_subject: []
