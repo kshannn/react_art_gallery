@@ -21,7 +21,9 @@ export default class ArtInfo extends React.Component {
         otherArt: [],
         reviewsSection: [],
         reviewer_name: "",
-        review: ""
+        review: "",
+        errorMessageReviewerName: "",
+        errorMessageReview:""
     }
 
     // ===== Get all information on the art selected and other arts and their reviews on load (GET Request) =====
@@ -140,6 +142,27 @@ export default class ArtInfo extends React.Component {
     // delete liked_post!!
     // Clicking on post button creates a new review in database and displays the new review
     createReview = async () => {
+        let isError = false;
+
+        if (this.state.reviewer_name == "" || this.state.reviewer_name == undefined) {
+            isError = true;
+            this.setState({
+                errorMessageReviewerName: "Please enter a valid name",
+            })
+        }
+
+        if (this.state.review == "" || this.state.review == undefined) {
+            isError = true;
+            this.setState({
+                errorMessageReview: "Please provide a review",
+            })
+        }
+
+        if (isError){
+            return;
+        }
+
+       
         let userData = {
             reviewer_name: this.state.reviewer_name,
             review: this.state.review,
@@ -156,7 +179,9 @@ export default class ArtInfo extends React.Component {
         // refreshes reviews
         // this.getReview(this.state.currentArt._id);
         this.getArtInfo(this.state.currentArt._id);
-    }
+        
+        }
+        
 
     // ===== Clicking on edit review prompts edit review page =====
     editReview = (review) => {
@@ -231,6 +256,8 @@ export default class ArtInfo extends React.Component {
     // ===== Process form fields =====
     updateForm = (e) => {
         this.setState({
+            errorMessageReviewerName: "",
+            errorMessageReview:"",
             [e.target.name]: e.target.value
         });
     };
@@ -337,11 +364,11 @@ export default class ArtInfo extends React.Component {
                                         <div id="artInfoStatistics">
                                             <button id="heartBtn" onClick={() => {
                                                 this.addLike();
-                                            }}>{this.state.currentArt.statistics.like_count == 0? <i className="fas fa-heart"></i>:<i style={{'color':'#EF463A'}} className="fas fa-heart"></i>}</button>{this.state.currentArt.statistics.like_count}
+                                            }}>{this.state.currentArt.statistics.like_count == 0 ? <i className="fas fa-heart innerHeart"></i> : <i style={{ 'color': '#EF463A' }} className="fas fa-heart innerHeart"></i>}</button>{this.state.currentArt.statistics.like_count}
                                             <a href="#reviewSection"><i id="comments" className="far fa-comment-dots"></i></a> {this.state.currentArt.statistics.review_count}
                                         </div>
 
-                                        
+
 
                                         <div className="dropdown">
 
@@ -380,7 +407,13 @@ export default class ArtInfo extends React.Component {
                                     <h2>Reviews <span>{this.state.currentArt.statistics.review_count}</span></h2>
                                     <div id="newReview">
                                         <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm} />
+                                        <div class="alert alert-danger" role="alert" style={{ "display": (this.state.errorMessageReviewerName ? "block" : "none") }}>
+                                            {this.state.errorMessageReviewerName}
+                                        </div>
                                         <textarea rows="5" placeholder="Leave a review" name="review" value={this.state.review} onChange={this.updateForm} />
+                                        <div class="alert alert-danger" role="alert" style={{ "display": (this.state.errorMessageReview ? "block" : "none") }}>
+                                            {this.state.errorMessageReview}
+                                        </div>
                                         <button id="postReviewBtn" onClick={() => {
                                             this.createReview();
                                         }}>Post</button>

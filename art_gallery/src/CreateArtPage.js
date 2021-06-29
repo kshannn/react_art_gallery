@@ -26,7 +26,7 @@ export default class CreateArtPage extends React.Component {
       isError = true;
       this.setState({
         errorMessagePosterName: "error",
-        errorMessage: "Please ensure all the field are valid!"
+        errorMessage: "Please ensure all the fields are valid!"
       })
     }
 
@@ -35,7 +35,7 @@ export default class CreateArtPage extends React.Component {
       isError = true;
       this.setState({
         errorMessageImage: "error",
-        errorMessage: "Please ensure all the field are valid!"
+        errorMessage: "Please ensure all the fields are valid!"
       })
       
     }
@@ -45,7 +45,7 @@ export default class CreateArtPage extends React.Component {
       isError = true;
       this.setState({
         errorMessageArtTitle: "error",
-        errorMessage: "Please ensure all the field are valid!"
+        errorMessage: "Please ensure all the fields are valid!"
       })
       
     }
@@ -54,7 +54,7 @@ export default class CreateArtPage extends React.Component {
       isError = true;
       this.setState({
         errorMessageArtDescription: "error",
-        errorMessage: "Please ensure all the field are valid!"
+        errorMessage: "Please ensure all the fields are valid!"
       })
     }
 
