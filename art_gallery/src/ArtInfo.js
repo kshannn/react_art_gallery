@@ -23,7 +23,7 @@ export default class ArtInfo extends React.Component {
         reviewer_name: "",
         review: "",
         errorMessageReviewerName: "",
-        errorMessageReview:""
+        errorMessageReview: ""
     }
 
     // ===== Get all information on the art selected and other arts and their reviews on load (GET Request) =====
@@ -158,11 +158,11 @@ export default class ArtInfo extends React.Component {
             })
         }
 
-        if (isError){
+        if (isError) {
             return;
         }
 
-       
+
         let userData = {
             reviewer_name: this.state.reviewer_name,
             review: this.state.review,
@@ -179,9 +179,9 @@ export default class ArtInfo extends React.Component {
         // refreshes reviews
         // this.getReview(this.state.currentArt._id);
         this.getArtInfo(this.state.currentArt._id);
-        
-        }
-        
+
+    }
+
 
     // ===== Clicking on edit review prompts edit review page =====
     editReview = (review) => {
@@ -257,7 +257,7 @@ export default class ArtInfo extends React.Component {
     updateForm = (e) => {
         this.setState({
             errorMessageReviewerName: "",
-            errorMessageReview:"",
+            errorMessageReview: "",
             [e.target.name]: e.target.value
         });
     };
@@ -414,16 +414,19 @@ export default class ArtInfo extends React.Component {
                                         <div class="alert alert-danger" role="alert" style={{ "display": (this.state.errorMessageReview ? "block" : "none") }}>
                                             {this.state.errorMessageReview}
                                         </div>
-                                        <button id="postReviewBtn" onClick={() => {
-                                            this.createReview();
-                                        }}>Post</button>
+                                        <div id ="postReviewBtnContainer">
+                                            <button id="postReviewBtn" onClick={() => {
+                                                this.createReview();
+                                            }}>Post</button>
+                                        </div>
+
                                     </div>
                                     {this.renderReviewList()}
                                 </div>
                             </div>
 
                             {/* Other arts section */}
-                            <div id="otherArtSection">
+                            <div id="otherArtSection" className="d-none d-lg-block">
                                 <h2>See other art work</h2>
                                 <div className="row">
                                     {this.renderOtherArt()}
