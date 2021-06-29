@@ -322,9 +322,6 @@ export default class ArtInfo extends React.Component {
             <React.Fragment>
                 {this.state.contentLoaded && this.state.displayInfo &&
                     <div className="artInfo">
-                        <button onClick={() => {
-                            this.addLike();
-                        }}>Add like</button>
                         {/* Back button */}
                         <button className="backBtn" onClick={() => {
                             this.props.closePage();
@@ -340,10 +337,12 @@ export default class ArtInfo extends React.Component {
                                         <div id="artInfoStatistics">
                                             <button id="heartBtn" onClick={() => {
                                                 this.addLike();
-                                            }}><i className="fas fa-heart"></i></button>{this.state.currentArt.statistics.like_count}
-                                            {/* <i className="fas fa-heart"></i> {this.state.currentArt.statistics.like_count} */}
-                                            <i className="far fa-comment-dots"></i> {this.state.currentArt.statistics.review_count}
+                                            }}>{this.state.currentArt.statistics.like_count == 0? <i className="fas fa-heart"></i>:<i style={{'color':'#EF463A'}} className="fas fa-heart"></i>}</button>{this.state.currentArt.statistics.like_count}
+                                            <a href="#reviewSection"><i id="comments" className="far fa-comment-dots"></i></a> {this.state.currentArt.statistics.review_count}
                                         </div>
+
+                                        
+
                                         <div className="dropdown">
 
                                             <button className="btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -378,7 +377,7 @@ export default class ArtInfo extends React.Component {
 
                                 {/* Review section */}
                                 <div id="reviewSection">
-                                    <h2>Reviews {this.state.currentArt.review_count}</h2>
+                                    <h2>Reviews <span>{this.state.currentArt.statistics.review_count}</span></h2>
                                     <div id="newReview">
                                         <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm} />
                                         <textarea rows="5" placeholder="Leave a review" name="review" value={this.state.review} onChange={this.updateForm} />

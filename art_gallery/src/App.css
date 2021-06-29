@@ -213,6 +213,10 @@ img {
   left: 15px;
 }
 
+#comments {
+  color: black;
+}
+
 #artInfoStatistics .fa-heart, #artInfoStatistics .fa-comment-dots {
   font-size: 25px;
 }
@@ -675,8 +679,8 @@ textarea{
   background: white;
 }
 
-#heartBtn:hover{
-  background: red;
+#heartBtn i:hover{
+  color: #ee736a;
 }
 
 .failedValidation {
