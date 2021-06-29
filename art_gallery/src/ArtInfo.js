@@ -103,13 +103,13 @@ export default class ArtInfo extends React.Component {
             <div className="popupBackground">
                 <div id="deleteConfirmation"className="alert alert-warning" role="alert">
                 Are you sure you want to delete this art?
-                    <div>
-                        <button className="btn btn-primary" onClick={()=>{
+                    <div className="deleteBtnContainer mt-3">
+                        <button className="btn cancelBtn" onClick={()=>{
                             this.setState({
                                 displayDeleteArtPage:false
                             })
                         }}>Cancel</button>
-                        <button className="btn btn-info" onClick={()=>{
+                        <button className="btn deleteBtn ms-3" onClick={()=>{
                             this.deleteArt(this.state.currentArt._id)
                             this.setState({
                                 displayDeleteArtPage:false
@@ -199,13 +199,13 @@ export default class ArtInfo extends React.Component {
             <div className="popupBackground">
                 <div id="deleteConfirmation"className="alert alert-warning" role="alert">
                 Are you sure you want to delete this review?
-                    <div>
-                        <button className="btn btn-primary" onClick={()=>{
+                    <div className="deleteBtnContainer mt-3">
+                        <button className="btn cancelBtn" onClick={()=>{
                             this.setState({
                                 displayDeleteReviewPage:false
                             })
                         }}>Cancel</button>
-                        <button className="btn btn-info" onClick={()=>{
+                        <button className="btn deleteBtn ms-3" onClick={()=>{
                             this.deleteReview(this.state.currentReview)
                             this.setState({
                                 displayDeleteReviewPage:false
@@ -279,7 +279,7 @@ export default class ArtInfo extends React.Component {
                 return (
                     <React.Fragment>
                         <div className="reviewContainer">
-                            <h3>{review.reviewer_name}</h3><span>{review.review_date}</span>
+                            <h3>{review.reviewer_name}</h3><span>{review.review_date.slice(0,10)}</span>
                             <p>{review.review}</p>
                             <div className="dropdown">
                                 <button className="btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -356,7 +356,7 @@ export default class ArtInfo extends React.Component {
                                         )
                                     })}
                                     <p id="artDescription">{this.state.currentArt.art_description}</p>
-                                    <p id="artPostDate">Published: {this.state.currentArt.post_date}</p>
+                                    <p id="artPostDate">Published: {this.state.currentArt.post_date.slice(0,10)}</p>
                                 </div>
                                 
                                 {/* Review section */}

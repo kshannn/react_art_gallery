@@ -242,14 +242,14 @@ img {
 }
 
 #postReviewBtn {
-  margin-top: 5px;
-  border:none;
+  margin-top: 10px;
+  border: none;
   border-radius: 5px;
   background: rgb(175, 175, 175);
-  padding: 2px 15px;
-  position:absolute;
+  padding: 5px 30px;
+  position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: -15px;
 }
 
 #postReviewBtn:hover {
@@ -540,7 +540,7 @@ textarea{
 }
 
 .btnContainer {
-  height: 20px;
+  height: 100px;
   width: 90%;
   min-width: 300px;
   max-width: 600px;
@@ -550,12 +550,12 @@ textarea{
 
 .btnContainer button {
   position: absolute;
-  bottom: 0;
+  bottom: 55px;
   right: 0;
-  border:none;
+  border: none;
   border-radius: 5px;
   background: rgb(175, 175, 175);
-  padding: 2px 15px;
+  padding: 7px 45px;
 }
 
 .btnContainer button:hover {
@@ -590,6 +590,27 @@ textarea{
   padding: 10px 30px;
   border-radius: 15px;
   line-height: 2;
+}
+
+.deleteBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancelBtn{
+  background: #788D98;
+}
+
+.cancelBtn:hover{
+  background: #a2abb1;
+}
+
+.deleteBtn {
+  background: #ef463a;
+}
+
+.deleteBtn:hover {
+  background: #fa6b61;
 }
 
 
