@@ -33,14 +33,14 @@ export default class EditReviewPage extends React.Component {
     updateReview = async (currentReview) => {
 
         let isError = false;
-        if (this.state.reviewer_name == "" || this.state.reviewer_name == undefined){
+        if (this.state.reviewer_name === "" || this.state.reviewer_name === undefined){
             isError = true;
             this.setState({
                 errorMessageReviewerName: "Please enter a valid name"
             })
         }
 
-        if (this.state.review == "" || this.state.review == undefined){
+        if (this.state.review === "" || this.state.review === undefined){
             isError = true;
             this.setState({
                 errorMessageReview: "Please provide a review"

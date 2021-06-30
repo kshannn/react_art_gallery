@@ -60,7 +60,7 @@ export default class EditArtPage extends React.Component {
     let isError = false;
     // Frontend form validation
     // Validation: Name
-    if(this.state.poster_name == "" || this.state.poster_name == undefined){
+    if(this.state.poster_name === "" || this.state.poster_name === undefined){
       isError = true;
       this.setState({
         errorMessagePosterName: "error",
@@ -69,7 +69,7 @@ export default class EditArtPage extends React.Component {
     }
 
     // Validation: Art Link
-    if(this.state.image == "" || this.state.image == undefined){
+    if(this.state.image === "" || this.state.image === undefined){
       isError = true;
       this.setState({
         errorMessageImage: "error",
@@ -79,7 +79,7 @@ export default class EditArtPage extends React.Component {
     }
 
     // Validation: Title of Art
-    if(this.state.art_title == "" || this.state.art_title == undefined){
+    if(this.state.art_title === "" || this.state.art_title === undefined){
       isError = true;
       this.setState({
         errorMessageArtTitle: "error",
@@ -88,7 +88,7 @@ export default class EditArtPage extends React.Component {
       
     }
     // Validation: Description
-    if(this.state.art_description == "" || this.state.art_description== undefined){
+    if(this.state.art_description === "" || this.state.art_description === undefined){
       isError = true;
       this.setState({
         errorMessageArtDescription: "error",

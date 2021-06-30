@@ -144,14 +144,14 @@ export default class ArtInfo extends React.Component {
     createReview = async () => {
         let isError = false;
 
-        if (this.state.reviewer_name == "" || this.state.reviewer_name == undefined) {
+        if (this.state.reviewer_name === "" || this.state.reviewer_name === undefined) {
             isError = true;
             this.setState({
                 errorMessageReviewerName: "Please enter a valid name",
             })
         }
 
-        if (this.state.review == "" || this.state.review == undefined) {
+        if (this.state.review === "" || this.state.review === undefined) {
             isError = true;
             this.setState({
                 errorMessageReview: "Please provide a review",
@@ -404,7 +404,7 @@ export default class ArtInfo extends React.Component {
 
                                 {/* Review section */}
                                 <div id="reviewSection">
-                                    <h2>Reviews <span>{this.state.currentArt.statistics.review_count}</span></h2>
+                                    <h3>Help out another fellow artist by leaving a review!</h3>
                                     <div id="newReview">
                                         <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm} />
                                         <div class="alert alert-danger" role="alert" style={{ "display": (this.state.errorMessageReviewerName ? "block" : "none") }}>
@@ -421,6 +421,7 @@ export default class ArtInfo extends React.Component {
                                         </div>
 
                                     </div>
+                                    <h2>Reviews <span>{this.state.currentArt.statistics.review_count}</span></h2>
                                     {this.renderReviewList()}
                                 </div>
                             </div>
