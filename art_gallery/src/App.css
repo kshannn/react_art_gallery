@@ -705,6 +705,26 @@ textarea{
 }
 
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 576px){
+
+  #logo {
+      width: 110px;
+  }
   
+  #searchContainer {
+    display: block;
+    width: 100%;
+    position: relative;
+    flex:none;
+  }
+
+  #searchContainer button {
+    bottom: 0;
+  }
+
+  #createArtBtn{
+      display: block;
+      width: 100%;
+      margin: 15px 7% 0px 7%;
+  }
 }
