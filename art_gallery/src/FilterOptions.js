@@ -50,7 +50,7 @@ export default class FilterOptions extends React.Component {
     render(){
         return (
             <React.Fragment>
-                <div id="mainFilter">
+                <div className="mainFilter">
                     
                 {/* Art type */}
                 <h2>Type</h2>

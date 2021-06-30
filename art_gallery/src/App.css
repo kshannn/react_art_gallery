@@ -269,6 +269,7 @@ img {
   border: none;
     border-radius: 5px;
     background: #788D98;
+    color:white;
     padding: 5px 30px;
     position: absolute;
     right: 0;
@@ -393,6 +394,7 @@ textarea{
   border:none;
   border-radius: 5px;
   background: rgb(69, 202, 255);
+  color: white;
   padding: 2px 15px;
 }
 
@@ -485,47 +487,48 @@ textarea{
   margin-top: 15px;
 } */
 
-#mainFilter{
+.mainFilter{
   padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
 }
 
-#mainFilter > div {
+.mainFilter > div {
   line-height: 1.5;
 }
 
-#mainFilter input {
+.mainFilter input {
   margin-right: 5px;
 }
 
-#mainFilter h2{ 
+.mainFilter h2{ 
   font-size: 20px !important;
   font-family: 'Karla', sans-serif;
 }
 
 
-#mainFilter h2:nth-child(3){ /* select */
+.mainFilter h2:nth-child(3){ /* select */
   margin-top: 15px;
 }
 
-#mainFilter h2:first-child{ /* select */
+.mainFilter h2:first-child{ /* select */
   margin-bottom: 10px;
 }
 
-#mainFilter > h2:nth-child(4), #mainFilter > button {
+.mainFilter > h2:nth-child(4), .mainFilter > button {
   margin-top: 15px;
 }
 
-#mainFilter button {
+.mainFilter button {
   border: none;
   background:#788D98;
+  color:white;
   line-height: 2;
   border-radius: 5px;
   margin-bottom: -5px;
 }
 
-#mainFilter button:hover {
+.mainFilter button:hover {
   background: #9eb3be;
 }
 
@@ -570,6 +573,7 @@ textarea{
 .btnContainer {
   height: 100px;
   width: 90%;
+  color: white;
   min-width: 300px;
   max-width: 600px;
   margin: 25px auto;
@@ -583,6 +587,7 @@ textarea{
   border: none;
   border-radius: 5px;
   background: #788D98;
+  color: white;
   padding: 7px 45px;
 }
 
@@ -627,6 +632,10 @@ textarea{
 .deleteBtnContainer {
   display: flex;
   justify-content: flex-end;
+}
+
+.deleteBtnContainer button{
+  color: white;
 }
 
 .cancelBtn{
