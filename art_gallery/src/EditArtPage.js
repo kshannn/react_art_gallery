@@ -57,6 +57,51 @@ export default class EditArtPage extends React.Component {
 
   // ===== Clicking on update button updates the database with new changes =====
   updateChanges = async (artIdToEdit) => {
+    let isError = false;
+    // Frontend form validation
+    // Validation: Name
+    if(this.state.poster_name == "" || this.state.poster_name == undefined){
+      isError = true;
+      this.setState({
+        errorMessagePosterName: "error",
+        errorMessage: "Please ensure all the fields are valid!"
+      })
+    }
+
+    // Validation: Art Link
+    if(this.state.image == "" || this.state.image == undefined){
+      isError = true;
+      this.setState({
+        errorMessageImage: "error",
+        errorMessage: "Please ensure all the fields are valid!"
+      })
+      
+    }
+
+    // Validation: Title of Art
+    if(this.state.art_title == "" || this.state.art_title == undefined){
+      isError = true;
+      this.setState({
+        errorMessageArtTitle: "error",
+        errorMessage: "Please ensure all the fields are valid!"
+      })
+      
+    }
+    // Validation: Description
+    if(this.state.art_description == "" || this.state.art_description== undefined){
+      isError = true;
+      this.setState({
+        errorMessageArtDescription: "error",
+        errorMessage: "Please ensure all the fields are valid!"
+      })
+    }
+
+    if(isError){
+      return;
+    }
+
+    
+
 
     let userData = {
       poster_name: this.state.poster_name,
@@ -97,7 +142,12 @@ export default class EditArtPage extends React.Component {
             poster_name={this.state.poster_name}
             image={this.state.image}
             art_title={this.state.art_title}
-            art_description={this.state.art_description} />
+            art_description={this.state.art_description}
+            errorMessage={this.state.errorMessage}
+            errorMessagePosterName={this.state.errorMessagePosterName}
+            errorMessageImage={this.state.errorMessageImage}
+            errorMessageArtTitle={this.state.errorMessageArtTitle}
+            errorMessageArtDescription={this.state.errorMessageArtDescription} />
           
           {/* Update button */}
           <div className="btnContainer">

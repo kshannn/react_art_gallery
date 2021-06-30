@@ -7,7 +7,9 @@ export default class EditReviewPage extends React.Component {
 
     state = {
         reviewer_name: "",
-        review: ""
+        review: "",
+        errorMessageReviewerName:"",
+        errorMessageReview:""
     }
 
     // ===== Load existing review =====
@@ -31,14 +33,14 @@ export default class EditReviewPage extends React.Component {
     updateReview = async (currentReview) => {
 
         let isError = false;
-        if (this.state.reviewer_name == "" || this.state.reviewer_name == null){
+        if (this.state.reviewer_name == "" || this.state.reviewer_name == undefined){
             isError = true;
             this.setState({
                 errorMessageReviewerName: "Please enter a valid name"
             })
         }
 
-        if (this.state.review == "" || this.state.review == null){
+        if (this.state.review == "" || this.state.review == undefined){
             isError = true;
             this.setState({
                 errorMessageReview: "Please provide a review"
