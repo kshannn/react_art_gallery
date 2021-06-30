@@ -72,19 +72,49 @@ _Non-functional requirements_
 
 ### **Surface**
 
+_Colours_
+
+<img src='../art_gallery/public/art_gallery_colour_palette.png' style='display:block'>
+<br>
+
+* The main colours used to design the website are based on the colours in the logo. The colours consist of different shades of red, blue, and yellow which are primary colours. As all colours can be created from primary colours, it is a fitting palette for an art website that encourages creation of art from even its most simple form.
+
+_Font Choice_
+* The font used throughout the website is san-serif to match the brand logo. The use of san-serif also makes words easier to read.
+
+
 ## Features
 
-1. Users can create, update, and delete art posts
-2. Users can create, update, and delete reviews
-3. Users can quickly search for an art post by the name of the artist or the art title
-4. Users can filter art appearing on their gallery based on the art type and art subject
+1. **Users can create, update, and delete art posts.** With just a click of a "create" button, users are directed to a forms page where they can fill up the details to make their art post. Their new art would then be updated in the gallery page. Once a user has clicked into a particular art post, they are able to edit or delete the art post through a dropdown button represented by an ellipses icon. 
+
+2. **Users can create, update, and delete reviews.** Users can easily leave reviews for an art post by clicking into a particular art post and filling up the review form immediatelly. This feature encourages users to leave reviews with a call-to-action message "Help out another fellow artist by leaving a review!" and remove "roadblocks" having the form on the same page, thereby making it easier for users to create a review with a single click. Users are also able to update and delete reviews through a dropdown button represented by an ellipses icon. 
+
+3. **Users can quickly search for an art post by the name of the artist or the art title.** In the event that users already have an art or an artist that they want to search for, they could do so easily by searching their query with the search bar.  
+
+4. **Users can filter art appearing on their gallery based on the art type and art subject.** This feature can be useful if users only wish to retrieve art results of a particular search criteria. For example, users can filter out all the traditional arts and retrieve only arts that are tagged as "digital art".
+
+5. **Section in every art page dedicated to showing other arts in the form of thumbnail.** This feature allows users to be able to navigate to other arts more easily. Through such implementation, users would be more likely to visit other art work and as a result increase their likelihood of leaving a review.
 
 _Limitations and future implementations_
-
+* In the future, I would like to implement pagination so that users can click through the pages to browse the art posts instead of scrolling. This also relieves the load on the database and web application by limiting the number of results returned.
 
 ## Testing
 
+**Test Cases**
 
+**Testing for Mobile Responsiveness**
+
+## Technologies Used
+
+## Deployment
+
+## Credits
+
+
+* Brand logo 
+    * Taken and edited from [Artist Repetory Theatre's website]([https://artistsrep.org/announcing-arts-new-logo-and-branding/](https://artistsrep.org/announcing-arts-new-logo-and-branding/) (Art logo edited))
+
+* Design of website inspired by [DeviantArt](https://www.deviantart.com/)
 
 # Getting Started with Create React App
 
