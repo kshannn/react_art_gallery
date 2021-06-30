@@ -14,7 +14,11 @@ export default class CreateArtPage extends React.Component {
     art_description:"",
     art_type: "digital",
     art_subject: [],
-    errorMessage:""
+    errorMessage:"",
+    errorMessagePosterName:"",
+    errorMessageImage:"",
+    errorMessageArtTitle:"",
+    errorMessageArtDescription:""
   };
 
   // ===== Clicking on submit updates database with users' input (POST request) =====

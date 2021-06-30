@@ -72,6 +72,7 @@ export default class App extends React.Component {
   createArt = () => {
     this.setState({
       displayArtForm: true,
+      displayArtInfo: false,
       displayHome: false
     });
   };
@@ -222,11 +223,11 @@ export default class App extends React.Component {
 
             {/* Create art button */}
             {/* Only display create button on home page */}
-            {this.state.displayHome &&
+            {/* {this.state.displayHome && */}
               <React.Fragment>
                 <button id="createArtBtn" onClick={this.createArt}><i class="fas fa-plus-circle"></i> Create</button>
               </React.Fragment>
-            }
+            {/* } */}
 
           </div>
         </nav>
