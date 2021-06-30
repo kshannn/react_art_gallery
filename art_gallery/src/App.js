@@ -175,25 +175,6 @@ export default class App extends React.Component {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
 
-            {/* Filter toggle on smaller devices - Toggle off */}
-            {/* <button id="sideToggle" className="btn d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button" onClick={() => {this.setState({sideBarDisplayed: true})}}>
-                <i className="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
-              </button> */}
-
-            {/* Filter toggle on smaller devices - Toggle on */}
-            {/* <div className="overlay" style={{'display': this.state.sideBarDisplayed ? 'block': 'none'}}>
-              <div className="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
-                
-                <div className="offcanvas-header">
-                  <h6 className="offcanvas-title d-block" id="offcanvas">Search Filter</h6>
-                  <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" onClick={() => {this.setState({sideBarDisplayed: false})}}></button>
-                </div>
-
-                <FilterOptions filterGallery={this.filterGallery} />
-                
-              </div>
-              </div> */}
-
             {/* Bootstrap offcanvas filter options */}
             <button id="sideToggle" className="btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
               <i className="navbar-toggler-icon"></i>
@@ -205,7 +186,7 @@ export default class App extends React.Component {
                 <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div className="offcanvas-body">
-                <SideFilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} />
+                <SideFilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} closePage={this.closePage}/>
               </div>
             </div>
 
@@ -226,8 +207,14 @@ export default class App extends React.Component {
                 placeholder="Search for art or artist"
                 aria-label="Search" />
 
-              <button className="btn" onClick={() =>
+              <button className="btn" onClick={() =>{
                 this.searchResults()
+                this.setState({
+                  displayArtInfo: false,
+                  displayHome: true,
+                })
+              }
+                
               }>
                 <i className="fas fa-search"></i>
               </button>

@@ -106,6 +106,11 @@ export default class SideFilterOptions extends React.Component {
                 {/* Apply filter button */}
                 <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" onClick={()=>{
                     this.applyFilter();
+                    this.props.closePage();
+                    this.setState({
+                        art_type: "",
+                        art_subject: []
+                    })
                 }}>Apply filter</button>
 
                 {/* Clear filter button */}
