@@ -427,7 +427,7 @@ export default class ArtInfo extends React.Component {
 
                             {/* Other arts section */}
                             <div id="otherArtSection" className="d-none d-lg-block">
-                                <h2>See other art work</h2>
+                                <h2>Explore other art work</h2>
                                 <div className="row">
                                     {this.renderOtherArt()}
                                 </div>

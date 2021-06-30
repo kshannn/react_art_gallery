@@ -371,7 +371,7 @@ textarea{
   top: 50%;
   left:50%;
   transform: translate(-50%, -50%);
-  height: 395px;
+  min-height: 395px;
   width:90%;
   min-width: 300px;
   max-width: 500px;
@@ -397,29 +397,28 @@ textarea{
   border: 1px solid grey;
 }
 
+#editReviewBtnContainer {
+  height: 50px;
+  position: relative;
+}
+
 #editReviewContent button {
   position: absolute;
   bottom: 0;
-  right: 30px;
-  margin-bottom: 15px;
   border:none;
   border-radius: 5px;
-  background: rgb(69, 202, 255);
   color: white;
   padding: 2px 15px;
 }
 
-#editReviewContent button:hover {
-  background: rgb(149, 225, 255);
-}
-
-#editReviewContent > #closeBtn{
+#closeBtn {
   background: rgb(131, 131, 131);
-  right: 160px;
+  right: 130px;
 }
 
-#editReviewContent > #closeBtn:hover{
-  background: rgb(185, 185, 185);
+#saveChangeBtn{
+  background: rgb(69, 202, 255);
+  right: 0px;
 }
 
 
@@ -724,6 +723,9 @@ textarea{
   border: 1px solid red !important;
 }
 
+#editReviewBtnContainer {
+  height: 50px;
+}
 
 @media screen and (max-width: 576px){
 
