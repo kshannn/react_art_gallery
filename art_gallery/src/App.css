@@ -116,11 +116,22 @@ img {
 .listingContent h2 {
   font-size: 1.2rem;
   padding-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .listingContent h3 {
   font-size: 0.9rem;
   color: rgb(128, 128, 128)
+}
+
+#tagsContainer {
+  margin-bottom: 10px;
+  width: inherit;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
 }
 
 .fa-heart {
@@ -702,7 +713,7 @@ textarea{
 }
 
 #heartBtn i:hover{
-  color: #ee736a;
+  color: #ee736a !important;
 }
 
 .innerHeart{
@@ -737,3 +748,4 @@ textarea{
       margin: 15px 7% 0px 7%;
   }
 }
+

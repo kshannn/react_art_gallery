@@ -141,7 +141,7 @@ export default class App extends React.Component {
             <div className="imageHolder" style={{ backgroundImage: `url(${artpost.image})` }}>
             </div>
             <div className="listingContent">
-              <h2>{artpost.art_title.length > 15 ? artpost.art_title.slice(0, 15) + "..." : artpost.art_title}</h2>
+              <h2>{artpost.art_title}</h2>
               <h3>{artpost.poster_name}</h3>
               <p>
                 <i className="fas fa-heart"></i>
@@ -150,15 +150,17 @@ export default class App extends React.Component {
                 {artpost.statistics.review_count}
               </p>
 
-              {/* Display art type tag for each artpost */}
-              {this.displayArtType(artpost)}
+              <div id="tagsContainer">
+                {/* Display art type tag for each artpost */}
+                {this.displayArtType(artpost)}
 
-              {/* Display art subject tags for each artpost */}
-              {artpost.art_subject.map((subject) => {
-                return (
-                  <span className={"badge " + "badge-" + subject} style={{ marginRight: "5px" }}>{subject}</span>
-                )
-              })}
+                {/* Display art subject tags for each artpost */}
+                {artpost.art_subject.map((subject) => {
+                  return (
+                    <span className={"badge " + "badge-" + subject} style={{ marginRight: "5px" }}>{subject}</span>
+                  )
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -187,7 +189,7 @@ export default class App extends React.Component {
                 <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div className="offcanvas-body">
-                <SideFilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} closePage={this.closePage}/>
+                <SideFilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} closePage={this.closePage} />
               </div>
             </div>
 
@@ -208,14 +210,14 @@ export default class App extends React.Component {
                 placeholder="Search for art or artist"
                 aria-label="Search" />
 
-              <button className="btn" onClick={() =>{
+              <button className="btn" onClick={() => {
                 this.searchResults()
                 this.setState({
                   displayArtInfo: false,
                   displayHome: true,
                 })
               }
-                
+
               }>
                 <i className="fas fa-search"></i>
               </button>
@@ -224,9 +226,9 @@ export default class App extends React.Component {
             {/* Create art button */}
             {/* Only display create button on home page */}
             {/* {this.state.displayHome && */}
-              <React.Fragment>
-                <button id="createArtBtn" onClick={this.createArt}><i class="fas fa-plus-circle"></i> Create</button>
-              </React.Fragment>
+            <React.Fragment>
+              <button id="createArtBtn" onClick={this.createArt}><i class="fas fa-plus-circle"></i> Create</button>
+            </React.Fragment>
             {/* } */}
 
           </div>

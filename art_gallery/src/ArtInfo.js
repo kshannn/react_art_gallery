@@ -103,7 +103,7 @@ export default class ArtInfo extends React.Component {
         if (this.state.displayDeleteArtPage) {
             return (
                 <div className="popupBackground">
-                    <div id="deleteConfirmation" className="alert alert-warning" role="alert">
+                    <div id="deleteConfirmation" className="alert alert-danger" role="alert">
                         Are you sure you want to delete this art?
                     <div className="deleteBtnContainer mt-3">
                             <button className="btn cancelBtn" onClick={() => {
@@ -222,7 +222,7 @@ export default class ArtInfo extends React.Component {
         if (this.state.displayDeleteReviewPage) {
             return (
                 <div className="popupBackground">
-                    <div id="deleteConfirmation" className="alert alert-warning" role="alert">
+                    <div id="deleteConfirmation" className="alert alert-danger" role="alert">
                         Are you sure you want to delete this review?
                     <div className="deleteBtnContainer mt-3">
                             <button className="btn cancelBtn" onClick={() => {

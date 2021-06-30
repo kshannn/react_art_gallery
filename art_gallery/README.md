@@ -54,11 +54,18 @@ _Content requirements_
 
 _Non-functional requirements_
 * Mobile responsiveness
-    * Achieved via the use of bootstrap grid columns and flex box
+    * Achieved via the use of bootstrap media queries,bootstrap grid columns, and flex box
 * Performance
 
 ### **Structure**
 
+<img src='../art_gallery/public/site_map_art_gallery.png'><br>
+
+
+* TAG web application is structured using a ___ .
+
+
+* The app uses language that is easy for users to understand and contains no technical jargons
 
 ### **Skeleton**
 
