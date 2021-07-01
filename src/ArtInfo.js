@@ -4,8 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import EditArtPage from "./EditArtPage"
 import EditReviewPage from "./EditReviewPage"
 
-
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us11.gitpod.io"
 
 export default class ArtInfo extends React.Component {
 
@@ -53,12 +52,21 @@ export default class ArtInfo extends React.Component {
         })
     }
 
-    // refreshes reviews and sorts them from most recent
+    // Refreshes reviews and sorts them from most recent
     getReview = async (id = this.props._id) => {
         let reviewResponse = await axios.get(baseUrl + "/art_gallery/" + id + "/review_list")
         let reviewsSortedByLatest = reviewResponse.data[0].reviews.sort((a, b) => new Date(b.review_date) - new Date(a.review_date));
         this.setState({
             reviewsSection: reviewsSortedByLatest
+        })
+    }
+
+    // Clicking on heart icon increases like count
+    addLike = async () => {
+        await axios.post(baseUrl + "/" + this.state.currentArt._id + "/like")
+        let artResponse = await axios.get(baseUrl + "/art_gallery/" + this.state.currentArt._id)
+        this.setState({
+            currentArt: artResponse.data
         })
     }
 
@@ -73,10 +81,9 @@ export default class ArtInfo extends React.Component {
     renderEditArtPage = () => {
         if (this.state.displayEditForm) {
             return <EditArtPage
-                closePage={this.props.closePage}
                 closeEditArt={this.closeEditArt}
-                getGallery={this.props.getGallery}
                 currentArt={this.state.currentArt}
+                getArtInfo={this.getArtInfo}
             />
         } else {
             return null
@@ -105,7 +112,7 @@ export default class ArtInfo extends React.Component {
                 <div className="popupBackground">
                     <div id="deleteConfirmation" className="alert alert-danger" role="alert">
                         Are you sure you want to delete this art?
-                    <div className="deleteBtnContainer mt-3">
+                        <div className="deleteBtnContainer mt-3">
                             <button className="btn cancelBtn" onClick={() => {
                                 this.setState({
                                     displayDeleteArtPage: false
@@ -132,14 +139,10 @@ export default class ArtInfo extends React.Component {
         // close popup
         this.props.closePage();
 
-
         // refresh gallery
         this.props.getGallery();
-
-
     }
 
-    // delete liked_post!!
     // Clicking on post button creates a new review in database and displays the new review
     createReview = async () => {
         let isError = false;
@@ -162,7 +165,6 @@ export default class ArtInfo extends React.Component {
             return;
         }
 
-
         let userData = {
             reviewer_name: this.state.reviewer_name,
             review: this.state.review,
@@ -170,18 +172,15 @@ export default class ArtInfo extends React.Component {
 
         let response = await axios.post(baseUrl + "/art_gallery/" + this.state.currentArt._id + "/create/review", userData)
 
-        // resets review fields to empty
+        // Resets review fields to empty
         this.setState({
             reviewer_name: "",
             review: ""
         })
 
-        // refreshes reviews
-        // this.getReview(this.state.currentArt._id);
+        // Refreshes reviews
         this.getArtInfo(this.state.currentArt._id);
-
     }
-
 
     // ===== Clicking on edit review prompts edit review page =====
     editReview = (review) => {
@@ -224,7 +223,7 @@ export default class ArtInfo extends React.Component {
                 <div className="popupBackground">
                     <div id="deleteConfirmation" className="alert alert-danger" role="alert">
                         Are you sure you want to delete this review?
-                    <div className="deleteBtnContainer mt-3">
+                        <div className="deleteBtnContainer mt-3">
                             <button className="btn cancelBtn" onClick={() => {
                                 this.setState({
                                     displayDeleteReviewPage: false
@@ -248,8 +247,7 @@ export default class ArtInfo extends React.Component {
     deleteReview = async (reviewHolder) => {
         let response = await axios.delete(baseUrl + "/review/delete/" + reviewHolder.id)
 
-        // refresh leftover reviews
-        // this.getReview();
+        // Refresh leftover reviews
         this.getArtInfo(this.state.currentArt._id);
     }
 
@@ -262,8 +260,7 @@ export default class ArtInfo extends React.Component {
         });
     };
 
-    // Test
-
+    // ===== Clicking on other art changes the current art info =====
     switchArt = (otherArt) => {
         this.getOtherArt(otherArt._id)
         this.getArtInfo(otherArt._id);
@@ -273,8 +270,6 @@ export default class ArtInfo extends React.Component {
             currentArt: otherArt,
             reviewsSection: otherArt.reviews
         })
-
-
     }
 
     // ===== Render other arts =====
@@ -332,16 +327,6 @@ export default class ArtInfo extends React.Component {
         }
     }
 
-    // test
-    addLike = async () => {
-        await axios.post(baseUrl + "/" + this.state.currentArt._id + "/like")
-        let artResponse = await axios.get(baseUrl + "/art_gallery/" + this.state.currentArt._id)
-        console.log(artResponse.data);
-        this.setState({
-            currentArt: artResponse.data
-        })
-        // this.getArtInfo(this.state.currentArt._id);
-    }
 
     // Render art information page
     render() {
@@ -367,8 +352,6 @@ export default class ArtInfo extends React.Component {
                                             }}>{this.state.currentArt.statistics.like_count == 0 ? <i className="fas fa-heart innerHeart"></i> : <i style={{ 'color': '#EF463A' }} className="fas fa-heart innerHeart"></i>}</button>{this.state.currentArt.statistics.like_count}
                                             <a href="#reviewSection"><i id="comments" className="far fa-comment-dots"></i></a> {this.state.currentArt.statistics.review_count}
                                         </div>
-
-
 
                                         <div className="dropdown">
 
@@ -414,7 +397,7 @@ export default class ArtInfo extends React.Component {
                                         <div class="alert alert-danger" role="alert" style={{ "display": (this.state.errorMessageReview ? "block" : "none") }}>
                                             {this.state.errorMessageReview}
                                         </div>
-                                        <div id ="postReviewBtnContainer">
+                                        <div id="postReviewBtnContainer">
                                             <button id="postReviewBtn" onClick={() => {
                                                 this.createReview();
                                             }}>Post</button>
@@ -422,8 +405,8 @@ export default class ArtInfo extends React.Component {
 
                                     </div>
                                     <h2>Reviews <span>{this.state.currentArt.statistics.review_count}</span></h2>
-                                    {this.state.reviewsSection.length === 0? <p>No reviews currently, contribute by adding one!</p>:this.renderReviewList()}
-                                    
+                                    {this.state.reviewsSection.length === 0 ? <p>No reviews currently, leave a review to help the artist!</p> : this.renderReviewList()}
+
                                 </div>
                             </div>
 
@@ -437,7 +420,6 @@ export default class ArtInfo extends React.Component {
                         </div>
                     </div>
                 }
-
 
                 {!this.state.displayInfo && this.renderEditArtPage()}
                 {this.renderEditReview()}

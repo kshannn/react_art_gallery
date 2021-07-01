@@ -2,8 +2,7 @@ import React from "react";
 import ArtForm from "./ArtForm";
 import axios from "axios";
 
-
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us11.gitpod.io"
 
 export default class CreateArtPage extends React.Component {
 
@@ -11,14 +10,14 @@ export default class CreateArtPage extends React.Component {
     poster_name: "",
     image: "",
     art_title: "",
-    art_description:"",
+    art_description: "",
     art_type: "digital",
     art_subject: [],
-    errorMessage:"",
-    errorMessagePosterName:"",
-    errorMessageImage:"",
-    errorMessageArtTitle:"",
-    errorMessageArtDescription:""
+    errorMessage: "",
+    errorMessagePosterName: "",
+    errorMessageImage: "",
+    errorMessageArtTitle: "",
+    errorMessageArtDescription: ""
   };
 
   // ===== Clicking on submit updates database with users' input (POST request) =====
@@ -26,7 +25,7 @@ export default class CreateArtPage extends React.Component {
     let isError = false;
     // Frontend form validation
     // Validation: Name
-    if(this.state.poster_name === "" || this.state.poster_name === undefined){
+    if (this.state.poster_name === "" || this.state.poster_name === undefined) {
       isError = true;
       this.setState({
         errorMessagePosterName: "error",
@@ -35,26 +34,26 @@ export default class CreateArtPage extends React.Component {
     }
 
     // Validation: Art Link
-    if(this.state.image === "" || this.state.image === undefined){
+    if (this.state.image === "" || this.state.image === undefined) {
       isError = true;
       this.setState({
         errorMessageImage: "error",
         errorMessage: "Please ensure all the fields are valid!"
       })
-      
+
     }
 
     // Validation: Title of Art
-    if(this.state.art_title === "" || this.state.art_title === undefined){
+    if (this.state.art_title === "" || this.state.art_title === undefined) {
       isError = true;
       this.setState({
         errorMessageArtTitle: "error",
         errorMessage: "Please ensure all the fields are valid!"
       })
-      
     }
+
     // Validation: Description
-    if(this.state.art_description === "" || this.state.art_description === undefined){
+    if (this.state.art_description === "" || this.state.art_description === undefined) {
       isError = true;
       this.setState({
         errorMessageArtDescription: "error",
@@ -62,11 +61,11 @@ export default class CreateArtPage extends React.Component {
       })
     }
 
-    if(isError){
+    if (isError) {
       return;
     }
 
-    
+
     let userData = {
       post_date: new Date(),
       poster_name: this.state.poster_name,
@@ -75,17 +74,17 @@ export default class CreateArtPage extends React.Component {
       art_description: this.state.art_description,
       art_type: this.state.art_type,
       art_subject: this.state.art_subject,
-      statistics:{
+      statistics: {
         review_count: 0,
         like_count: 0
       }
     };
 
-      let response = await axios.post(baseUrl + "/create/artpost", userData);
-  
-      // Returns user to gallery page and refreshes updated gallery
-      this.props.closePage();
-      this.props.getGallery();
+    let response = await axios.post(baseUrl + "/create/artpost", userData);
+
+    // Returns user to gallery page and refreshes updated gallery
+    this.props.closePage();
+    this.props.getGallery();
 
   };
 
@@ -142,9 +141,9 @@ export default class CreateArtPage extends React.Component {
             errorMessageArtTitle={this.state.errorMessageArtTitle}
             errorMessageArtDescription={this.state.errorMessageArtDescription} />
 
-           {/* Submit form button  */}
+          {/* Submit form button  */}
           <div className="btnContainer">
-          <button onClick={this.submit}>Submit</button>
+            <button onClick={this.submit}>Submit</button>
           </div>
         </div>
       </React.Fragment>

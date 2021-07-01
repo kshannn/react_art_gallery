@@ -7,7 +7,7 @@ import SideFilterOptions from "./SideFilterOptions"
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us11.gitpod.io"
 
 export default class App extends React.Component {
   state = {
@@ -16,10 +16,9 @@ export default class App extends React.Component {
     displayHome: true,
     artHolder: 0,
     gallery: [],
-    searchTerm: "",
-    sideBarDisplayed: false
+    searchTerm: ""
+    // sideBarDisplayed: false
   };
-
 
   // ===== Load gallery on page load (GET REQUEST) =====
   async componentDidMount() {
@@ -96,8 +95,6 @@ export default class App extends React.Component {
       artHolder: artpost
     })
   }
-
-
 
   // ===== When displayArtInfo is set to true, detailed art post page is rendered =====
   renderArtInfoPage = () => {
@@ -223,9 +220,6 @@ export default class App extends React.Component {
               </button>
             </div>
 
-            {/* Create art button */}
-            {/* Only display create button on home page */}
-            {/* {this.state.displayHome && */}
             <React.Fragment>
               <button id="createArtBtn" onClick={this.createArt}><i class="fas fa-plus-circle"></i> Create</button>
             </React.Fragment>
@@ -238,10 +232,8 @@ export default class App extends React.Component {
         <div id="hero" style={{ backgroundImage: `url("./hero_image.jpg")` }}>
           <div><p>— TheArtGalore where every artist deserves to shine</p></div>
         </div>
-        
 
         {/* BODY */}
-
         {/* Only display main body when on home page */}
         {this.state.displayHome &&
           <div id="mainSection">
@@ -261,7 +253,6 @@ export default class App extends React.Component {
 
           </div>
         }
-
 
         {/* Render detailed art page when art is clicked */}
         {this.renderArtInfoPage()}

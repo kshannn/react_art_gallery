@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios"
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us11.gitpod.io"
 
 export default class EditReviewPage extends React.Component {
 
@@ -54,7 +54,6 @@ export default class EditReviewPage extends React.Component {
 
         let userData = {
             reviewer_name: this.state.reviewer_name,
-            liked_post: this.props.currentReview.liked_post,
             review: this.state.review
         }
 

@@ -2,7 +2,7 @@ import React from "react";
 import ArtForm from "./ArtForm";
 import axios from "axios";
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us11.gitpod.io"
 
 export default class EditArtPage extends React.Component {
 
@@ -100,9 +100,6 @@ export default class EditArtPage extends React.Component {
       return;
     }
 
-    
-
-
     let userData = {
       poster_name: this.state.poster_name,
       image: this.state.image,
@@ -118,10 +115,9 @@ export default class EditArtPage extends React.Component {
 
     let response = await axios.put(baseUrl + "/artpost/edit/" + artIdToEdit, userData)
 
-    // returns user to gallery page and refreshes gallery with updated changes
+    // Returns user to art info page with updated changes
     this.props.closeEditArt();
-    this.props.closePage();
-    this.props.getGallery();
+    this.props.getArtInfo();
   }
 
   // ===== Render edit art page =====
