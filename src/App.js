@@ -7,8 +7,8 @@ import SideFilterOptions from "./SideFilterOptions"
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
-// Test Netify Deploy 
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
+
 export default class App extends React.Component {
   state = {
     displayArtForm: false,
@@ -233,6 +233,11 @@ export default class App extends React.Component {
 
           </div>
         </nav>
+
+        {/* HERO IMAGE */}
+        <div id="hero" style={{ backgroundImage: `url("./hero_image.jpg")` }}>
+          <div><p>— TheArtGalore where every artist deserves to shine</p></div>
+        </div>
 
         {/* BODY */}
 

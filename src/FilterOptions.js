@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios";
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
 
 export default class FilterOptions extends React.Component {
 
@@ -50,7 +50,7 @@ export default class FilterOptions extends React.Component {
     render(){
         return (
             <React.Fragment>
-                <div className="mainFilter">
+                <div className="mainFilter sticky-top">
                     
                 {/* Art type */}
                 <h2>Type</h2>

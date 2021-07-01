@@ -3,7 +3,7 @@ import ArtForm from "./ArtForm";
 import axios from "axios";
 
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
 
 export default class CreateArtPage extends React.Component {
 
