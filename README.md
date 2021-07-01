@@ -15,7 +15,7 @@ Many art platforms provides a platform for people to post and share their art ho
 
 ## Project Complexity
 
-Access the Project Complexity Matrix [here](<replace with link to github>).
+Access the Project Complexity Matrix [here](https://github.com/kshannn/react_art_gallery/blob/master/public/project_complexity.pdf).
 
 ## UX/UI
 ### **Stategy**
@@ -70,7 +70,7 @@ _Non-functional requirements_
 * The app uses language that is easy for users to understand and contains no technical jargons
 
 ### **Skeleton**
-
+Access the wireframes for small, medium, and large devices for the website [here]()
 
 ### **Surface**
 
@@ -136,11 +136,41 @@ _Limitations and future implementations_
 * [Multi Device Website Mockup Generator](https://techsini.com/multi-mockup/index.php)
     * To display screen-responsiveness of website across different devices
 
+* HTML5
+    * To create import CDN for Bootstrap and Font Awesome
+* CSS3
+    * To style various elements throughout the web app
+* JavaScript
+    * To include interactive elements throughout the web app
+
+* [React](https://reactjs.org/)
+
+* [Bootstrap v5.0.1](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+    * For offcanvas, alerts, navbar
+
+* [Git](https://git-scm.com/)
+    * For version control
+
+* [GitHub](http://github.com)
+    * To create repository and store source code
+
+* [Balsamiq Mockups 3](https://balsamiq.com/)
+    * To create wireframes
+
+* [Netlify](https://www.netlify.com/)
+    * To deploy React application
+
+* [Google Font](https://fonts.google.com/)
+    * To select font families used for web app (i.e. IM Fell English, Lato, Karla)
+* [Multi Device Website Mockup Generator](https://techsini.com/multi-mockup/index.php)
+    * To display screen-responsiveness of website across different devices
+
 ## Deployment
 
 The web app is hosted using Heroku (for Express NodeJS) and Netlify (for React).
 
 **Steps to deployment using Netlify**
+
 
 ## Dependencies
 
@@ -151,7 +181,6 @@ The web app is hosted using Heroku (for Express NodeJS) and Netlify (for React).
     * To call API
 
 ## Credits
-
 
 * Brand logo 
     * Taken and edited from [Artist Repetory Theatre's website]([https://artistsrep.org/announcing-arts-new-logo-and-branding/](https://artistsrep.org/announcing-arts-new-logo-and-branding/) (Art logo edited))

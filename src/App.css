@@ -3,7 +3,7 @@
 
 /* font-family: 'Karla', sans-serif;
 font-family: 'Lato', sans-serif;
-font-family: 'IM Fell English', serif; */ */
+font-family: 'IM Fell English', serif; */ 
 
 *{
   font-family: 'Lato', sans-serif;
@@ -64,7 +64,7 @@ font-family: 'IM Fell English', serif; */ */
    color:rgb(175, 175, 175);
 }
 
- /* ========= HERO ========= */
+/* ========= HERO ========= */
 
 #hero {
   height: 110px;
@@ -75,18 +75,17 @@ font-family: 'IM Fell English', serif; */ */
   display: flex;
   justify-content: center;
   align-items: center;
-  color:white;
-  font-size: 30px;
 }
 
 #hero p {
+  color:white;
+  font-size: 30px;
   font-family: 'IM Fell English', serif;
   text-align: center;
   margin-top: 1rem;
-  color:white;
-  font-size: 30px;
-  padding: 0px 50px;
+  padding:0px 50px;
 }
+ 
 
 /* ========= SIDE FILTER TOGGLE ========= */
 
@@ -776,6 +775,8 @@ textarea{
       width: 100%;
       margin: 15px 7% 0px 7%;
   }
+
+  /* ========= HERO ========= */
 
   #hero p {
     color:white;
