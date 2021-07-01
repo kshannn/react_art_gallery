@@ -2,7 +2,7 @@ import React from "react";
 import ArtForm from "./ArtForm";
 import axios from "axios";
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us09.gitpod.io"
 
 export default class EditArtPage extends React.Component {
 

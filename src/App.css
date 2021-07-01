@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Lato:ital,wght@0,300;0,400;1,300;1,400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@1&display=swap');
 
 /* font-family: 'Karla', sans-serif;
 font-family: 'Lato', sans-serif; */
@@ -63,6 +63,26 @@ font-family: 'Lato', sans-serif; */
    color:rgb(175, 175, 175);
 }
 
+/* ========= HERO ========= */
+
+#hero {
+  height: 110px;
+  background: rgb(238, 238, 238);
+  background-position: center;
+  background-size: cover;
+  margin: 10px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
+  font-size: 30px;
+}
+
+#hero p {
+  font-family: 'IM Fell English', serif;
+  text-align: center;
+  margin-top: 1rem;
+}
  
 
 /* ========= SIDE FILTER TOGGLE ========= */
