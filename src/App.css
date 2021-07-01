@@ -1,15 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Lato:ital,wght@0,300;0,400;1,300;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@1&display=swap');
 
-/* font-family: 'Karla', sans-serif;
-font-family: 'Lato', sans-serif;
-font-family: 'IM Fell English', serif; */ 
-
 *{
   font-family: 'Lato', sans-serif;
 }
 
 /* ========= NAVIGATION BAR ========= */
+
+/* Nav bar */
 
 .navbar {
   line-height: 1;
@@ -24,6 +22,12 @@ font-family: 'IM Fell English', serif; */
   font-weight: 600;
 }
 
+#logo {
+  width: 130px;
+}
+
+/* Searchbar */
+
 #searchBar{
   flex: 1;
 }
@@ -32,19 +36,6 @@ font-family: 'IM Fell English', serif; */
   position:relative;
   right:28px; 
   font-size: 20px;
-}
-
-#createArtBtn {
-  height: 40px;
-  border-radius: 24px;
-  background: #FDB414;
-  border: none;
-  padding: 0px 15px;
-  margin-left: 5px;
-}
-
-#createArtBtn:hover {
-  background:#ffc342;
 }
 
 #searchContainer {
@@ -64,7 +55,22 @@ font-family: 'IM Fell English', serif; */
    color:rgb(175, 175, 175);
 }
 
-/* ========= HERO ========= */
+/* Create button */
+#createArtBtn {
+  height: 40px;
+  border-radius: 24px;
+  background: #FDB414;
+  border: none;
+  padding: 0px 15px;
+  margin-left: 5px;
+}
+
+#createArtBtn:hover {
+  background:#ffc342;
+}
+
+
+/* ========= HERO IMAGE ========= */
 
 #hero {
   height: 110px;
@@ -85,21 +91,33 @@ font-family: 'IM Fell English', serif; */
   margin-top: 1rem;
   padding:0px 50px;
 }
- 
-
-/* ========= SIDE FILTER TOGGLE ========= */
-
-#sideToggle {
-  /* background: rgb(255, 162, 162); */
-  margin-right: 10px;
-}
-
-.w-25 {
-  width: 300px !important;
-}
-
 
 /* ========= MAIN GALLERY ========= */
+
+#mainSection{
+  display:flex;
+  min-height: 100vh;
+}
+
+#filterSection{
+  flex:1;
+}
+
+#gallerySection{
+  flex: 4;
+}
+
+#noResults{
+  margin-top:100px;
+  text-align: center;
+}
+
+#resultsNum {
+  color: grey;
+  text-align: center;
+  margin-block-end: 0em;
+  margin-block-start: 1em;
+}
 
 /* Each Art Listing */
 .listingContainer {
@@ -109,7 +127,6 @@ font-family: 'IM Fell English', serif; */
   max-width: 300px;
   min-height: 350px;
   max-height: 400px;
-  /* background: rgb(75, 222, 233); */
 }
 
 .listingContainer:hover{
@@ -148,14 +165,6 @@ img {
   color: rgb(128, 128, 128)
 }
 
-#tagsContainer {
-  margin-bottom: 10px;
-  width: inherit;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: clip;
-}
-
 .fa-heart {
   color: rgb(204, 204, 204);
   margin-right: 5px;
@@ -166,23 +175,125 @@ img {
   margin-right: 5px;
 }
 
+#tagsContainer {
+  margin-bottom: 10px;
+  width: inherit;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+
+.badge {
+  color: black;
+  background:rgb(91, 120, 197)
+}
+
+.badge-animal{
+  background: rgb(235, 160, 172);
+}
+
+.badge-nature{
+  background: rgb(176, 231, 165);
+}
+
+.badge-people{
+  background: rgb(146, 174, 211);
+}
+
+.badge-digital{
+  background: rgb(120, 199, 230);
+}
+
+.badge-traditional{
+  background: #FDB414;
+}
+
 .row {
   --bs-gutter-x: 0rem;
 }
 
+/* ========= FILTER SECTION ========= */
+
+/* Side Filter */
+
+#sideToggle {
+  margin-right: 10px;
+}
+
+.w-25 {
+  width: 300px !important;
+}
+
+.offcanvas {
+  max-width: 80%;
+}
+
+.offcanvas-header {
+  padding: 1rem 1rem 1rem 3rem;
+}
+
+#offcanvas {
+  font-size: 17px;
+}
+
+/* Main Filter */
+
+.mainFilter{
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainFilter > div {
+  line-height: 1.5;
+}
+
+.mainFilter input {
+  margin-right: 5px;
+}
+
+.mainFilter h2{ 
+  font-size: 20px !important;
+  font-family: 'Karla', sans-serif;
+}
+
+.mainFilter h2:nth-child(3){ 
+  margin-top: 15px;
+}
+
+.mainFilter h2:first-child{ 
+  margin-bottom: 10px;
+}
+
+.mainFilter > h2:nth-child(4), .mainFilter > button {
+  margin-top: 15px;
+}
+
+.mainFilter button {
+  border: none;
+  background:#788D98;
+  color:white;
+  line-height: 2;
+  border-radius: 5px;
+  margin-bottom: -5px;
+}
+
+.mainFilter button:hover {
+  background: #9eb3be;
+}
 
 
 /* ========= ART INFO PAGE ========= */
 .artInfo {
   min-height: 100vh;
   width: 100%;
-  /* background: rgb(210, 213, 255); */
 }
 
 #mainContentContainer {
   display:flex;
 }
 
+/* ========= ART INFO PAGE - Other Arts Section ========= */
 #otherArtSection{
   flex: 1;
   padding-right: 120px;
@@ -196,6 +307,21 @@ img {
   font-size: 20px;
 }
 
+.otherArtContainer {
+  /* min-width: 130px; */
+  height: 130px;
+  background-position: center;
+  background-size:cover;
+  background-repeat: no-repeat;
+  box-shadow: 0px 0px 10px rgba(168, 168, 168, 1)
+}
+
+.otherArtContainer:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+/* ========= ART INFO PAGE - Current Art Section ========= */
 #currentArtSection {
   display:flex;
   flex-direction: column;
@@ -210,7 +336,6 @@ img {
   box-shadow: 8px 10px 10px lightgrey;
   width: 100%;
   height: 400px;
-  /* background: rgb(75, 222, 233); */
   background-position: center;
   background-size:cover;
   background-repeat: no-repeat;
@@ -221,11 +346,11 @@ img {
   width:90%;
   max-width: 500px;
   height: 470px;
-  /* background: red; */
 }
 
 .fa-ellipsis-h {
   font-size: 25px;
+  color: #788D98;
 }
 
 .fa-ellipsis-h:hover {
@@ -245,6 +370,19 @@ img {
 #artInfoStatistics {
   position: absolute;
   left: 15px;
+}
+
+#heartBtn{
+  border:none;
+  background: white;
+}
+
+#heartBtn i:hover{
+  color: #ee736a !important;
+}
+
+.innerHeart{
+  margin-right: 0px;
 }
 
 #comments {
@@ -278,384 +416,13 @@ img {
   font-size: 0.8rem;
 }
 
-#reviewSection {
-  max-width:500px;
-  width: 90%;
-  height: fit-content;
-  margin-bottom: 50px;
-}
-
-#reviewSection h3 {
-  font-size: 20px;
-}
-
-#newReview input, #newReview textarea {
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin-top: 5px;
-  border: 1px solid grey;
-}
-
-#postReviewBtnContainer {
-  width: 100%;
-  height: 50px;
-  position: relative;
-}
-
-#postReviewBtn {
-  border: none;
-    border-radius: 5px;
-    background: #788D98;
-    color:white;
-    padding: 5px 30px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-
-#postReviewBtn:hover {
-  background: #a2abb1;
-}
-
-/* Review Section */
-.reviewContainer {
-  padding: 10px 10px;
-  border-radius: 5px;
-  margin-top: 10px;
-  border: 1px solid grey;
-  position: relative;
-}
-
-#newReview {
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-bottom: 40px;
-}
-
-.reviewContainer p {
-  margin-bottom: 1.5rem;
-}
-
-.reviewContainer h3 {
-  font-size: 1.2rem;
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.reviewContainer span {
-  color: grey;
-  font-size: 0.8rem;
-}
-
-.reviewContainer .dropdown {
-  bottom: 0;
-}
-
-textarea{
-  resize: none;
-}
-
-
-
-/* ========= EDIT ART PAGE ========= */
-#editArtPage {
-  min-height: 100vh;
-  width: 100%;
-  /* background: rgb(255, 225, 186); */
-}
-
-/* Preview */
-.preview {
-  margin-top: 20px;
-  color: grey;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  border:1px solid rgb(119, 119, 119);
-  height: 200px;
-  width:200px;
-  background-position: center;
-  background-size:contain;
-  background-repeat: no-repeat;
-}
-
-/* Modal box */
-.popupBackground{
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  top: 0;
-  left: 0;
-}
-
-.editReviewPopup {
-  position: fixed;
-  top: 50%;
-  left:50%;
-  transform: translate(-50%, -50%);
-  min-height: 395px;
-  width:90%;
-  min-width: 300px;
-  max-width: 500px;
-  margin: 25px auto;
-  background: white;
-  padding: 10px 30px;
-  border-radius: 15px;
-  line-height: 2;
-}
-
-#editReviewContent {
-  display: flex;
-  flex-direction: column;
-}
-
-#editReviewContent h2 {
-  margin-top: 20px;
-}
-
-#editReviewContent input, #editReviewContent textarea {
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: 1px solid grey;
-}
-
-#editReviewBtnContainer {
-  height: 50px;
-  position: relative;
-}
-
-#editReviewContent button {
-  position: absolute;
-  bottom: 0;
-  border:none;
-  border-radius: 5px;
-  color: white;
-  padding: 2px 15px;
-}
-
-#closeBtn {
-  background: rgb(131, 131, 131);
-  right: 130px;
-}
-
-#saveChangeBtn{
-  background: rgb(69, 202, 255);
-  right: 0px;
-}
-
-
-.badge {
-  color: black;
-  background:rgb(91, 120, 197)
-}
-
-
-#mainSection{
-  display:flex;
-  min-height: 100vh;
-}
-
-#filterSection{
-  flex:1;
-  /* background:rgb(238, 238, 238); */
-}
-
-#gallerySection{
-  flex: 4;
-  /* background: rgb(255, 225, 186); */
-}
-
-.badge-animal{
-  background: rgb(235, 160, 172);
-}
-
-.badge-nature{
-  background: rgb(176, 231, 165);
-}
-
-.badge-people{
-  background: rgb(146, 174, 211);
-}
-
-.badge-digital{
-  background: rgb(120, 199, 230);
-}
-
-.badge-traditional{
-  background: #FDB414;
-}
-
-
-/* bootstrap css */
-.col-lg-4, .col-md-6, .col-xs-12 {
-  padding: 10px;
-}
-
-
-
-
-/* filter */
-
-.offcanvas {
-  max-width: 80%;
-}
-
-.offcanvas-header {
-  padding: 1rem 1rem 1rem 3rem;
-}
-
-#offcanvas {
-  font-size: 17px;
-}
-
-/* .offcanvas-body {
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem 1.5rem;
-  line-height: 2;
-}
-
-.offcanvas-body > h2:nth-child(4), .offcanvas-body > button {
-  margin-top: 15px;
-} */
-
-.mainFilter{
-  padding: 3rem 2rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.mainFilter > div {
-  line-height: 1.5;
-}
-
-.mainFilter input {
-  margin-right: 5px;
-}
-
-.mainFilter h2{ 
-  font-size: 20px !important;
-  font-family: 'Karla', sans-serif;
-}
-
-
-.mainFilter h2:nth-child(3){ /* select */
-  margin-top: 15px;
-}
-
-.mainFilter h2:first-child{ /* select */
-  margin-bottom: 10px;
-}
-
-.mainFilter > h2:nth-child(4), .mainFilter > button {
-  margin-top: 15px;
-}
-
-.mainFilter button {
-  border: none;
-  background:#788D98;
-  color:white;
-  line-height: 2;
-  border-radius: 5px;
-  margin-bottom: -5px;
-}
-
-.mainFilter button:hover {
-  background: #9eb3be;
-}
-
-
-
-
-/* ========= CREATE ART PAGE ========= */
-
-#createArtPage {
-  min-height: 100vh;
-  width: 100%;
-  /* background: lightseagreen; */
-}
-
-#artForm {
-  display:flex;
-  flex-direction: column;
-  width: 90%;
-  min-width: 300px;
-  max-width: 600px;
-  margin: 0px auto;
-  line-height: 2;
-}
-
-#artForm h2 {
-  font-size: 1rem;
-  margin-top: 15px;
-}
-
-#artForm input, #artForm textarea {
-  padding: 5px 10px;
-  background: rgb(240, 240, 240);
-  border:none;
-  border-radius: 5px;
-}
-
-#artForm span {
-  margin-right: 10px;
-  margin-left: 5px;
-}
-
-.btnContainer {
-  height: 100px;
-  width: 90%;
-  color: white;
-  min-width: 300px;
-  max-width: 600px;
-  margin: 25px auto;
-  position: relative;
-}
-
-.btnContainer button {
-  position: absolute;
-  bottom: 55px;
-  right: 0;
-  border: none;
-  border-radius: 5px;
-  background: #788D98;
-  color: white;
-  padding: 7px 45px;
-}
-
-.btnContainer button:hover {
-  background: #a2abb1;
-}
-
-.fa-chevron-left {
-  margin-right: 10px;
-}
-
-.fa-ellipsis-h {
-  color: #788D98;
-}
-
-.backBtn {
-  border: none;
-  background: white;
-  margin: 10px 15px;
-}
-
-.backBtn:hover {
-  opacity: 0.6;
-}
-
+/* Delete Confirmation Modal Popup */
 
 #deleteConfirmation {
   position: fixed;
   top: 50%;
   left:50%;
   transform: translate(-50%, -50%);
-  /* height: 350px; */
   width:90%;
   min-width: 300px;
   max-width: 500px;
@@ -690,75 +457,275 @@ textarea{
   background: #fa6b61;
 }
 
-
-#logo {
-  width: 130px;
+/* ========= ART INFO PAGE - Reviews Section ========= */
+#reviewSection {
+  max-width:500px;
+  width: 90%;
+  height: fit-content;
+  margin-bottom: 50px;
 }
 
-#noResults{
-  margin-top:100px;
-  text-align: center;
+#reviewSection h3 {
+  font-size: 20px;
 }
 
-#resultsNum {
-  color: grey;
-  text-align: center;
-  margin-block-end: 0em;
-  margin-block-start: 1em;
-}
-
-.otherArtContainer {
-  /* min-width: 130px; */
-  height: 130px;
-  background-position: center;
-  background-size:cover;
-  background-repeat: no-repeat;
-  box-shadow: 0px 0px 10px rgba(168, 168, 168, 1)
-}
-
-
-.otherArtContainer:hover {
-  opacity: 0.8;
-  cursor: pointer;
-}
-
-.overlay{
-  height: 100vh;
+/* New Review  */
+#newReview {
   width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+#newReview input, #newReview textarea {
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  border: 1px solid grey;
+}
+
+#postReviewBtnContainer {
+  width: 100%;
+  height: 50px;
+  position: relative;
+}
+
+#postReviewBtn {
+  border: none;
+    border-radius: 5px;
+    background: #788D98;
+    color:white;
+    padding: 5px 30px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+#postReviewBtn:hover {
+  background: #a2abb1;
+}
+
+/* Existing Reviews */
+.reviewContainer {
+  padding: 10px 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: 1px solid grey;
+  position: relative;
+}
+
+.reviewContainer p {
+  margin-bottom: 1.5rem;
+}
+
+.reviewContainer h3 {
+  font-size: 1.2rem;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.reviewContainer span {
+  color: grey;
+  font-size: 0.8rem;
+}
+
+.reviewContainer .dropdown {
+  bottom: 0;
+}
+
+textarea{
+  resize: none;
+}
+
+/* ========= EDIT ART PAGE ========= */
+#editArtPage {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Preview Image */
+.preview {
+  margin-top: 20px;
+  color: grey;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border:1px solid rgb(119, 119, 119);
+  height: 200px;
+  width:200px;
+  background-position: center;
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+
+/* Edit Review Popup */
+.popupBackground{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
   top: 0;
   left: 0;
-  position: absolute;
-  background: rgba(0,0,0, 0.3);
-  z-index: 500;
 }
 
-#heartBtn{
-  border:none;
+.editReviewPopup {
+  position: fixed;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  min-height: 395px;
+  width:90%;
+  min-width: 300px;
+  max-width: 500px;
+  margin: 25px auto;
   background: white;
+  padding: 10px 30px;
+  border-radius: 15px;
+  line-height: 2;
 }
 
-#heartBtn i:hover{
-  color: #ee736a !important;
+/* Edit Review Forms */
+#editReviewContent {
+  display: flex;
+  flex-direction: column;
 }
 
-.innerHeart{
-  margin-right: 0px;
+#editReviewContent h2 {
+  margin-top: 20px;
 }
 
+#editReviewContent input, #editReviewContent textarea {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+/* Edit Review Buttons */
+#editReviewBtnContainer {
+  height: 50px;
+  position: relative;
+}
+
+#editReviewContent button {
+  position: absolute;
+  bottom: 0;
+  border:none;
+  border-radius: 5px;
+  color: white;
+  padding: 2px 15px;
+}
+
+#closeBtn {
+  background: rgb(131, 131, 131);
+  right: 130px;
+}
+
+#saveChangeBtn{
+  background: rgb(69, 202, 255);
+  right: 0px;
+}
+
+/* bootstrap css */
+.col-lg-4, .col-md-6, .col-xs-12 {
+  padding: 10px;
+}
+
+/* ========= CREATE ART PAGE ========= */
+
+#createArtPage {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Back Button */
+.fa-chevron-left {
+  margin-right: 10px;
+}
+
+.backBtn {
+  border: none;
+  background: white;
+  margin: 10px 15px;
+}
+
+.backBtn:hover {
+  opacity: 0.6;
+}
+
+/* Form */
+#artForm {
+  display:flex;
+  flex-direction: column;
+  width: 90%;
+  min-width: 300px;
+  max-width: 600px;
+  margin: 0px auto;
+  line-height: 2;
+}
+
+#artForm h2 {
+  font-size: 1rem;
+  margin-top: 15px;
+}
+
+#artForm input, #artForm textarea {
+  padding: 5px 10px;
+  background: rgb(240, 240, 240);
+  border:none;
+  border-radius: 5px;
+}
+
+#artForm span {
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+/* Button */
+.btnContainer {
+  height: 100px;
+  width: 90%;
+  color: white;
+  min-width: 300px;
+  max-width: 600px;
+  margin: 25px auto;
+  position: relative;
+}
+
+.btnContainer button {
+  position: absolute;
+  bottom: 55px;
+  right: 0;
+  border: none;
+  border-radius: 5px;
+  background: #788D98;
+  color: white;
+  padding: 7px 45px;
+}
+
+.btnContainer button:hover {
+  background: #a2abb1;
+}
+
+
+/* ========= FAILED FORM VALIDATION ========= */
 .failedValidation {
   border: 1px solid red !important;
 }
 
-#editReviewBtnContainer {
-  height: 50px;
-}
 
+/* ========= FOR SMALLER DEVICES ========= */
 @media screen and (max-width: 576px){
 
+  /* ========= NAVIGATION BAR ========= */
+
+  /* Nav bar */ 
   #logo {
       width: 110px;
   }
   
+  /* Searchbar*/
   #searchContainer {
     display: block;
     width: 100%;
@@ -770,6 +737,7 @@ textarea{
     bottom: 0;
   }
 
+  /* Create Button */
   #createArtBtn{
       display: block;
       width: 100%;
