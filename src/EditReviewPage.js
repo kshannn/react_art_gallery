@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios"
 
-const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
 
 export default class EditReviewPage extends React.Component {
 

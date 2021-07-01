@@ -5,7 +5,7 @@ import EditArtPage from "./EditArtPage"
 import EditReviewPage from "./EditReviewPage"
 
 
-const baseUrl = "https://3000-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us08.gitpod.io"
 
 export default class ArtInfo extends React.Component {
 
@@ -404,7 +404,7 @@ export default class ArtInfo extends React.Component {
 
                                 {/* Review section */}
                                 <div id="reviewSection">
-                                    <h3>Help out another fellow artist by leaving a review!</h3>
+                                    <h3>Help another fellow artist out by leaving a review!</h3>
                                     <div id="newReview">
                                         <input type="text" placeholder="Your name" name="reviewer_name" value={this.state.reviewer_name} onChange={this.updateForm} />
                                         <div class="alert alert-danger" role="alert" style={{ "display": (this.state.errorMessageReviewerName ? "block" : "none") }}>
@@ -422,7 +422,8 @@ export default class ArtInfo extends React.Component {
 
                                     </div>
                                     <h2>Reviews <span>{this.state.currentArt.statistics.review_count}</span></h2>
-                                    {this.renderReviewList()}
+                                    {this.state.reviewsSection.length === 0? <p>No reviews currently, add one to contribute!</p>:this.renderReviewList()}
+                                    
                                 </div>
                             </div>
 
