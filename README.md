@@ -15,6 +15,8 @@ Many art platforms provides a platform for people to post and share their art ho
 
 ## Project Complexity
 
+Access the Project Complexity Matrix [here](<replace with link to github>).
+
 ## UX/UI
 ### **Stategy**
 _Organisation_
@@ -59,10 +61,10 @@ _Non-functional requirements_
 
 ### **Structure**
 
-<img src='../art_gallery/public/site_map_art_gallery.png'><br>
+<img src='./public/site_map_art_gallery.png'><br>
 
 
-* TAG web application is structured using a ___ .
+* TAG web application is structured using a tree hierarchy .
 
 
 * The app uses language that is easy for users to understand and contains no technical jargons
@@ -74,7 +76,7 @@ _Non-functional requirements_
 
 _Colours_
 
-<img src='../art_gallery/public/art_gallery_colour_palette.png' style='display:block'>
+<img src='./public/art_gallery_colour_palette.png' style='display:block'>
 <br>
 
 * The main colours used to design the website are based on the colours in the logo. The colours consist of different shades of red, blue, and yellow which are primary colours. As all colours can be created from primary colours, it is a fitting palette for an art website that encourages creation of art from even its most simple form.
@@ -106,10 +108,51 @@ _Limitations and future implementations_
 
 ## Technologies Used
 
+* HTML5
+    * To create import CDN for Bootstrap and Font Awesome
+* CSS3
+    * To style various elements throughout the web app
+* JavaScript
+    * To include interactive elements throughout the web app
+
+* [React](https://reactjs.org/)
+
+* [Bootstrap v5.0.1](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+    * For offcanvas, alerts, navbar
+
+* [Git](https://git-scm.com/)
+    * For version control
+
+* [GitHub](http://github.com)
+    * To create repository and store source code
+
+* [Balsamiq Mockups 3](https://balsamiq.com/)
+    * To create wireframes
+
+* [Netlify](https://www.netlify.com/)
+    * To deploy React application
+
+* [Google Font](https://fonts.google.com/)
+    * To select font families used for web app (i.e. IM Fell English, Lato, Karla)
+* [Multi Device Website Mockup Generator](https://techsini.com/multi-mockup/index.php)
+    * To display screen-responsiveness of website across different devices
+
 ## Deployment
 
-## Credits
+The web app is hosted using Heroku (for Express NodeJS) and Netlify (for React).
 
+**Steps to deployment using Netlify**
+
+
+## Dependencies
+
+* [MongoDB](https://www.mongodb.com/)
+    * To store data
+
+* [Axios](https://cdnjs.com/libraries/axios)
+    * To call API
+
+## Credits
 
 * Brand logo 
     * Taken and edited from [Artist Repetory Theatre's website]([https://artistsrep.org/announcing-arts-new-logo-and-branding/](https://artistsrep.org/announcing-arts-new-logo-and-branding/) (Art logo edited))

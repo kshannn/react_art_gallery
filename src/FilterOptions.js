@@ -50,7 +50,7 @@ export default class FilterOptions extends React.Component {
     render(){
         return (
             <React.Fragment>
-                <div className="mainFilter">
+                <div className="mainFilter sticky-top">
                     
                 {/* Art type */}
                 <h2>Type</h2>
