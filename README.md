@@ -15,7 +15,7 @@ Many art platforms provides a platform for people to post and share their art ho
 
 ## Project Complexity
 
-Access the Project Complexity Matrix [here](<replace with link to github>).
+Access the Project Complexity Matrix [here](https://github.com/kshannn/react_art_gallery/blob/master/public/project_complexity.pdf).
 
 ## UX/UI
 ### **Stategy**
@@ -70,7 +70,7 @@ _Non-functional requirements_
 * The app uses language that is easy for users to understand and contains no technical jargons
 
 ### **Skeleton**
-
+Access the wireframes for small, medium, and large devices for the website [here]()
 
 ### **Surface**
 
