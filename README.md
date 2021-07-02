@@ -5,41 +5,51 @@
 Access the live demo of the website [here](https://wonderful-turing-7905df.netlify.app).
 
 ## Project Summary
+
 **Project Context**
+
 The Art Galore(TAG) is a mobile-responsive open platform for artists to browse through art, leave reviews for art, and also share their art with the public.
 
 **Organisational Goals**
-The web app aims to promote the freedom and idea of sharing art to the public and exchanging constructive feedback in the art community. Through providing and receiving reviews, artist can make use of the feedback to improve on their art. 
+
+The web app aims to promote the freedom of sharing art with the public and encourage exchanging of constructive art reviews within the art community. Artist can make use of the reviews provided to further improve on their art skills. 
 
 **User Goals**
-The aim of users is to gather reviews for their art. These reviews can be helpful in helping them pinpoint the areas they can work on.
+
+The aim of users is to gather reviews for their art. These reviews can be helpful in pinpointing the areas they can work on.
 
 **Justification for the App**
-Many art platforms provides a platform for people to post and share their art however this art platform encourages leaving reviews to help artist grow. Creation of art post and reviews are made easy through the features implemented (e.g. art post and reviews can be made within a single click)
+
+Many art platforms provides a platform for people to post and share their art however this art platform encourages leaving reviews to help artist grow. The process of creating reviews is simplified through the features implemented (e.g. reviews can be created in a single click, messages throughout the website encouraging users to leave a review)
 
 ## Project Complexity
 
 Access the Project Complexity Matrix [here](https://github.com/kshannn/react_art_gallery/blob/master/public/project_complexity.pdf).
 
 ## UX/UI
+
 ### **Stategy**
+
 _Organisation_
-* Objective: Provide a platform to encourage sharing of constructive feedback within the art community
+* Objective: Provide a service platform to encourage sharing of art and constructive reviews within the art community
 
 _User_
-* Objective: To get reviews for the art that they shared
+* Objective: To get reviews for the art that they shared so that they can identify the areas to improve on
 
-* Needs: An art platform that encourages reviews
+* Needs: An art platform that allow users to easily post their art and get reviews
 
 * Demographics:
-    * Artists who do digital/traditional art and seeking for improvement from public feedback
+    * Artists who do digital/traditional art and are seeking to improve on their art skills based on public feedback
     * Sufficient literacy in using technological devices
 
-* Pain point: Can be difficult to get constructive feedback from other platforms 
+* Pain point: Can be difficult to gain constructive feedback from other platforms 
 
 User Stories | Acceptance Criteria(s)
 ------------ | -------------
 As an artist who is looking for feedback on my art, I want to be able to easily post my art onto a platform where I can gain feedback so that I can improve on my art based on them  | Feature that allows ease of posting art
+As a person who is looking to browse through art, I want to be able to easily search for art from specific categories so that I can narrow down to the results that I want quickly. | Feature that display multiple art posts and allow filtering or searching based on certain criterias
+
+
 
 
 ### **Scope**
@@ -48,19 +58,22 @@ _Functional Specifications_
 
 * Create, read, update, delete reviews
 
-* Search for art post 
+* Search for art posts
 
-* Filter art post
+* Sort art posts
+
+* Filter art posts
 
 _Content requirements_
 
-* Details about the art post (e.g. name of poster, title of art, description of art, date posted etc.)
+* Details about the art posts (e.g. name of poster, title of art, art type, art subject, description of art, date posted etc.)
 
 * Details about the reviews (e.g. name of reviewer, date posted, content of review)
 
 _Non-functional requirements_
 * Mobile responsiveness
     * Achieved via the use of bootstrap media queries,bootstrap grid columns, and flex box
+
 * Performance
 
 ### **Structure**
@@ -68,7 +81,16 @@ _Non-functional requirements_
 <img src='./public/site_map_art_gallery.png'><br>
 
 
-* TAG web application is structured using a tree hierarchy .
+* When user loads the website, they will land on the art gallery page which displays the available art posts. Users can use the search filter, sorting, and search bar to narrow and sort their results.
+
+* Users would also see a hero image with words that highlight the mission of web app. This helps users to frame what the website is about.
+
+* Users can create an art post by clicking on the create button at the top of the screen. This direct them to a page where they can fill up information about the art they wish to post. Upon submission of their art details, they would be redirected to the gallery page to see their updated post there.
+
+* Clicking on a particular art post would direct users to a page with more details about the art post such as the description and reviews associated with it. They have the option to edit or delete the art post through a small dropdown menu.
+
+* Creating of a review is done within the page of a particular art post.
+
 
 
 * The app uses language that is easy for users to understand and contains no technical jargons
@@ -103,6 +125,8 @@ _Font Choice_
 
 _Limitations and future implementations_
 * In the future, I would like to implement pagination so that users can click through the pages to browse the art posts instead of scrolling. This also relieves the load on the database and web application by limiting the number of results returned.
+
+* In the future, I would like to implement a user account feature so as to keep track of the art posted, reviews made, and posts liked by each user. To further encourage reviews from users, I would also like to implement a point system whereby users will gain points to unlock site benefits upon leaving a review on an art post. This is possible to keep track with the implementation of a user account feature.
 
 ## Testing
 
