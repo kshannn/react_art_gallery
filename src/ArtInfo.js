@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import EditArtPage from "./EditArtPage"
 import EditReviewPage from "./EditReviewPage"
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us11.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
 
 export default class ArtInfo extends React.Component {
 
@@ -150,7 +150,7 @@ export default class ArtInfo extends React.Component {
         if (this.state.reviewer_name === "" || this.state.reviewer_name === undefined) {
             isError = true;
             this.setState({
-                errorMessageReviewerName: "Please enter a valid name",
+                errorMessageReviewerName: "Please fill in your name",
             })
         }
 
@@ -340,6 +340,7 @@ export default class ArtInfo extends React.Component {
                             this.props.getGallery();
                         }}><i class="fas fa-chevron-left"></i>Back</button>
 
+                        {/* Main Content */}
                         <div id="mainContentContainer">
                             {/* Art section */}
                             <div id="currentArtSection">

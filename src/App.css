@@ -181,6 +181,11 @@ img {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: clip;
+  overflow-x:auto;
+}
+
+#tagsContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .badge {
@@ -190,6 +195,18 @@ img {
 
 .badge-animal{
   background: rgb(235, 160, 172);
+}
+
+.badge-anime{
+  background: rgb(255, 227, 167);
+}
+
+.badge-cartoon{
+  background: rgb(204, 124, 124);
+}
+
+.badge-food{
+  background: rgb(255, 191, 54);
 }
 
 .badge-nature{

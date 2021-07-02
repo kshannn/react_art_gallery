@@ -2,7 +2,7 @@ import React from "react";
 import ArtForm from "./ArtForm";
 import axios from "axios";
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us11.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
 
 export default class EditArtPage extends React.Component {
 
@@ -64,7 +64,7 @@ export default class EditArtPage extends React.Component {
       isError = true;
       this.setState({
         errorMessagePosterName: "error",
-        errorMessage: "Please ensure all the fields are valid!"
+        errorMessage: "Please ensure all the fields are filled!"
       })
     }
 
@@ -73,9 +73,8 @@ export default class EditArtPage extends React.Component {
       isError = true;
       this.setState({
         errorMessageImage: "error",
-        errorMessage: "Please ensure all the fields are valid!"
+        errorMessage: "Please ensure all the fields are filled!"
       })
-      
     }
 
     // Validation: Title of Art
@@ -83,7 +82,7 @@ export default class EditArtPage extends React.Component {
       isError = true;
       this.setState({
         errorMessageArtTitle: "error",
-        errorMessage: "Please ensure all the fields are valid!"
+        errorMessage: "Please ensure all the fields are filled!"
       })
       
     }
@@ -92,7 +91,7 @@ export default class EditArtPage extends React.Component {
       isError = true;
       this.setState({
         errorMessageArtDescription: "error",
-        errorMessage: "Please ensure all the fields are valid!"
+        errorMessage: "Please ensure all the fields are filled!"
       })
     }
 
@@ -127,6 +126,7 @@ export default class EditArtPage extends React.Component {
         <div id="editArtPage">
           {/* Back button */}
           <button className="backBtn" onClick={this.props.closeEditArt}><i class="fas fa-chevron-left"></i>Back</button>
+          
           <h1 className="text-center">Edit an art post</h1>
 
           {/* Edit art form */}
@@ -155,5 +155,4 @@ export default class EditArtPage extends React.Component {
       </React.Fragment>
     );
   }
-
 }

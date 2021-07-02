@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios"
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us11.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
 
 export default class EditReviewPage extends React.Component {
 
@@ -36,7 +36,7 @@ export default class EditReviewPage extends React.Component {
         if (this.state.reviewer_name === "" || this.state.reviewer_name === undefined){
             isError = true;
             this.setState({
-                errorMessageReviewerName: "Please enter a valid name"
+                errorMessageReviewerName: "Please fill in your name"
             })
         }
 
@@ -50,7 +50,6 @@ export default class EditReviewPage extends React.Component {
         if (isError){
             return;
         }
-
 
         let userData = {
             reviewer_name: this.state.reviewer_name,

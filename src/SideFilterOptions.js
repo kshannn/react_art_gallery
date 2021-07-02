@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios";
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us11.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
 
 export default class SideFilterOptions extends React.Component {
 
@@ -70,17 +70,7 @@ export default class SideFilterOptions extends React.Component {
         
                 {/* Art subject */}
                 <h2>Subject</h2>
-                <div>
-                    <input
-                        type="checkbox"
-                        name="art_subject"
-                        value="nature"
-                        onChange={this.updateCheckbox}
-                        checked={this.state.art_subject.includes("nature")}
-    
-                    />{" "}Nature
-                </div>
-    
+
                 <div>
                     <input
                         type="checkbox"
@@ -90,6 +80,50 @@ export default class SideFilterOptions extends React.Component {
                         checked={this.state.art_subject.includes("animal")}
     
                     />{" "}Animal
+                </div>
+
+                <div>
+                    <input
+                        type="checkbox"
+                        name="art_subject"
+                        value="anime"
+                        onChange={this.updateCheckbox}
+                        checked={this.state.art_subject.includes("anime")}
+    
+                    />{" "}Anime
+                </div>
+
+                <div>
+                    <input
+                        type="checkbox"
+                        name="art_subject"
+                        value="cartoon"
+                        onChange={this.updateCheckbox}
+                        checked={this.state.art_subject.includes("cartoon")}
+    
+                    />{" "}Cartoon
+                </div>
+
+                <div>
+                    <input
+                        type="checkbox"
+                        name="art_subject"
+                        value="food"
+                        onChange={this.updateCheckbox}
+                        checked={this.state.art_subject.includes("food")}
+    
+                    />{" "}Food
+                </div>
+
+                <div>
+                    <input
+                        type="checkbox"
+                        name="art_subject"
+                        value="nature"
+                        onChange={this.updateCheckbox}
+                        checked={this.state.art_subject.includes("nature")}
+    
+                    />{" "}Nature
                 </div>
     
                 <div>

@@ -2,7 +2,7 @@ import React from "react";
 import ArtForm from "./ArtForm";
 import axios from "axios";
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us11.gitpod.io"
+const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
 
 export default class CreateArtPage extends React.Component {
 
@@ -29,7 +29,7 @@ export default class CreateArtPage extends React.Component {
       isError = true;
       this.setState({
         errorMessagePosterName: "error",
-        errorMessage: "Please ensure all the fields are valid!"
+        errorMessage: "Please ensure all the fields are filled!"
       })
     }
 
@@ -38,7 +38,7 @@ export default class CreateArtPage extends React.Component {
       isError = true;
       this.setState({
         errorMessageImage: "error",
-        errorMessage: "Please ensure all the fields are valid!"
+        errorMessage: "Please ensure all the fields are filled!"
       })
 
     }
@@ -48,7 +48,7 @@ export default class CreateArtPage extends React.Component {
       isError = true;
       this.setState({
         errorMessageArtTitle: "error",
-        errorMessage: "Please ensure all the fields are valid!"
+        errorMessage: "Please ensure all the fields are filled!"
       })
     }
 
@@ -57,14 +57,13 @@ export default class CreateArtPage extends React.Component {
       isError = true;
       this.setState({
         errorMessageArtDescription: "error",
-        errorMessage: "Please ensure all the fields are valid!"
+        errorMessage: "Please ensure all the fields are filled!"
       })
     }
 
     if (isError) {
       return;
     }
-
 
     let userData = {
       post_date: new Date(),
