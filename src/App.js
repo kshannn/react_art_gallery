@@ -33,10 +33,10 @@ export default class App extends React.Component {
     });
   }
 
- 
+
   sorting = (e) => {
     let data = this.state.gallery;
-    if (e.target.value=== "most_recent"){
+    if (e.target.value === "most_recent") {
       for (let i = 0; i < data.length; i++) {
         for (let j = 0; j < data.length - 1; j++) {
           if (data[j].post_date < data[j + 1].post_date) {
@@ -51,7 +51,7 @@ export default class App extends React.Component {
         gallery: data
       });
 
-    } else if (e.target.value=== "most_liked"){
+    } else if (e.target.value === "most_liked") {
       for (let i = 0; i < data.length; i++) {
         for (let j = 0; j < data.length - 1; j++) {
           if (data[j].statistics.like_count < data[j + 1].statistics.like_count) {
@@ -66,7 +66,7 @@ export default class App extends React.Component {
         gallery: data
       });
 
-    } else if (e.target.value=== "most_reviewed"){
+    } else if (e.target.value === "most_reviewed") {
       for (let i = 0; i < data.length; i++) {
         for (let j = 0; j < data.length - 1; j++) {
           if (data[j].statistics.review_count < data[j + 1].statistics.review_count) {
@@ -283,23 +283,26 @@ export default class App extends React.Component {
         <div id="hero" style={{ backgroundImage: `url("./hero_image.jpg")` }}>
           <div><p>— TheArtGalore where every artist deserves to shine</p></div>
         </div>
-        
+
 
         {/* SORT BUTTON */}
-        {this.state.displayHome && <div style={{ "height": "20px" }}>
-          <label>Sorted by:</label>
-          <select
-            onChange={(e) => 
-              this.sorting(e)
-            }
-          >
-            <option value="most_recent">Most Recent</option>
-            <option value="most_liked">Most Liked</option>
-            <option value="most_reviewed">Most Reviewed</option>
-          </select>
-        </div>}
-        
-        
+        {this.state.displayHome &&
+          <div id="sortingContainer">
+            <div id="sortingMenu">
+              <label>Sorted by:</label>
+              <select
+                onChange={(e) =>
+                  this.sorting(e)
+                }
+              >
+                <option value="most_recent">Most Recent</option>
+                <option value="most_liked">Most Liked</option>
+                <option value="most_reviewed">Most Reviewed</option>
+              </select>
+            </div>
+          </div>}
+
+
 
         {/* BODY */}
         {/* Only display main body when on home page */}
