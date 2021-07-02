@@ -16,7 +16,8 @@ export default class App extends React.Component {
     displayHome: true,
     artHolder: 0,
     gallery: [],
-    searchTerm: ""
+    searchTerm: "",
+    isSortedBy: ""
   };
 
   // ===== Load gallery on page load (GET REQUEST) =====
@@ -31,6 +32,13 @@ export default class App extends React.Component {
     this.setState({
       gallery: response.data
     });
+  }
+
+  // ===== Load gallery based on sort =====
+  sortGallery = (sortedData) => {
+    this.setState({
+      gallery: sortedData
+    })
   }
 
 
@@ -48,7 +56,8 @@ export default class App extends React.Component {
       }
 
       this.setState({
-        gallery: data
+        gallery: data,
+        isSortedBy: "most_recent"
       });
 
     } else if (e.target.value === "most_liked") {
@@ -63,7 +72,8 @@ export default class App extends React.Component {
       }
 
       this.setState({
-        gallery: data
+        gallery: data,
+        isSortedBy: "most_liked"
       });
 
     } else if (e.target.value === "most_reviewed") {
@@ -78,7 +88,8 @@ export default class App extends React.Component {
       }
 
       this.setState({
-        gallery: data
+        gallery: data,
+        isSortedBy: "most_reviewed"
       });
 
     }
@@ -237,7 +248,7 @@ export default class App extends React.Component {
                 <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div className="offcanvas-body">
-                <SideFilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} closePage={this.closePage} />
+                <SideFilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} closePage={this.closePage} isSortedBy={this.state.isSortedBy} sortGallery={this.sortGallery}/>
               </div>
             </div>
 
@@ -311,7 +322,7 @@ export default class App extends React.Component {
 
             {/* Filter section */}
             <div id="filterSection" className="d-none d-md-block">
-              <FilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} />
+              <FilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} isSortedBy={this.state.isSortedBy} sortGallery={this.sortGallery}/>
             </div>
 
             {/* Gallery section */}
@@ -330,6 +341,9 @@ export default class App extends React.Component {
 
         {/* Render create art page when create button is clicked */}
         {this.renderCreateArtPage()}
+
+        {this.state.isSortedby && this.sortGallery()}
+
 
 
       </React.Fragment>
