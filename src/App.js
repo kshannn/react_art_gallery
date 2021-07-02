@@ -7,7 +7,7 @@ import SideFilterOptions from "./SideFilterOptions"
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
+const baseUrl = "https://kls-art-gallery.herokuapp.com"
 
 export default class App extends React.Component {
   state = {
@@ -17,7 +17,6 @@ export default class App extends React.Component {
     artHolder: 0,
     gallery: [],
     searchTerm: ""
-    // sideBarDisplayed: false
   };
 
   // ===== Load gallery on page load (GET REQUEST) =====
@@ -33,6 +32,58 @@ export default class App extends React.Component {
       gallery: response.data
     });
   }
+
+ 
+  sorting = (e) => {
+    let data = this.state.gallery;
+    if (e.target.value=== "most_recent"){
+      for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length - 1; j++) {
+          if (data[j].post_date < data[j + 1].post_date) {
+            let temp = data[j];
+            data[j] = data[j + 1];
+            data[j + 1] = temp;
+          }
+        }
+      }
+
+      this.setState({
+        gallery: data
+      });
+
+    } else if (e.target.value=== "most_liked"){
+      for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length - 1; j++) {
+          if (data[j].statistics.like_count < data[j + 1].statistics.like_count) {
+            let temp = data[j];
+            data[j] = data[j + 1];
+            data[j + 1] = temp;
+          }
+        }
+      }
+
+      this.setState({
+        gallery: data
+      });
+
+    } else if (e.target.value=== "most_reviewed"){
+      for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length - 1; j++) {
+          if (data[j].statistics.review_count < data[j + 1].statistics.review_count) {
+            let temp = data[j];
+            data[j] = data[j + 1];
+            data[j + 1] = temp;
+          }
+        }
+      }
+
+      this.setState({
+        gallery: data
+      });
+
+    }
+  }
+
 
   // ===== Displays only filtered results in gallery =====
   filterGallery = (response) => {
@@ -232,6 +283,23 @@ export default class App extends React.Component {
         <div id="hero" style={{ backgroundImage: `url("./hero_image.jpg")` }}>
           <div><p>— TheArtGalore where every artist deserves to shine</p></div>
         </div>
+        
+
+        {/* SORT BUTTON */}
+        {this.state.displayHome && <div style={{ "height": "20px" }}>
+          <label>Sorted by:</label>
+          <select
+            onChange={(e) => 
+              this.sorting(e)
+            }
+          >
+            <option value="most_recent">Most Recent</option>
+            <option value="most_liked">Most Liked</option>
+            <option value="most_reviewed">Most Reviewed</option>
+          </select>
+        </div>}
+        
+        
 
         {/* BODY */}
         {/* Only display main body when on home page */}
@@ -259,6 +327,7 @@ export default class App extends React.Component {
 
         {/* Render create art page when create button is clicked */}
         {this.renderCreateArtPage()}
+
 
       </React.Fragment>
     );

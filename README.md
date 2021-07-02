@@ -1,5 +1,9 @@
 # The Art Galore
 
+<img src='./public/art_gallery_all_display.png' style='display:block'><br>
+
+Access the live demo of the website [here](https://wonderful-turing-7905df.netlify.app).
+
 ## Project Summary
 **Project Context**
 The Art Galore(TAG) is a mobile-responsive open platform for artists to browse through art, leave reviews for art, and also share their art with the public.

@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import EditArtPage from "./EditArtPage"
 import EditReviewPage from "./EditReviewPage"
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
+const baseUrl = "https://kls-art-gallery.herokuapp.com"
 
 export default class ArtInfo extends React.Component {
 

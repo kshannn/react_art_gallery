@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios";
 
-const baseUrl = "https://8080-coral-grasshopper-zdtsha75.ws-us10.gitpod.io"
+const baseUrl = "https://kls-art-gallery.herokuapp.com"
 
 export default class SideFilterOptions extends React.Component {
 
