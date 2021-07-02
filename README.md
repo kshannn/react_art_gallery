@@ -81,17 +81,15 @@ _Non-functional requirements_
 <img src='./public/site_map_art_gallery.png'><br>
 
 
-* When user loads the website, they will land on the art gallery page which displays the available art posts. Users can use the search filter, sorting, and search bar to narrow and sort their results.
+* When user loads the website, they will land on the art gallery page which displays the art posts. Users can use the search filter, sorting dropdown selection, and search bar to narrow and/or sort their results.
 
-* Users would also see a hero image with words that highlight the mission of web app. This helps users to frame what the website is about.
+* Users would also see a hero image with words that highlight the mission of web app. This helps users to understand what the website is about.
 
-* Users can create an art post by clicking on the create button at the top of the screen. This direct them to a page where they can fill up information about the art they wish to post. Upon submission of their art details, they would be redirected to the gallery page to see their updated post there.
+* Users can create an art post by clicking on the create button at the top of the screen. This directs them to a page where they can fill up information about the art they wish to post. Upon submission of the art details, they would be redirected to the gallery page to see their updated art post there.
 
-* Clicking on a particular art post would direct users to a page with more details about the art post such as the description and reviews associated with it. They have the option to edit or delete the art post through a small dropdown menu.
+* Clicking on a particular art post would direct users to a page with more details about the art post such as the description and reviews associated with it. They have the option to edit or delete the art post through a small dropdown menu. Furthermore, users can create a review for the art post by filling up their name, review details, and clicking post in the form on the art post page.
 
-* Creating of a review is done within the page of a particular art post.
-
-
+* Clicking on edit art post or edit review button would cause a page or popup box to appear respectively. Saving the made change would return user to the art page.
 
 * The app uses language that is easy for users to understand and contains no technical jargons
 
@@ -105,15 +103,15 @@ _Colours_
 <img src='./public/art_gallery_colour_palette.png' style='display:block'>
 <br>
 
-* The main colours used to design the website are based on the colours in the logo. The colours consist of different shades of red, blue, and yellow which are primary colours. As all colours can be created from primary colours, it is a fitting palette for an art website that encourages creation of art from even its most simple form.
+* The main colours used to design the website are based on the colours in the logo. The colours consist of different shades of red, blue, and yellow which are primary colours. As all colours can be created from primary colours, it is a fitting palette for an art website as it suggests to users that they can create wonderful art even with the simplest palette.
 
 _Font Choice_
-* The font used throughout the website is san-serif to match the brand logo. The use of san-serif also makes words easier to read.
+* Majority of the font used throughout the website is san-serif to match the brand logo. The use of san-serif also makes words easier to read. Only the words in the hero image is in serif for aesthetic purposes.
 
 
 ## Features
 
-1. **Users can create, update, and delete art posts.** With just a click of a "create" button, users are directed to a forms page where they can fill up the details to make their art post. Their new art would then be updated in the gallery page. Once a user has clicked into a particular art post, they are able to edit or delete the art post through a dropdown button represented by an ellipses icon. 
+1. **Users can create, update, and delete art posts.** With just a click of a "create" button, users are directed to a form page where they can fill up the details to make their art post. Their new art would then be updated in the gallery page. Once a user has clicked into a particular art post, they are able to edit or delete the art post through a dropdown button represented by an ellipses icon. 
 
 2. **Users can create, update, and delete reviews.** Users can easily leave reviews for an art post by clicking into a particular art post and filling up the review form immediatelly. This feature encourages users to leave reviews with a call-to-action message "Help out another fellow artist by leaving a review!" and remove "roadblocks" having the form on the same page, thereby making it easier for users to create a review with a single click. Users are also able to update and delete reviews through a dropdown button represented by an ellipses icon. 
 
@@ -121,7 +119,10 @@ _Font Choice_
 
 4. **Users can filter art appearing on their gallery based on the art type and art subject.** This feature can be useful if users only wish to retrieve art results of a particular search criteria. For example, users can filter out all the traditional arts and retrieve only arts that are tagged as "digital art".
 
-5. **Section in every art page dedicated to showing other arts in the form of thumbnail.** This feature allows users to be able to navigate to other arts more easily. Through such implementation, users would be more likely to visit other art work and as a result increase their likelihood of leaving a review.
+
+5. **Users can sort art appearing on their gallery based on the most recent, most liked, and most reviewed.** 
+
+6. **Section in every art page dedicated to showing other arts in the form of thumbnail.** This feature allows users to be able to navigate to other arts more easily. Through such implementation, users would be more likely to visit other art work and as a result increase their likelihood of leaving a review.
 
 _Limitations and future implementations_
 * In the future, I would like to implement pagination so that users can click through the pages to browse the art posts instead of scrolling. This also relieves the load on the database and web application by limiting the number of results returned.
