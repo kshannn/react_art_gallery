@@ -237,4 +237,4 @@ The web app is hosted using Heroku (for Express NodeJS) and Netlify (for React).
 * Design of website inspired by [DeviantArt](https://www.deviantart.com/)
 
 * Deployment steps
-    * Extracted and edited based on TGC's deployment guide for [Heroku](https://docs.google.com/document/d/1-O-m7KGG_8GrKb0QwuuVRI9iGk_xmE8mMyqR0w_2JVs/edit?usp=sharing) and [React](https://docs.google.com/document/d/1cquGsm1x8Tm2vzcJcAxQdnCe_BxF9b9z34vQEJ6-K7E/edit?usp=sharing)
+    * Extracted and edited based on TGC's deployment guide for [Heroku](https://docs.google.com/document/d/1-O-m7KGG_8GrKb0QwuuVRI9iGk_xmE8mMyqR0w_2JVs/edit?usp=sharing) and [Netlify](https://docs.google.com/document/d/1cquGsm1x8Tm2vzcJcAxQdnCe_BxF9b9z34vQEJ6-K7E/edit?usp=sharing)
