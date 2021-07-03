@@ -27,7 +27,7 @@ Many art platforms provides a platform for people to post and share their art ho
 
 ## Project Complexity
 
-Access the Project Complexity Matrix [here](https://github.com/kshannn/react_art_gallery/blob/master/public/project_complexity.pdf).
+Access the Project Complexity Matrix [here](https://github.com/kshannn/react_art_gallery/blob/b6d9ed8a7dbf1cbaafd3be4a2c08f217c3ad91ee/public/project_complexity.pdf).
 
 ## UX/UI
 
