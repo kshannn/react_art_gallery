@@ -22,6 +22,9 @@ The aim of users is to gather reviews for their art. These reviews can be helpfu
 
 Many art platforms provides a platform for people to post and share their art however this art platform encourages leaving reviews to help artist grow. The process of creating reviews is simplified through the features implemented (e.g. reviews can be created in a single click, messages throughout the website encouraging users to leave a review)
 
+ER Diagram for Art Gallery
+<img src='./public/art_gallery_ERD.png' style='display:block'><br>
+
 ## Project Complexity
 
 Access the Project Complexity Matrix [here](https://github.com/kshannn/react_art_gallery/blob/master/public/project_complexity.pdf).
@@ -50,9 +53,8 @@ As an artist who is looking for feedback on my art, I want to be able to easily 
 As a person who is looking to browse through art, I want to be able to easily search for art from specific categories so that I can narrow down to the results that I want quickly. | Feature that display multiple art posts and allow filtering or searching based on certain criterias
 
 
-
-
 ### **Scope**
+
 _Functional Specifications_
 * Create, read, update, delete art posts
 
@@ -132,7 +134,7 @@ _Limitations and future implementations_
 
 **Test Cases**
 
-Access the test cases [here]().
+Access the test cases [here](https://github.com/kshannn/react_art_gallery/blob/603fddabf69e3bae9cf6e100005851fa113be7c7/public/test_cases.pdf).
 
 **Testing for Mobile Responsiveness**
 
@@ -161,6 +163,12 @@ Access the test cases [here]().
 * [Balsamiq Mockups 3](https://balsamiq.com/)
     * To create wireframes
 
+* [app.diagrams.net](https://app.diagrams.net/)
+    * To create site map
+
+* [erdplus](https://erdplus.com/)
+    * To create ER diagram
+
 * [Heroku](https://id.heroku.com/login)
     * To enable access to database
 
@@ -178,8 +186,36 @@ Access the test cases [here]().
 The web app is hosted using Heroku (for Express NodeJS) and Netlify (for React).
 
 **Steps to deployment using Heroku**
+1. Obtain MongoDB connection string from MongoDB atlas
+2. Create .env file and add the MongoDB conenction string and replace the necessary field with MongoDB password
+3. Log into Heroku 
+    * In the terminal type: heroku login -i
+    * Type in username and password when prompted
+4. Create Heroku App
+    * In the terminal type: heroku create kls-art-gallery
+5. Define Procfile
+    * Create a file named 'Procfile' in same directory as index.js
+    * Add the following line into Procfile: web:node index.js
+6. Add a start script to package.json
+    * "start":"node index.js"
+7. Ensure the port app.listen is set to "process.env.PORT"
+8. Save and commit all changes using git add . and git commit 
+9. Push to Heroku
+    * git push heroku master
+10. Log into [Heroku](https://id.heroku.com/login)
+11. Select the app that was deployed then click on settings
+12. Click on Reveal Config Vars
+    * Add in MONGO_URL, and the connection URL from your .env file
+13. Deployment of App to Heroku is completed
+
 
 **Steps to deployment using Netlify**
+1. Check that in the terminal, the current working directory can list the package.json file for the React application.
+2. Build react application using yarn build
+3. Download the build folder and agree to grant permissions when prompted
+4. Log into [Netlify](https://www.netlify.com/) 
+5. Click on "Sites" and drag the downloaded build folder into the upload box
+6. Deployment of App to Netlify is completed
 
 
 ## Dependencies
