@@ -489,6 +489,7 @@ img {
 }
 
 .cancelBtn{
+  margin-right: -7px;
   background: #788D98;
 }
 

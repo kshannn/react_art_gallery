@@ -291,7 +291,7 @@ export default class App extends React.Component {
 
         {/* HERO IMAGE */}
         <div id="hero" style={{ backgroundImage: `url("./hero_image.jpg")` }}>
-          <div><p>— TheArtGalore where every artist deserves to shine</p></div>
+          <div><p>— TheArtGalore where every artist shines</p></div>
         </div>
 
 

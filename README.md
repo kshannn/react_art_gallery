@@ -22,7 +22,7 @@ The aim of users is to gather reviews for their art. These reviews can be helpfu
 
 Many art platforms provides a platform for people to post and share their art however this art platform encourages leaving reviews to help artist grow. The process of creating reviews is simplified through the features implemented (e.g. reviews can be created in a single click, messages throughout the website encouraging users to leave a review)
 
-ER Diagram for Art Gallery
+**ER Diagram for Art Gallery**
 <img src='./public/art_gallery_ERD.png' style='display:block'><br>
 
 ## Project Complexity
@@ -34,7 +34,7 @@ Access the Project Complexity Matrix [here](https://github.com/kshannn/react_art
 ### **Stategy**
 
 _Organisation_
-* Objective: Provide a service platform to encourage sharing of art and constructive reviews within the art community
+* Objective: Provide a platform to encourage sharing of art and constructive reviews within the art community
 
 _User_
 * Objective: To get reviews for the art that they shared so that they can identify the areas to improve on
@@ -49,7 +49,7 @@ _User_
 
 User Stories | Acceptance Criteria(s)
 ------------ | -------------
-As an artist who is looking for feedback on my art, I want to be able to easily post my art onto a platform where I can gain feedback so that I can improve on my art based on them  | Feature that allows ease of posting art
+As an artist who is looking for feedback on my art, I want to be able to easily post my art onto a platform where I can gain feedback so that I can improve on my art based on them  | Feature that allows ease of posting art and reviews
 As a person who is looking to browse through art, I want to be able to easily search for art from specific categories so that I can narrow down to the results that I want quickly. | Feature that display multiple art posts and allow filtering or searching based on certain criterias
 
 
@@ -82,7 +82,6 @@ _Non-functional requirements_
 
 <img src='./public/site_map_art_gallery.png'><br>
 
-
 * When user loads the website, they will land on the art gallery page which displays the art posts. Users can use the search filter, sorting dropdown selection, and search bar to narrow and/or sort their results.
 
 * Users would also see a hero image with words that highlight the mission of web app. This helps users to understand what the website is about.
@@ -91,7 +90,7 @@ _Non-functional requirements_
 
 * Clicking on a particular art post would direct users to a page with more details about the art post such as the description and reviews associated with it. They have the option to edit or delete the art post through a small dropdown menu. Furthermore, users can create a review for the art post by filling up their name, review details, and clicking post in the form on the art post page.
 
-* Clicking on edit art post or edit review button would cause a page or popup box to appear respectively. Saving the made change would return user to the art page.
+* Clicking on edit art post or edit review button would cause a page or popup box to appear respectively. Saving the made changes would return user to the art page.
 
 * The app uses language that is easy for users to understand and contains no technical jargons
 
