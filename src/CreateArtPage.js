@@ -79,7 +79,7 @@ export default class CreateArtPage extends React.Component {
       }
     };
 
-    let response = await axios.post(baseUrl + "/create/artpost", userData);
+    await axios.post(baseUrl + "/create/artpost", userData);
 
     // Returns user to gallery page and refreshes updated gallery
     this.props.closePage();

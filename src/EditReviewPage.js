@@ -56,7 +56,7 @@ export default class EditReviewPage extends React.Component {
             review: this.state.review
         }
 
-        let response = await axios.put(baseUrl + "/review/edit/" + currentReview.id, userData)
+        await axios.put(baseUrl + "/review/edit/" + currentReview.id, userData)
 
         // Returns to art information page and refreshes to display updated review
         this.props.closeEditReview();

@@ -112,7 +112,7 @@ export default class EditArtPage extends React.Component {
       }
     };
 
-    let response = await axios.put(baseUrl + "/artpost/edit/" + artIdToEdit, userData)
+    await axios.put(baseUrl + "/artpost/edit/" + artIdToEdit, userData)
 
     // Returns user to art info page with updated changes
     this.props.closeEditArt();

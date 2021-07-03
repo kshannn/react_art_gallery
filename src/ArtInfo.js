@@ -134,7 +134,7 @@ export default class ArtInfo extends React.Component {
 
     // Clicking on delete in the confirmation screen deletes art
     deleteArt = async (artIdToDelete) => {
-        let response = await axios.delete(baseUrl + "/artpost/delete/" + artIdToDelete)
+        await axios.delete(baseUrl + "/artpost/delete/" + artIdToDelete)
 
         // close popup
         this.props.closePage();
@@ -170,7 +170,7 @@ export default class ArtInfo extends React.Component {
             review: this.state.review,
         }
 
-        let response = await axios.post(baseUrl + "/art_gallery/" + this.state.currentArt._id + "/create/review", userData)
+        await axios.post(baseUrl + "/art_gallery/" + this.state.currentArt._id + "/create/review", userData)
 
         // Resets review fields to empty
         this.setState({
@@ -245,7 +245,7 @@ export default class ArtInfo extends React.Component {
 
     // Clicking on delete in the confirmation screen deletes review
     deleteReview = async (reviewHolder) => {
-        let response = await axios.delete(baseUrl + "/review/delete/" + reviewHolder.id)
+        await axios.delete(baseUrl + "/review/delete/" + reviewHolder.id)
 
         // Refresh leftover reviews
         this.getArtInfo(this.state.currentArt._id);
@@ -350,7 +350,7 @@ export default class ArtInfo extends React.Component {
                                         <div id="artInfoStatistics">
                                             <button id="heartBtn" onClick={() => {
                                                 this.addLike();
-                                            }}>{this.state.currentArt.statistics.like_count == 0 ? <i className="fas fa-heart innerHeart"></i> : <i style={{ 'color': '#EF463A' }} className="fas fa-heart innerHeart"></i>}</button>{this.state.currentArt.statistics.like_count}
+                                            }}>{this.state.currentArt.statistics.like_count === 0 ? <i className="fas fa-heart innerHeart"></i> : <i style={{ 'color': '#EF463A' }} className="fas fa-heart innerHeart"></i>}</button>{this.state.currentArt.statistics.like_count}
                                             <a href="#reviewSection"><i id="comments" className="far fa-comment-dots"></i></a> {this.state.currentArt.statistics.review_count}
                                         </div>
 

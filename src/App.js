@@ -253,7 +253,7 @@ export default class App extends React.Component {
 
             {/* Logo */}
             <a className="navbar-brand" href="/">
-              <img id="logo" src="../artlogo.png"></img>
+              <img id="logo" src="../artlogo.png" alt="logo"></img>
             </a>
 
             {/* Search Bar */}
