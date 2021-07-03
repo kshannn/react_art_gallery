@@ -95,7 +95,7 @@ _Non-functional requirements_
 * The app uses language that is easy for users to understand and contains no technical jargons
 
 ### **Skeleton**
-Access the wireframes for small, medium, and large devices for the website [here]()
+Access the wireframes for small, medium, and large devices for the website [here](https://github.com/kshannn/react_art_gallery/blob/508683119decd463ceb2982cc7ad32ccc96f4cc1/public/art_gallery_mockup.pdf)
 
 ### **Surface**
 
