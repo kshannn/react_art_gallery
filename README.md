@@ -114,11 +114,11 @@ _Font Choice_
 
 1. **Users can create, update, and delete art posts.** With just a click on the "create" button, users are directed to a form page where they can fill up the details to make their art post. Their new art would then be updated in the gallery page. Once a user has clicked into a particular art post, they are able to edit or delete the art post through a dropdown button represented by an ellipses icon. This feature is implemented through calling of API endpoints.
 
-2. **Users can create, update, and delete reviews.** Users can easily leave reviews for an art post by clicking into a particular art post and filling up the review form immediatelly. This feature encourages users to leave reviews with a call-to-action message "Help out another fellow artist by leaving a review!" and remove "roadblocks" having the form on the same page, thereby making it easier for users to create a review with a single click. Users are also able to update and delete reviews through a dropdown button represented by an ellipses icon. This feature is implemented through calling of API endpoints.
+2. **Users can create, update, and delete reviews.** Users can easily leave reviews for an art post by clicking into a particular art post and filling up the review form immediatelly. This feature encourages users to leave reviews with a call-to-action message i.e. "Help a fellow artist out by leaving a review!" and remove "roadblocks" by having the form on the same page, thereby making it easier for users to create a review with a single click. Users are also able to update and delete reviews through a dropdown button represented by an ellipses icon. This feature is implemented through calling of API endpoints.
 
 3. **Users can quickly search for an art post by the name of the artist or the art title.** In the event that users already have an art or an artist that they want to search for, they could do so easily by searching their query with the search bar. This feature is implemented by calling the API GET endpoint and setting the criterias.
 
-4. **Users can filter art appearing on their gallery based on the art type and art subject.** This feature can be useful if users only wish to retrieve art results of a particular search criteria. For example, users can filter out all the traditional arts and retrieve only arts that are tagged as "digital art". This feature is implemented by calling the API GET endpoint and setting the criterias.
+4. **Users can filter art appearing on their gallery based on the art type and art subject.** This feature can be useful if users only wish to retrieve art results of a particular search criteria. For example, users can filter out all the traditional arts and retrieve only arts that are tagged as "digital art". This feature is implemented by calling the API GET endpoint and setting the criteria.
 
 5. **Users can sort art appearing on their gallery based on the most recent, most liked, and most reviewed.** This feature provides a solution for users who wish to organize their search results. This is implemented using a bubble sort on the retrieved data.
 
@@ -127,9 +127,10 @@ _Font Choice_
 7. **Horizontal scrolling for art tags.** Users can view the hidden art tags by scrolling horizontally in each art post on the gallery page. This feature helps to minimize clutter in the gallery yet allow users to view the embedded tags easily. This feature is implemented by manipulating the css overflow.
 
 _Limitations and future implementations_
-* In the future, I would like to implement pagination so that users can click through the pages to browse the art posts instead of scrolling. This also relieves the load on the database and web application by limiting the number of results returned.
 
-* In the future, I would like to implement a user account feature so as to keep track of the art posted, reviews made, and posts liked by each user. To further encourage reviews from users, I would also like to implement a point system whereby users will gain points to unlock site benefits upon leaving a review on an art post. This is possible to keep track with the implementation of a user account feature.
+* Currently, all the art posts in the database are loaded onto the gallery page which may cause the processing speed to slow down. In the future, I would like to implement pagination so that users can click through the pages to browse the art posts instead of scrolling. This also relieves the load on the database and web application by limiting the number of results returned.
+
+* Currently, clicking the like count only increases it as there is no user account feature implemented to keep track of which user has liked a post. In the future, I would like to implement a user account feature so as to keep track of the art posted, reviews made, and posts liked by each user. To further encourage reviews from users, I would also like to implement a point system whereby users will gain points to unlock site benefits upon leaving a review on an art post. This is possible to keep track with the implementation of a user account feature.
 
 ## Testing
 
@@ -139,7 +140,7 @@ Access the test cases [here](https://github.com/kshannn/react_art_gallery/blob/6
 
 **Testing for Mobile Responsiveness**
 
- * Testing was done using chrome developer tool across iPhone X, iPad Pro, 13-inch MacBook Air
+ * Testing was done using chrome developer tool across iPhone X, iPad Pro, and 13-inch MacBook Air
 
 ## Technologies Used
 * HTML5
@@ -234,3 +235,6 @@ The web app is hosted using Heroku (for Express NodeJS) and Netlify (for React).
 
 
 * Design of website inspired by [DeviantArt](https://www.deviantart.com/)
+
+* Deployment steps
+    * Extracted and edited based on TGC's deployment guide for [Heroku](https://docs.google.com/document/d/1-O-m7KGG_8GrKb0QwuuVRI9iGk_xmE8mMyqR0w_2JVs/edit?usp=sharing) and [React](https://docs.google.com/document/d/1cquGsm1x8Tm2vzcJcAxQdnCe_BxF9b9z34vQEJ6-K7E/edit?usp=sharing)
