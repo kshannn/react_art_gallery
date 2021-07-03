@@ -10,9 +10,54 @@ export default class FilterOptions extends React.Component {
         art_subject: []
     };
 
+    // Retain sorting regardless of filter
     retainSort = async () => {
         let response = await axios.get(baseUrl + "/art_gallery")
         let data = response.data
+        if (this.props.isSortedBy === "most_liked") {
+            for (let i = 0; i < data.length; i++) {
+                for (let j = 0; j < data.length - 1; j++) {
+                    if (data[j].statistics.like_count < data[j + 1].statistics.like_count) {
+                        let temp = data[j];
+                        data[j] = data[j + 1];
+                        data[j + 1] = temp;
+                    }
+                }
+            }
+    
+            this.props.sortGallery(data);
+
+        } else if (this.props.isSortedBy === "most_reviewed") {
+            for (let i = 0; i < data.length; i++) {
+                for (let j = 0; j < data.length - 1; j++) {
+                    if (data[j].statistics.review_count < data[j + 1].statistics.review_count) {
+                        let temp = data[j];
+                        data[j] = data[j + 1];
+                        data[j + 1] = temp;
+                    }
+                }
+            }
+    
+            this.props.sortGallery(data);
+
+        } else if (this.props.isSortedBy === "most_recent") {
+            for (let i = 0; i < data.length; i++) {
+                for (let j = 0; j < data.length - 1; j++) {
+                    if (data[j].post_date < data[j + 1].post_date) {
+                        let temp = data[j];
+                        data[j] = data[j + 1];
+                        data[j + 1] = temp;
+                    }
+                }
+            }
+    
+            this.props.sortGallery(data);
+
+        } 
+    }
+
+    retainSortTwo = () => {
+        let data = this.props.gallery
         if (this.props.isSortedBy === "most_liked") {
             for (let i = 0; i < data.length; i++) {
                 for (let j = 0; j < data.length - 1; j++) {
@@ -90,6 +135,7 @@ export default class FilterOptions extends React.Component {
 
         let response = await axios.get(baseUrl + "/art_gallery/combinedFilter?" + q)
         this.props.filterGallery(response);
+        this.retainSortTwo();
     }
 
     render() {
@@ -194,7 +240,7 @@ export default class FilterOptions extends React.Component {
                             art_type: "",
                             art_subject: []
                         })
-                        // this.props.getGallery()
+                
                         this.retainSort();
                       
                     }

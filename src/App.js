@@ -247,7 +247,7 @@ export default class App extends React.Component {
                 <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div className="offcanvas-body">
-                <SideFilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} closePage={this.closePage} isSortedBy={this.state.isSortedBy} sortGallery={this.sortGallery}/>
+                <SideFilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} closePage={this.closePage} isSortedBy={this.state.isSortedBy} sortGallery={this.sortGallery} gallery={this.state.gallery}/>
               </div>
             </div>
 
@@ -319,7 +319,7 @@ export default class App extends React.Component {
 
             {/* Filter section */}
             <div id="filterSection" className="d-none d-md-block">
-              <FilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} isSortedBy={this.state.isSortedBy} sortGallery={this.sortGallery}/>
+              <FilterOptions filterGallery={this.filterGallery} getGallery={this.getGallery} isSortedBy={this.state.isSortedBy} sortGallery={this.sortGallery} gallery={this.state.gallery}/>
             </div>
 
             {/* Gallery section */}
