@@ -568,10 +568,10 @@ img {
 
 /* Existing Reviews */
 .reviewContainer {
-  padding: 10px 10px;
+  padding: 15px 18px;
   border-radius: 5px;
   margin-top: 10px;
-  border: 1px solid grey;
+  background: rgb(236 236 236);
   position: relative;
 }
 
@@ -678,12 +678,12 @@ textarea{
 }
 
 #closeBtn {
-  background: rgb(131, 131, 131);
+  background: #788D98;
   right: 130px;
 }
 
 #closeBtn:hover {
-  background: rgb(177, 177, 177);
+  background: #9eb3be;
   right: 130px;
 }
 
