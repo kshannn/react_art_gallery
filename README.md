@@ -230,6 +230,9 @@ The web app is hosted using Heroku (for Express NodeJS) and Netlify (for React).
 
 ## Credits
 
+* Hero image
+    * Taken from [wallpapersafari](https://wallpapersafari.com/w/K7XJ5W)
+
 * Brand logo 
     * Taken and edited from [Artist Repetory Theatre's website](https://artistsrep.org/announcing-arts-new-logo-and-branding)
 
