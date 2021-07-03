@@ -111,18 +111,17 @@ _Font Choice_
 
 ## Features
 
-1. **Users can create, update, and delete art posts.** With just a click of a "create" button, users are directed to a form page where they can fill up the details to make their art post. Their new art would then be updated in the gallery page. Once a user has clicked into a particular art post, they are able to edit or delete the art post through a dropdown button represented by an ellipses icon. 
+1. **Users can create, update, and delete art posts.** With just a click on the "create" button, users are directed to a form page where they can fill up the details to make their art post. Their new art would then be updated in the gallery page. Once a user has clicked into a particular art post, they are able to edit or delete the art post through a dropdown button represented by an ellipses icon. This feature is implemented through calling of API endpoints.
 
-2. **Users can create, update, and delete reviews.** Users can easily leave reviews for an art post by clicking into a particular art post and filling up the review form immediatelly. This feature encourages users to leave reviews with a call-to-action message "Help out another fellow artist by leaving a review!" and remove "roadblocks" having the form on the same page, thereby making it easier for users to create a review with a single click. Users are also able to update and delete reviews through a dropdown button represented by an ellipses icon. 
+2. **Users can create, update, and delete reviews.** Users can easily leave reviews for an art post by clicking into a particular art post and filling up the review form immediatelly. This feature encourages users to leave reviews with a call-to-action message "Help out another fellow artist by leaving a review!" and remove "roadblocks" having the form on the same page, thereby making it easier for users to create a review with a single click. Users are also able to update and delete reviews through a dropdown button represented by an ellipses icon. This feature is implemented through calling of API endpoints.
 
-3. **Users can quickly search for an art post by the name of the artist or the art title.** In the event that users already have an art or an artist that they want to search for, they could do so easily by searching their query with the search bar.  
+3. **Users can quickly search for an art post by the name of the artist or the art title.** In the event that users already have an art or an artist that they want to search for, they could do so easily by searching their query with the search bar. This feature is implemented by calling the API GET endpoint and setting the criterias.
 
-4. **Users can filter art appearing on their gallery based on the art type and art subject.** This feature can be useful if users only wish to retrieve art results of a particular search criteria. For example, users can filter out all the traditional arts and retrieve only arts that are tagged as "digital art".
+4. **Users can filter art appearing on their gallery based on the art type and art subject.** This feature can be useful if users only wish to retrieve art results of a particular search criteria. For example, users can filter out all the traditional arts and retrieve only arts that are tagged as "digital art". This feature is implemented by calling the API GET endpoint and setting the criterias.
 
+5. **Users can sort art appearing on their gallery based on the most recent, most liked, and most reviewed.** This feature provides a solution for users who wish to organize their search results. This is implemented using a bubble sort on the retrieved data.
 
-5. **Users can sort art appearing on their gallery based on the most recent, most liked, and most reviewed.** 
-
-6. **Section in every art page dedicated to showing other arts in the form of thumbnail.** This feature allows users to be able to navigate to other arts more easily. Through such implementation, users would be more likely to visit other art work and as a result increase their likelihood of leaving a review.
+6. **Section in every art page dedicated to showing other arts in the form of thumbnail.** This feature allows users to be able to navigate to other arts more easily. Through such implementation, users would be more likely to visit other art work and as a result increase their likelihood of leaving a review. This feature is implemented by calling the API GET endpoint.
 
 _Limitations and future implementations_
 * In the future, I would like to implement pagination so that users can click through the pages to browse the art posts instead of scrolling. This also relieves the load on the database and web application by limiting the number of results returned.
@@ -133,7 +132,11 @@ _Limitations and future implementations_
 
 **Test Cases**
 
+Access the test cases [here]().
+
 **Testing for Mobile Responsiveness**
+
+
 
 ## Technologies Used
 * HTML5
@@ -144,9 +147,10 @@ _Limitations and future implementations_
     * To include interactive elements throughout the web app
 
 * [React](https://reactjs.org/)
+    * To create a single page application by manipulating state variables
 
 * [Bootstrap v5.0.1](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
-    * For offcanvas, alerts, navbar
+    * For offcanvas, alerts, navbar templates
 
 * [Git](https://git-scm.com/)
     * For version control
@@ -157,34 +161,8 @@ _Limitations and future implementations_
 * [Balsamiq Mockups 3](https://balsamiq.com/)
     * To create wireframes
 
-* [Netlify](https://www.netlify.com/)
-    * To deploy React application
-
-* [Google Font](https://fonts.google.com/)
-    * To select font families used for web app (i.e. IM Fell English, Lato, Karla)
-* [Multi Device Website Mockup Generator](https://techsini.com/multi-mockup/index.php)
-    * To display screen-responsiveness of website across different devices
-
-* HTML5
-    * To create import CDN for Bootstrap and Font Awesome
-* CSS3
-    * To style various elements throughout the web app
-* JavaScript
-    * To include interactive elements throughout the web app
-
-* [React](https://reactjs.org/)
-
-* [Bootstrap v5.0.1](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
-    * For offcanvas, alerts, navbar
-
-* [Git](https://git-scm.com/)
-    * For version control
-
-* [GitHub](http://github.com)
-    * To create repository and store source code
-
-* [Balsamiq Mockups 3](https://balsamiq.com/)
-    * To create wireframes
+* [Heroku](https://id.heroku.com/login)
+    * To enable access to database
 
 * [Netlify](https://www.netlify.com/)
     * To deploy React application
@@ -193,10 +171,13 @@ _Limitations and future implementations_
     * To select font families used for web app (i.e. IM Fell English, Lato, Karla)
 * [Multi Device Website Mockup Generator](https://techsini.com/multi-mockup/index.php)
     * To display screen-responsiveness of website across different devices
+
 
 ## Deployment
 
 The web app is hosted using Heroku (for Express NodeJS) and Netlify (for React).
+
+**Steps to deployment using Heroku**
 
 **Steps to deployment using Netlify**
 
@@ -215,74 +196,3 @@ The web app is hosted using Heroku (for Express NodeJS) and Netlify (for React).
     * Taken and edited from [Artist Repetory Theatre's website]([https://artistsrep.org/announcing-arts-new-logo-and-branding/](https://artistsrep.org/announcing-arts-new-logo-and-branding/) (Art logo edited))
 
 * Design of website inspired by [DeviantArt](https://www.deviantart.com/)
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
