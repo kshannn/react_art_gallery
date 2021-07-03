@@ -125,6 +125,8 @@ _Font Choice_
 
 6. **Section in every art page dedicated to showing other arts in the form of thumbnail.** This feature allows users to be able to navigate to other arts more easily. Through such implementation, users would be more likely to visit other art work and as a result increase their likelihood of leaving a review. This feature is implemented by calling the API GET endpoint.
 
+7. **Horizontal scrolling for art tags.** Users can view the hidden art tags by scrolling horizontally in each art post on the gallery page. This feature helps to minimize clutter in the gallery yet allow users to view the embedded tags easily. This feature is implemented by manipulating the css overflow.
+
 _Limitations and future implementations_
 * In the future, I would like to implement pagination so that users can click through the pages to browse the art posts instead of scrolling. This also relieves the load on the database and web application by limiting the number of results returned.
 
@@ -138,7 +140,7 @@ Access the test cases [here](https://github.com/kshannn/react_art_gallery/blob/6
 
 **Testing for Mobile Responsiveness**
 
-
+ * Testing was done using chrome developer tool across iPhone X, iPad Pro, 13-inch MacBook Air
 
 ## Technologies Used
 * HTML5
@@ -229,6 +231,7 @@ The web app is hosted using Heroku (for Express NodeJS) and Netlify (for React).
 ## Credits
 
 * Brand logo 
-    * Taken and edited from [Artist Repetory Theatre's website]([https://artistsrep.org/announcing-arts-new-logo-and-branding/](https://artistsrep.org/announcing-arts-new-logo-and-branding/) (Art logo edited))
+    * Taken and edited from [Artist Repetory Theatre's website](https://artistsrep.org/announcing-arts-new-logo-and-branding)
+
 
 * Design of website inspired by [DeviantArt](https://www.deviantart.com/)

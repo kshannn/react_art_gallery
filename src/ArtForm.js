@@ -12,7 +12,6 @@ export default function ArtForm(props) {
         {/* ====== Text field: Poster Name ======*/}
         <h2>Your name</h2>
         <input type="text"
-          // {props.errorMessagePosterName? className="failedValidation": null}
           className={props.errorMessagePosterName ? "failedValidation" : null}
           placeholder="Your name"
           name="poster_name"

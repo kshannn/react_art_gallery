@@ -41,7 +41,6 @@ export default class App extends React.Component {
     })
   }
 
-
   sorting = (e) => {
     let data = this.state.gallery;
     if (e.target.value === "most_recent") {
@@ -312,8 +311,6 @@ export default class App extends React.Component {
               </select>
             </div>
           </div>}
-
-
 
         {/* BODY */}
         {/* Only display main body when on home page */}
