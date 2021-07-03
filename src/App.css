@@ -444,6 +444,11 @@ img {
   width: 90%;
 }
 
+#artDetailsSection h2 {
+  font-family: 'Karla', sans-serif !important;
+  font-size: 30px;
+}
+
 #artDetailsSection h3 {
   font-size: 1rem;
   color:rgb(145, 145, 145)
@@ -489,14 +494,16 @@ img {
 
 .cancelBtn:hover{
   background: #a2abb1;
+  color: white;
 }
 
 .deleteBtn {
-  background: #ef463a;
+  background: #ff685e;
 }
 
 .deleteBtn:hover {
-  background: #fa6b61;
+  background: #ff8b83;
+  color:white;
 }
 
 /* ========= ART INFO PAGE - Reviews Section ========= */
@@ -505,6 +512,16 @@ img {
   width: 90%;
   height: fit-content;
   margin-bottom: 50px;
+}
+
+#reviewSection h2 {
+  font-family: 'Karla', sans-serif !important;
+  font-size: 30px;
+}
+
+#reviewSection h2 > span {
+  font-size: 20px;
+  margin-left: 10px;
 }
 
 #reviewSection h3 {
@@ -582,6 +599,7 @@ textarea{
 }
 
 /* ========= EDIT ART PAGE ========= */
+
 #editArtPage {
   min-height: 100vh;
   width: 100%;
@@ -664,9 +682,18 @@ textarea{
   right: 130px;
 }
 
+#closeBtn:hover {
+  background: rgb(177, 177, 177);
+  right: 130px;
+}
+
 #saveChangeBtn{
-  background: rgb(69, 202, 255);
+  background: rgb(76 163 228);
   right: 0px;
+}
+
+#saveChangeBtn:hover {
+  background:rgb(135 186 224);
 }
 
 /* bootstrap css */
@@ -701,7 +728,7 @@ textarea{
   display:flex;
   flex-direction: column;
   width: 90%;
-  min-width: 300px;
+  min-width: 280px;
   max-width: 600px;
   margin: 0px auto;
   line-height: 2;
@@ -722,6 +749,11 @@ textarea{
 #artForm span {
   margin-right: 10px;
   margin-left: 5px;
+}
+
+#checkboxNote {
+  color:#788D98;
+  font-size: 12px;
 }
 
 /* Button */
@@ -797,5 +829,13 @@ textarea{
     padding:0px 50px;
   }
 
-}
+  /* ========= ART INFO PAGE - Current Art Section ========= */
+  #artAndToolOptions {
+    height: 415px;
+  }
 
+  #artInfoImageHolder {
+    height: 350px;
+  }
+
+}

@@ -74,55 +74,73 @@ export default function ArtForm(props) {
         </div>
         {/* ====== Checkboxes: Art Subject ======*/}
         <div>
-          <h2>Subject</h2>
-          <input
-            type="checkbox"
-            name="art_subject"
-            value="animal"
-            checked={props.art_subject.includes("animal")}
-            onChange={props.updateCheckbox}
-          />{" "}
-          <span>Animal</span>
-          <input
-            type="checkbox"
-            name="art_subject"
-            value="anime"
-            checked={props.art_subject.includes("anime")}
-            onChange={props.updateCheckbox}
-          />{" "}
-          <span>Anime</span>
-          <input
-            type="checkbox"
-            name="art_subject"
-            value="cartoon"
-            checked={props.art_subject.includes("cartoon")}
-            onChange={props.updateCheckbox}
-          />{" "}
-          <span>Cartoon</span>
-          <input
-            type="checkbox"
-            name="art_subject"
-            value="food"
-            checked={props.art_subject.includes("food")}
-            onChange={props.updateCheckbox}
-          />{" "}
-          <span>Food</span>
-          <input
-            type="checkbox"
-            name="art_subject"
-            value="nature"
-            checked={props.art_subject.includes("nature")}
-            onChange={props.updateCheckbox}
-          />{" "}
-          <span>Nature</span>
-          <input
-            type="checkbox"
-            name="art_subject"
-            value="people"
-            checked={props.art_subject.includes("people")}
-            onChange={props.updateCheckbox}
-          />{" "}
-          <span>People</span>
+          <h2>Subject <span id="checkboxNote">(You may check more than one option)</span></h2>
+          <div>
+            <input
+              type="checkbox"
+              name="art_subject"
+              value="animal"
+              checked={props.art_subject.includes("animal")}
+              onChange={props.updateCheckbox}
+            />{" "}
+            <span>Animal</span>
+          </div>
+
+          <div>
+            <input
+              type="checkbox"
+              name="art_subject"
+              value="anime"
+              checked={props.art_subject.includes("anime")}
+              onChange={props.updateCheckbox}
+            />{" "}
+            <span>Anime</span>
+          </div>
+
+          <div>
+            <input
+              type="checkbox"
+              name="art_subject"
+              value="cartoon"
+              checked={props.art_subject.includes("cartoon")}
+              onChange={props.updateCheckbox}
+            />{" "}
+            <span>Cartoon</span>
+          </div>
+
+          <div>
+            <input
+              type="checkbox"
+              name="art_subject"
+              value="food"
+              checked={props.art_subject.includes("food")}
+              onChange={props.updateCheckbox}
+            />{" "}
+            <span>Food</span>
+          </div>
+
+          <div>
+            <input
+              type="checkbox"
+              name="art_subject"
+              value="nature"
+              checked={props.art_subject.includes("nature")}
+              onChange={props.updateCheckbox}
+            />{" "}
+            <span>Nature</span>
+          </div>
+
+          <div>
+            <input
+              type="checkbox"
+              name="art_subject"
+              value="people"
+              checked={props.art_subject.includes("people")}
+              onChange={props.updateCheckbox}
+            />{" "}
+            <span>People</span>
+          </div>
+
         </div>
       </div>
     </React.Fragment>
