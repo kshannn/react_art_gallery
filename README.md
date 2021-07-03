@@ -2,7 +2,7 @@
 
 <img src='./public/art_gallery_all_display.png' style='display:block'><br>
 
-Access the live demo of the website [here](https://wonderful-turing-7905df.netlify.app).
+Access the live demo of the website [here](https://gallant-tereshkova-39b1f3.netlify.app).
 
 ## Project Summary
 
