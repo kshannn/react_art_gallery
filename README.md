@@ -3,6 +3,7 @@
 <img src='./public/art_gallery_all_display.png' style='display:block'><br>
 
 Access the live demo of the website [here](https://gallant-tereshkova-39b1f3.netlify.app).
+(Do note that as the server takes time to start up, the data will take about 30s to load completely)
 
 ## Project Summary
 
