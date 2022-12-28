@@ -4,10 +4,9 @@ import CreateArtPage from "./CreateArtPage";
 import ArtInfo from "./ArtInfo";
 import FilterOptions from "./FilterOptions"
 import SideFilterOptions from "./SideFilterOptions"
+import {baseUrl} from "./constants"
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-
-const baseUrl = "https://kls-art-gallery.herokuapp.com"
 
 export default class App extends React.Component {
   state = {
@@ -112,7 +111,7 @@ export default class App extends React.Component {
   // ===== Search for art/artist with search bar =====
   searchResults = async () => {
     // retrieve art or artist
-    let response = await axios.get(baseUrl + "/art_gallery/search" + "?q=" + this.state.searchTerm);
+    let response = await axios.get(baseUrl + "/art_gallery/search?q=" + this.state.searchTerm);
     // display found art or artist in gallery
     this.setState({
       gallery: response.data.reverse()
@@ -215,7 +214,7 @@ export default class App extends React.Component {
                 {/* Display art subject tags for each artpost */}
                 {artpost.art_subject.map((subject) => {
                   return (
-                    <span className={"badge " + "badge-" + subject} style={{ marginRight: "5px" }}>{subject}</span>
+                    <span className={"badge badge-" + subject} style={{ marginRight: "5px" }}>{subject}</span>
                   )
                 })}
               </div>

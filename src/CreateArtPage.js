@@ -1,8 +1,7 @@
 import React from "react";
 import ArtForm from "./ArtForm";
 import axios from "axios";
-
-const baseUrl = "https://kls-art-gallery.herokuapp.com"
+import {baseUrl} from "./constants"
 
 export default class CreateArtPage extends React.Component {
 

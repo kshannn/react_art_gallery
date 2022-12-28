@@ -1,7 +1,6 @@
 import React from "react"
 import axios from "axios";
-
-const baseUrl = "https://kls-art-gallery.herokuapp.com"
+import {baseUrl} from "./constants"
 
 export default class SideFilterOptions extends React.Component {
 
@@ -126,7 +125,7 @@ export default class SideFilterOptions extends React.Component {
         let q = ""
 
         if (this.state.art_type && this.state.art_subject) {
-            q += "art_type=" + this.state.art_type + "&" + "art_subject=" + this.state.art_subject
+            q += "art_type=" + this.state.art_type + "&art_subject=" + this.state.art_subject
         } else if (this.state.art_type) {
             q += "art_type=" + this.state.art_type
         } else if (this.state.art_subject) {

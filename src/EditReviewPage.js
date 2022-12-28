@@ -1,7 +1,6 @@
 import React from "react"
 import axios from "axios"
-
-const baseUrl = "https://kls-art-gallery.herokuapp.com"
+import {baseUrl} from "./constants"
 
 export default class EditReviewPage extends React.Component {
 

@@ -3,8 +3,7 @@ import React from "react"
 import 'bootstrap/dist/css/bootstrap.css'
 import EditArtPage from "./EditArtPage"
 import EditReviewPage from "./EditReviewPage"
-
-const baseUrl = "https://kls-art-gallery.herokuapp.com"
+import {baseUrl} from "./constants"
 
 export default class ArtInfo extends React.Component {
 
@@ -379,7 +378,7 @@ export default class ArtInfo extends React.Component {
                                     <span>{this.props.displayArtType(this.state.currentArt)}</span>
                                     {this.state.currentArt.art_subject.map((subject) => {
                                         return (
-                                            <span className={"badge " + "badge-" + subject} style={{ marginRight: "5px" }}>{subject}</span>
+                                            <span className={"badge badge-" + subject} style={{ marginRight: "5px" }}>{subject}</span>
                                         )
                                     })}
                                     <p id="artDescription">{this.state.currentArt.art_description}</p>
