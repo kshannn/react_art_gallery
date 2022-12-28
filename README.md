@@ -173,7 +173,7 @@ Access the test cases [here](https://github.com/kshannn/react_art_gallery/blob/6
 * [erdplus](https://erdplus.com/)
     * To create ER diagram
 
-* [Heroku](https://id.heroku.com/login)
+* [render](https://render.com/)
     * To enable access to database
 
 * [Netlify](https://www.netlify.com/)
@@ -187,30 +187,18 @@ Access the test cases [here](https://github.com/kshannn/react_art_gallery/blob/6
 
 ## Deployment
 
-The web app is hosted using Heroku (for Express NodeJS) and Netlify (for React).
+The web app is hosted using Render (for Express NodeJS) and Netlify (for React).
 
-**Steps to deployment using Heroku**
+**Steps to deployment using Render**
 1. Obtain MongoDB connection string from MongoDB atlas
 2. Create .env file and add the MongoDB conenction string and replace the necessary field with MongoDB password
-3. Log into Heroku 
-    * In the terminal type: heroku login -i
-    * Type in username and password when prompted
-4. Create Heroku App
-    * In the terminal type: heroku create kls-art-gallery
-5. Define Procfile
-    * Create a file named 'Procfile' in same directory as index.js
-    * Add the following line into Procfile: web:node index.js
-6. Add a start script to package.json
-    * "start":"node index.js"
-7. Ensure the port app.listen is set to "process.env.PORT"
-8. Save and commit all changes using git add . and git commit 
-9. Push to Heroku
-    * git push heroku master
-10. Log into [Heroku](https://id.heroku.com/login)
-11. Select the app that was deployed then click on settings
-12. Click on Reveal Config Vars
-    * Add in MONGO_URL, and the connection URL from your .env file
-13. Deployment of App to Heroku is completed
+3. Log into [Render](https://render.com/)
+4. Create a new Web Service and connect git repository
+5. Select the repository to deploy
+6. Access Render dashboard and select the web service that was created
+7. Click on "Environment"
+    * Add in the key/value environment variables for MONGO_URL
+8. Deployment of App to Render is completed
 
 
 **Steps to deployment using Netlify**
@@ -242,4 +230,4 @@ The web app is hosted using Heroku (for Express NodeJS) and Netlify (for React).
 * Design of website inspired by [DeviantArt](https://www.deviantart.com/)
 
 * Deployment steps
-    * Extracted and edited based on TGC's deployment guide for [Heroku](https://docs.google.com/document/d/1-O-m7KGG_8GrKb0QwuuVRI9iGk_xmE8mMyqR0w_2JVs/edit?usp=sharing) and [Netlify](https://docs.google.com/document/d/1cquGsm1x8Tm2vzcJcAxQdnCe_BxF9b9z34vQEJ6-K7E/edit?usp=sharing)
+    * Extracted and edited based on Render's documentation [Render](https://render.com/docs/connect-to-mongodb-atlas) and and TGC's deployment guide for [Netlify](https://docs.google.com/document/d/1cquGsm1x8Tm2vzcJcAxQdnCe_BxF9b9z34vQEJ6-K7E/edit?usp=sharing)
